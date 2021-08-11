@@ -1,33 +1,42 @@
-import { NavHome } from './style';
+import { NavHome, ContainerHome, ContainerTitle, 
+        ContainerSubTitle, ContainerButtonGetStarted,
+        ContainerLogo, ImgLogo, ContainerImgHome, 
+        ButtonSignIn, ButtonSignUp } from './style';
+
+import img_Home from '../../assets/image 1.png';
+import logo from '../../assets/logo_Speak_Tracks_branco.PNG'
 
 const PageHome = () => {
     return(
-        <div>
+        <ContainerHome>
             <NavHome>
+                <ContainerLogo>
+                    <ImgLogo alt='img-logo' src={logo}/>
+                </ContainerLogo>
+
                 <div>
-                    <h1>LOGO</h1>
+                    <ButtonSignIn>Sign In</ButtonSignIn>
+                    <ButtonSignUp>Sign Up</ButtonSignUp>
                 </div>
-                
-                <div>
-                    <button>Sign In</button>
-                    <button>Sign Up</button>
-                </div>
+
             </NavHome>
 
-            <div>
-                <img alt='img_home' src='' />
-            </div>
+            <ContainerImgHome>
+                <img alt='img_home' src={ img_Home } />
+            </ContainerImgHome>
 
-            <div>
+            <ContainerTitle>
                 <h2>Evolve constatly and meet people!</h2>
-            </div>
-            <div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur ullam voluptatum  excepturi illo at quia dignissimos.</p>
-            </div>
-            <div>
+            </ContainerTitle>
+
+            <ContainerSubTitle>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur excepturi illo at quia dignissimos.</p>
+            </ContainerSubTitle>
+            
+            <ContainerButtonGetStarted>
                 <button>GET STARTED</button>
-            </div>
-        </div>
+            </ContainerButtonGetStarted>
+        </ContainerHome>
     )
 }
 

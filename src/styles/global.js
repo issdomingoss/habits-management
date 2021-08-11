@@ -2,10 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 
-:root {
+:root{
+    --red: #D73333;
     --white: #ECF4FE;
+    --green: #3C910B;
+    --black: #000412
 }
-
 
 *{
     margin: 0;
@@ -24,6 +26,6 @@ button{
 }
 
 body{
-    background-color: var(--white);
+    background-color:var(--white);
 }
 `;
