@@ -7,7 +7,7 @@ export const ContainerHome = styled.div`
 export const NavHome = styled.nav`
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    padding: 40px;
     align-items: center;
 `;
 
@@ -27,12 +27,14 @@ export const ButtonSignIn = styled.button`
 
     margin-right:5px;
 
+    @media (min-width:768px){
+        font-size:1.3rem;
+    }
+    
     &:hover{
         border-bottom: 1px solid var(--red);
-        
     }
 `;
-
 
 export const ButtonSignUp = styled.button`
     background-color:var(--white);
@@ -40,6 +42,10 @@ export const ButtonSignUp = styled.button`
     border: none;
     color:var(--red);
     font-weight: bold;
+
+    @media (min-width:768px){
+        font-size:1.3rem;
+    }
 
     &:hover{
         border-bottom:1px solid var(--black);
@@ -53,6 +59,24 @@ export const ContainerImgHome = styled.div`
         height: 200px;
         margin:35px 0px;
     }
+
+
+    @media (min-width: 768px) {
+        img{
+            width:400px;
+            height: 300px;
+            margin:35px 0px;
+        }
+    }
+
+    @media (min-width: 1024px){
+        img{
+            width:500px;
+            height: 400px;
+            margin:35px 0px;
+        }
+    }
+
 `;
 
 export const ImgLogo = styled.img`
@@ -61,21 +85,44 @@ export const ImgLogo = styled.img`
 
 export const ContainerTitle = styled.div`
     margin:30px 0px;
-    font-size: 1.3rem;
+    
+    h2{
+        font-size: 1.9rem;
+    }
+
     text-align: left;
     width:200px;
     margin:0 auto;
+
+    @media (min-width: 768px){
+
+        width: 400px;
+    
+        h2{
+            font-size: 3.5rem;
+        }
+    }
 `;
 
 export const ContainerSubTitle = styled.div`
     text-align: left;
-    width:200px;
-    margin:20px auto;
+    width: 200px;
+    margin: 20px auto;
+
+    @media (min-width: 768px){
+
+        width:400px;
+
+        p{
+            font-size: 1.4rem;
+        }
+    }
 `;
 
 export const ContainerButtonGetStarted = styled.div`
+    
     margin:30px;
-
+    
     button{
         background-color: var(--red);
         border:none;
@@ -83,11 +130,29 @@ export const ContainerButtonGetStarted = styled.div`
         border-radius:40px;
         font-weight: bold;
         color:var(--white);
+        text-transform: uppercase;
     }
 
     button:hover{
         color:var(--black);
         cursor: pointer;
         transition:0.5s;
+    }
+
+    @media (min-width: 768px){
+        
+        button{
+            font-size: 1.3rem;
+        }
+    }
+
+`;
+
+export const ContainerMainFlex = styled.div`
+    @media (min-width:1024px){
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 56px;
     }
 `;
