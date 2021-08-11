@@ -8,33 +8,29 @@
 
 ### Services
 
-api.js
-
 ### Porviders
 
 ### Sytles
 
-global.js
-
 ### Routes
-
-index.jsx
 
 ## Bibliotecas adicionadas
 
-### styled-components
+### `styled-components`
 
-### axios
+### `axios`
 
-### yup
+### `yup`
 
-### react-hook-form
+### `react-hook-form`
 
-### @hookform/resolvers
+### `@hookform/resolvers`
 
-### react-router-dom
+### `react-router-dom`
 
-### react-toastify
+### `react-toastify`
+
+### `react-icons`
 
 # Documentação
 
