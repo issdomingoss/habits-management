@@ -1,10 +1,11 @@
 import { Switch, Route } from "react-router-dom";
+import PageHome from "../pages/Home";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <h1>Home</h1>
+        <PageHome />
       </Route>
       <Route path="/login">
         <h1>Login</h1>
