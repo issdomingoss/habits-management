@@ -247,21 +247,27 @@ const RandomFrases = () => {
 
   const getRandomFrase = () => {
     let number = "";
-    let texto = "";
+    let texto = [];
     number = Math.floor(Math.random() * (41 - 1 + 1)) + 1;
+    console.log(number);
     texto = frases.filter((item) => item.id === number);
-    setTranscriptPortuguese(texto.frase);
-    setFraseEnglish(texto.transcript);
+    setTranscriptPortuguese(texto.map((item) => item.transcript));
+    setFraseEnglish(texto.map((item) => item.frase));
   };
 
   console.log(transcriptPortuguese);
-  console.log(fraseEnglish);
-
   return (
     <>
-      <h3>{transcriptPortuguese}</h3>
+      <h3>
+        Remover o Botão que esta em Random Frases em Components e Colocar no
+        Botão de Login
+      </h3>
+
+      <button onClick={() => getRandomFrase()}>Gerar Frase</button>
+      <br></br>
       <h3>{fraseEnglish}</h3>
-      <button onClick={() => getRandomFrase()}></button>
+      <br></br>
+      <h5>{transcriptPortuguese}</h5>
     </>
   );
 };
