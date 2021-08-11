@@ -249,7 +249,6 @@ const RandomFrases = () => {
     let number = "";
     let texto = [];
     number = Math.floor(Math.random() * (41 - 1 + 1)) + 1;
-    console.log(number);
     texto = frases.filter((item) => item.id === number);
     setTranscriptPortuguese(texto.map((item) => item.transcript));
     setFraseEnglish(texto.map((item) => item.frase));
