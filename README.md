@@ -2,6 +2,10 @@
 
 ## src:
 
+### assets
+
+Contém todas as imagens utilizadas no projeto
+
 ### Components
 
 ### Pages
