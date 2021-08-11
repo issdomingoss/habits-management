@@ -16,4 +16,11 @@ a{
 button{
     cursor: pointer;
 }
+
+:root{
+    --red: #D73333;
+    --white: #ECF4FE;
+    --green: #3C910B;
+    --black: #000412
+}
 `;
