@@ -258,8 +258,8 @@ const RandomFrases = () => {
   return (
     <>
       <h3>
-        Remover o Botão que esta em Random Frases em Components e Colocar no
-        Botão de Login
+        Remover o Botão que esta em Random Frases em Components e Colocar a
+        função "getRandomFrase" no Botão de Login
       </h3>
 
       <button onClick={() => getRandomFrase()}>Gerar Frase</button>
