@@ -9,11 +9,11 @@ export default createGlobalStyle`
     --black: #000412
 }
 
-body{
+*{
     margin: 0;
     padding: 0;
     outline: none;
-    background-color:var(--white);
+    background-color: var(--white);
     box-sizing: border-box;
 }
 

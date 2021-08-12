@@ -4,19 +4,33 @@ import { NavHome, ContainerHome, ContainerTitle,
         ButtonSignIn, ButtonSignUp, ContainerMainFlex } from './style';
 
 import img_Home from '../../assets/image 1.png';
-import logo from '../../assets/logo_Speak_Tracks_branco.PNG'
+import logo from '../../assets/logo_Speak_Tracks_branco.PNG';
+
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 const PageHome = () => {
+
+    const history = useHistory();
+
+    const sendToPageLogin = () => {
+        history.push('/login');
+    }
+
+    const sendToPageRegister = () => {
+        history.push('/register');
+    }
+
     return(
         <ContainerHome>
             <NavHome>
                 <ContainerLogo>
-                    <ImgLogo alt='img-logo' src={logo}/>
+                    <Link to='/'><ImgLogo alt='img-logo' src={logo}/></Link>
                 </ContainerLogo>
 
                 <div>
-                    <ButtonSignIn>Sign In</ButtonSignIn>
-                    <ButtonSignUp>Sign Up</ButtonSignUp>
+                    <ButtonSignIn onClick={ sendToPageLogin }>Sign In</ButtonSignIn>
+                    <ButtonSignUp onClick={ sendToPageRegister }>Sign Up</ButtonSignUp>
                 </div>
 
             </NavHome>
@@ -38,7 +52,7 @@ const PageHome = () => {
                     </ContainerSubTitle>
                     
                     <ContainerButtonGetStarted>
-                        <button>get started!</button>
+                        <button onClick={ sendToPageRegister }>get started!</button>
                     </ContainerButtonGetStarted>
                 </div>
             </ContainerMainFlex>
