@@ -21,17 +21,36 @@ export const HabitsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
+        setHabits([...habits, response.data]);
       })
       .catch((err) => console.log(err.response));
   };
 
+  const updateHabit = (id, updatedItens) => {
+    let updatedHabits = habits.map((habit) => {
+      if (habit.id === id) {
+        habit = { ...habit, ...updatedItens };
+      }
+      return habit;
+    });
+
+    api
+      .patch(`/habits/${id}/`, updatedItens, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => setHabits(updatedHabits))
+      .catch((err) => console.log(err.response));
+  };
+
   const removeHabit = (id) => {
+    const newHabitsList = habits.filter((habit) => habit.id !== id);
+
     api
       .delete(`/habits/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then(() => loadHabits())
+      .then(() => setHabits(newHabitsList))
       .catch((err) => console.log(err.response.data.detail));
   };
 
@@ -47,24 +66,29 @@ export const HabitsProvider = ({ children }) => {
       .catch((err) => console.log(err.response.data.error));
   };
 
-  const hab = {
-    title: "Calistenia a noite (15 minutos)",
-    category: "Sáude",
-    difficulty: "Muito díficil",
-    frequency: "Diária",
-    achieved: false,
-    how_much_achieved: 75,
-  };
+  //----------------------------------------------------------------------------------------
+  // const hab = {
+  //   title: "Calistenia na madruga (15 minutos)",
+  //   category: "Sáude",
+  //   difficulty: "díficil",
+  //   frequency: "semanal",
+  //   achieved: false,
+  //   how_much_achieved: 75,
+  // };
 
-  useEffect(() => {
-    loadHabits();
-    //createHabit(hab);
-    //removeHabit(5817);
-  }, []);
+  // useEffect(() => {
+  //loadHabits();
+  //createHabit(hab);
+  //removeHabit(6007);
+  //updateHabit(5949, hab);
+  //console.log("habits ", habits);
+  //}, [token]);
 
   //======================================================================================
   return (
-    <HabitsContext.Provider value={{ habits, createHabit, removeHabit }}>
+    <HabitsContext.Provider
+      value={{ habits, createHabit, updateHabit, removeHabit, loadHabits }}
+    >
       {children}
     </HabitsContext.Provider>
   );
