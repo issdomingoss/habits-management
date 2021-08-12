@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { BiCheckCircle, BiPlusCircle, BiTrash } from "react-icons/bi";
+import { useContext, useState } from "react";
 import { Container } from "./styles";
-
+import { BiCheckCircle, BiPlusCircle, BiTrash } from "react-icons/bi";
 import * as yup from "yup";
-import { useForm, handleSubmit } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { HabitsContext } from "../../providers/Habits";
 
 export const HabitCard = ({ habit = {}, create }) => {
   const [isModal, setIsModal] = useState(false);
+  const { createHabit, updateHabit, removeHabit } = useContext(HabitsContext);
 
   const openModal = () => {
     setIsModal(true);
@@ -31,11 +32,22 @@ export const HabitCard = ({ habit = {}, create }) => {
 
   const onSubmitFunction = (data) => {
     if (create) {
-      //chamar função que cria
-      console.log("Criou", data);
+      const newHabit = {
+        title: data.title,
+        category: "Language",
+        difficulty: data.difficulty,
+        frequency: data.frequency,
+        achieved: false,
+        how_much_achieved: 0,
+      };
+
+      createHabit(newHabit);
     } else {
-      console.log("Editou", data);
+      const { id } = habit;
+      updateHabit(id, data);
     }
+
+    closeModal();
   };
 
   return (
@@ -104,7 +116,10 @@ export const HabitCard = ({ habit = {}, create }) => {
             </form>
             {create !== true && (
               <div className="container-trash">
-                <button className="delete-button">
+                <button
+                  className="delete-button"
+                  onClick={() => removeHabit(habit.id)}
+                >
                   <BiTrash className="trash-icon" />
                   <span> Delete habit</span>
                 </button>
