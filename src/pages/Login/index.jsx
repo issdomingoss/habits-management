@@ -7,10 +7,13 @@ import { useHistory } from 'react-router';
 
 import logo from '../../assets/logo_Speak_Tracks.PNG';
 import img_login from '../../assets/image 4.png';
+import img_desktop from '../../assets/image 3.png';
 
 import api from '../../services/api';
 
-import { ContainerBackGround, Form, ContainerInputLogin, Img, ButtonLogin } from './style';
+import { ContainerBackGround, Form, ContainerInputLogin, 
+        ImgLogo, ButtonLogin, ImgLogin, ContainerDesktop, 
+        ContainerImgDesktop } from './style';
 
 const PageLogin = () => {
 
@@ -29,20 +32,16 @@ const PageLogin = () => {
             .required('Required field!')
     });
 
-    //faz a conexão do meu formulário com meu schema
     const { register, handleSubmit, formState: { errors }, reset } = useForm({resolver: yupResolver(schema)});
     const history = useHistory();
         
     const handleMyForm = (data) => {
-        //data é um objeto onde podemos enviar para API usando um get para criar um usuário
         const { username, password } = data;
         const sendToAPI = { username, password };
         
-        //AXIOS AQUI
         api.post('/sessions/', sendToAPI)
         .then(response => {
             reset();
-            console.log(response);
             localStorage.setItem('token', JSON.stringify(response.data.access));
             history.push('/dashboard');
 
@@ -53,35 +52,42 @@ const PageLogin = () => {
 
         <ContainerBackGround>
 
-            <Img alt='img_logo' src={ logo } />
+            <Link to='/'><ImgLogo alt='img_logo' src={ logo } /></Link>
 
-            <Form onSubmit={ handleSubmit(handleMyForm) }>
+            <ContainerDesktop>
 
-                <h2>Sign In</h2>
-
-                <img alt='img_logo' src={ img_login }/>
-
-                <ContainerInputLogin>
-                    <label>Username:</label>
-                    <input type='text'{...register('username')}/>
-                    <span style={{color: 'red'}}>{ errors.username?.message }</span>
-                </ContainerInputLogin>
+                <ContainerImgDesktop>
+                    <img alt='img_desktop' src={ img_desktop } />
+                </ContainerImgDesktop>
                 
-                <ContainerInputLogin>
-                    <label>Password:</label>
-                    <input type='password' {...register('password')}/>
-                    <span style={{ color: 'red' }}> {errors.password?.message }</span>
-                </ContainerInputLogin>
-                
-                <div>
-                    <p>Don't have an account? <Link to='/register'>Register</Link></p>
-                </div>
+                <Form onSubmit={ handleSubmit(handleMyForm) }>
 
-                <div>
-                    <ButtonLogin type='submit'>Login</ButtonLogin>
-                </div>
-            </Form>
+                    <h2>Sign In</h2>
 
+                    <ImgLogin alt='img_logo' src={ img_login }/>
+
+                    <ContainerInputLogin>
+                        <label>Username:</label>
+                        <input type='text'{...register('username')}/>
+                        <span style={{color: 'red'}}>{ errors.username?.message }</span>
+                    </ContainerInputLogin>
+                    
+                    <ContainerInputLogin>
+                        <label>Password:</label>
+                        <input type='password' {...register('password')}/>
+                        <span style={{ color: 'red' }}> {errors.password?.message }</span>
+                    </ContainerInputLogin>
+                    
+                    <div>
+                        <p>Don't have an account? <Link to='/register'>Register</Link></p>
+                    </div>
+
+                    <div>
+                        <ButtonLogin type='submit'>Login</ButtonLogin>
+                    </div>
+                </Form>
+
+            </ContainerDesktop>
         </ContainerBackGround>
        
     )
