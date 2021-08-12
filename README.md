@@ -22,6 +22,8 @@ Responsável pela criação de uma instância da api.
 
 #### `HabitsProvider`:
 
+- **getToken(token)**: pega o token e adciona ao estado token por setToken(token)
+
 - **habits**: um array com todos os hábitos do usuário.
 
 - **createHabit(habit)**: recebe um objeto como parâmetro e cria um novo hábito a partir deste objeto.

@@ -6,10 +6,16 @@ export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
-  const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("token")) || ""
+  );
 
-  //Funcoes
+  //Funcoes do provider
   //--------------------------------------------------------------------------------------------------
+  const getToken = (tken) => {
+    setToken(tken);
+  };
+
   const createHabit = (habit) => {
     const decode = jwt_decode(token);
     const newHabit = { ...habit, user: decode.user_id };
@@ -63,27 +69,18 @@ export const HabitsProvider = ({ children }) => {
       .catch((err) => console.log(err.response.data.error));
   };
 
-  //----------------------------------------------------------------------------------------
-  const hbt = {
-    title: "Calistenia tarde (15 minutos)",
-    category: "Sáude",
-    difficulty: "díficil",
-    frequency: "Diária",
-    achieved: false,
-    how_much_achieved: 30,
-  };
-
-  useEffect(() => {
-    //createHabit(hbt);
-    loadHabits();
-    //console.log("token: ", token);
-  }, []);
-
-  //return do jsx
+  //return do provider
   //======================================================================================
   return (
     <HabitsContext.Provider
-      value={{ habits, createHabit, updateHabit, removeHabit, loadHabits }}
+      value={{
+        habits,
+        createHabit,
+        updateHabit,
+        removeHabit,
+        loadHabits,
+        getToken,
+      }}
     >
       {children}
     </HabitsContext.Provider>

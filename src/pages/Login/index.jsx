@@ -7,6 +7,8 @@ import logo from "../../assets/logo_Speak_Tracks.PNG";
 import img_login from "../../assets/image 4.png";
 import img_desktop from "../../assets/image 3.png";
 import api from "../../services/api";
+import { useContext } from "react";
+import { HabitsContext } from "../../providers/Habits";
 
 import {
   ContainerBackGround,
@@ -22,6 +24,8 @@ import {
 //jsx
 //====================================================================================================
 const PageLogin = () => {
+  const { getToken } = useContext(HabitsContext);
+
   //validacoes
   //----------------------------------------------------------------------------------------------
   const schema = yup.object().shape({
@@ -59,7 +63,10 @@ const PageLogin = () => {
       .post("/sessions/", sendToAPI)
       .then((response) => {
         reset();
+
         localStorage.setItem("token", JSON.stringify(response.data.access));
+        getToken(response.data.access);
+
         history.push("/dashboard");
       })
       .catch((e) => console.log(e));
