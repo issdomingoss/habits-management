@@ -6,7 +6,7 @@ export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
-  const token = localStorage.getItem("@token") || "";
+  const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
 
   //Funcoes
   //--------------------------------------------------------------------------------------------------
@@ -64,10 +64,20 @@ export const HabitsProvider = ({ children }) => {
   };
 
   //----------------------------------------------------------------------------------------
+  const hbt = {
+    title: "Calistenia tarde (15 minutos)",
+    category: "Sáude",
+    difficulty: "díficil",
+    frequency: "Diária",
+    achieved: false,
+    how_much_achieved: 30,
+  };
 
   useEffect(() => {
+    //createHabit(hbt);
     loadHabits();
-  }, [token]);
+    //console.log("token: ", token);
+  }, []);
 
   //return do jsx
   //======================================================================================

@@ -26,9 +26,36 @@ Responsável pela criação de uma instância da api.
 
 - **createHabit(habit)**: recebe um objeto como parâmetro e cria um novo hábito a partir deste objeto.
 
+Exemplo:
+
+```
+const habit = {
+    title: "Calistenia tarde (15 minutos)",
+    category: "Sáude",
+    difficulty: "díficil",
+    frequency: "Diária",
+    achieved: false,
+    how_much_achieved: 30,
+  };
+
+  createHabit(habit)
+```
+
 _Essa função atualiza o **habits**_
 
 - **updateHabit(id, updatedItens)**: recebe o id do habito que será atualizado e um objeto com os campos que serão alterados.
+
+Exemplo:
+
+```
+const hbt = {
+    frequency: "Diária",
+    achieved: true,
+    how_much_achieved: 100,
+  };
+
+  updateHabit(649,hbt)
+```
 
 _Essa função atualiza o **habits**_
 
@@ -36,7 +63,7 @@ _Essa função atualiza o **habits**_
 
 _Essa função atualiza o **habits**_
 
-- **loadHabits**: carrega os hábitos do usuário que estão na api para a variável **habits**.
+- **loadHabits()**: carrega os hábitos do usuário que estão na api para a variável **habits**.
 
 ### Sytles
 
