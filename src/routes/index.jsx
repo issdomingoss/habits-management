@@ -1,7 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import PageHome from "../pages/Home";
 import PageLogin from "../pages/Login";
-import PageRegister from '../pages/Register';
+import PageRegister from "../pages/Register";
 
 const Routes = () => {
   return (

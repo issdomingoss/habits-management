@@ -8,7 +8,7 @@ const Providers = ({ children }) => {
     <GroupsProvider>
       <GoalsProvider>
         <ActivitiesProvider>
-          <HabitsProvider>{children}</HabitsProvider>;
+          <HabitsProvider>{children}</HabitsProvider>
         </ActivitiesProvider>
       </GoalsProvider>
     </GroupsProvider>

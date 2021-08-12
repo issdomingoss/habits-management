@@ -4,19 +4,76 @@
 
 ### assets
 
-Contém todas as imagens utilizadas no projeto
+Contém todas as imagens utilizadas no projeto.
 
 ### Components
 
+Contém os componentes utilizados no projeto.
+
 ### Pages
+
+Contém as páginas utilizadas no projeto (home,login,dashboard...).
 
 ### Services
 
+Responsável pela criação de uma instância da api.
+
 ### Porviders
+
+#### `HabitsProvider`:
+
+- **getToken(token)**: pega o token e adciona ao estado token por setToken(token)
+
+- **habits**: um array com todos os hábitos do usuário.
+
+- **createHabit(habit)**: recebe um objeto como parâmetro e cria um novo hábito a partir deste objeto.
+
+Exemplo:
+
+```
+const habit = {
+    title: "Calistenia tarde (15 minutos)",
+    category: "Sáude",
+    difficulty: "díficil",
+    frequency: "Diária",
+    achieved: false,
+    how_much_achieved: 30,
+  };
+
+  createHabit(habit)
+```
+
+_Essa função atualiza o **habits**_
+
+- **updateHabit(id, updatedItens)**: recebe o id do habito que será atualizado e um objeto com os campos que serão alterados.
+
+Exemplo:
+
+```
+const hbt = {
+    frequency: "Diária",
+    achieved: true,
+    how_much_achieved: 100,
+  };
+
+  updateHabit(649,hbt)
+```
+
+_Essa função atualiza o **habits**_
+
+- **removeHabit(id)**: recebe o id do habito que será removido.
+
+_Essa função atualiza o **habits**_
+
+- **loadHabits()**: carrega os hábitos do usuário que estão na api para a variável **habits**.
 
 ### Sytles
 
+Armazena o arquivo global.js que contém a estilização global (reset, cores utilizadas ...).
+
 ### Routes
+
+Contém o arquivo que faz o gerenciamento das rotas entre as páginas.
 
 ## Bibliotecas adicionadas
 
@@ -36,6 +93,8 @@ Contém todas as imagens utilizadas no projeto
 
 ### `react-icons`
 
+### `jwt-decode`
+
 # Documentação
 
-Acesse: [https://www.notion.so/Gerenciador-de-H-bitos-d31174c9b1cf434fa45b7fd8ab6ae539](https://www.notion.so/Gerenciador-de-H-bitos-d31174c9b1cf434fa45b7fd8ab6ae539)
+Acesse: [link](https://www.notion.so/Gerenciador-de-H-bitos-d31174c9b1cf434fa45b7fd8ab6ae539)
