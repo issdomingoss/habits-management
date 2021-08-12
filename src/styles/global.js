@@ -13,8 +13,11 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     outline: none;
-    background-color: var(--white);
     box-sizing: border-box;
+}
+
+body{
+    background-color: var(--white);
 }
 
 a{

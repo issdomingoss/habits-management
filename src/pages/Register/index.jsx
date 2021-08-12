@@ -9,11 +9,10 @@ import api from '../../services/api';
 
 //styles
 import { ContainerBackGround, Form, Img, ContainerInputs, Title, 
-        ButtonCreateAccount } from './style';
+        ButtonCreateAccount, ContainerDesktop, ContainerImgRegister } from './style';
 //imagens
 import logo from '../../assets/logo_Speak_Tracks.PNG';
-import { SetIntegrityLevel } from 'es-abstract/es2016';
-
+import img_register_desktop from '../../assets/image 5.png';
 
 const PageRegister = () => {
 
@@ -65,44 +64,50 @@ const PageRegister = () => {
         <ContainerBackGround>
 
             {/* add link para to PageHome */}
-            <Img alt='img_logo' src={ logo } />
+            <Link to='/'><Img alt='img_logo' src={ logo } /></Link>
 
-            <Form onSubmit={ handleSubmit(handleMyForm) }>
+            <ContainerDesktop>
 
-                <Title>Sign Up</Title>
+                <ContainerImgRegister>
+                    <img alt='img_register_desktop' src={img_register_desktop }/>
+                </ContainerImgRegister>
 
-                <ContainerInputs>
-                    <label>Username:</label>
-                    <input type='text' {...register('username')}/>
-                    <span style={{color: 'red' }}>{errors.username?.message}</span>
-                </ContainerInputs>
-                <ContainerInputs>
-                    <label>Email:</label>
-                    <input type='text' {...register('email')}/>
-                    <span style={{color: 'red' }}>{errors.email?.message}</span>
-                </ContainerInputs>
-                <ContainerInputs>
-                    <label>Password:</label>
-                    <input type='password' {...register('password')}/>
-                    <span style={{color: 'red' }}>{errors.password?.message}</span>
-                </ContainerInputs>
-                <ContainerInputs>
-                    <label>Confirm Password:</label>
-                    <input type='password' {...register('confirmPassword')}/>
-                    <span style={{color: 'red' }}>{errors.confirmPassword?.message}</span>
-                </ContainerInputs>
+                <Form onSubmit={ handleSubmit(handleMyForm) }>
 
-                <div>
-                    <p>Already have an account? <Link to='/login'>Login</Link></p>
-                </div>
+                    <Title>Sign Up</Title>
 
-                <div>
-                    <ButtonCreateAccount type='submit'>Create an Account</ButtonCreateAccount>
-                </div>
-            </Form>
+                    <ContainerInputs>
+                        <label>Username:</label>
+                        <input type='text' {...register('username')}/>
+                        <span style={{color: 'red' }}>{errors.username?.message}</span>
+                    </ContainerInputs>
+                    <ContainerInputs>
+                        <label>Email:</label>
+                        <input type='text' {...register('email')}/>
+                        <span style={{color: 'red' }}>{errors.email?.message}</span>
+                    </ContainerInputs>
+                    <ContainerInputs>
+                        <label>Password:</label>
+                        <input type='password' {...register('password')}/>
+                        <span style={{color: 'red' }}>{errors.password?.message}</span>
+                    </ContainerInputs>
+                    <ContainerInputs>
+                        <label>Confirm Password:</label>
+                        <input type='password' {...register('confirmPassword')}/>
+                        <span style={{color: 'red' }}>{errors.confirmPassword?.message}</span>
+                    </ContainerInputs>
 
+                    <div>
+                        <p>Already have an account? <Link to='/login'>Login</Link></p>
+                    </div>
+
+                    <div>
+                        <ButtonCreateAccount type='submit'>Create an Account</ButtonCreateAccount>
+                    </div>
+                </Form>
+
+            </ContainerDesktop>
         </ContainerBackGround>
-       
     )
 }
 
