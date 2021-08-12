@@ -6,9 +6,7 @@ export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
-  //const token = localStorage.getItem("@token") || "";
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4OTYxMzQ1LCJqdGkiOiJhZTVkYTcxYmYwOTU0ODhlYWFlNDZlMzI0ZWNhZjhiOCIsInVzZXJfaWQiOjY0OX0.aXqYN69HZxrd_qPUem2_bL37mt-eTCKHjQmTvrpGTIs";
+  const token = localStorage.getItem("@token") || "";
 
   //Funcoes
   //--------------------------------------------------------------------------------------------------
@@ -21,7 +19,6 @@ export const HabitsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        //console.log(response.data);
         setHabits([...habits, response.data]);
       })
       .catch((err) => console.log(err.response));
@@ -67,25 +64,12 @@ export const HabitsProvider = ({ children }) => {
   };
 
   //----------------------------------------------------------------------------------------
-  // const hab = {
-  //   title: "Calistenia na madruga (15 minutos)",
-  //   category: "Sáude",
-  //   difficulty: "díficil",
-  //   frequency: "semanal",
-  //   achieved: false,
-  //   how_much_achieved: 75,
-  // };
 
-  //const hb = { achieved: true, how_much_achieved: 100 };
+  useEffect(() => {
+    loadHabits();
+  }, [token]);
 
-  // useEffect(() => {
-  //   loadHabits();
-  //   //createHabit(hab);
-  //   //removeHabit(6007);
-  //   //updateHabit(5949, hb);
-  //   //console.log("habits ", habits);
-  // }, [token]);
-
+  //return do jsx
   //======================================================================================
   return (
     <HabitsContext.Provider
