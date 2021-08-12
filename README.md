@@ -20,23 +20,23 @@ Responsável pela criação de uma instância da api.
 
 ### Porviders
 
-`HabitsProvider`:
+#### `HabitsProvider`:
 
-**habits**: um array com todos os hábitos do usuário.
+- **habits**: um array com todos os hábitos do usuário.
 
-**createHabit(habit)**: recebe um objeto como parâmetro e cria um novo hábito a partir deste objeto.
+- **createHabit(habit)**: recebe um objeto como parâmetro e cria um novo hábito a partir deste objeto.
 
-Essa função atualiza o **habits**
+_Essa função atualiza o **habits**_
 
-**updateHabit(id, updatedItens)**: recebe o id do habito que será atualizado e um objeto com os campos que serão alterados.
+- **updateHabit(id, updatedItens)**: recebe o id do habito que será atualizado e um objeto com os campos que serão alterados.
 
-Essa função atualiza o **habits**
+_Essa função atualiza o **habits**_
 
-**removeHabit(id)**: recebe o id do habito que será removido.
+- **removeHabit(id)**: recebe o id do habito que será removido.
 
-Essa função atualiza o **habits**
+_Essa função atualiza o **habits**_
 
-**loadHabits**: carrega os hábitos do usuário que estão na api para a variável **habits**.
+- **loadHabits**: carrega os hábitos do usuário que estão na api para a variável **habits**.
 
 ### Sytles
 

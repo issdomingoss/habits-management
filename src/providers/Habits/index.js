@@ -76,13 +76,15 @@ export const HabitsProvider = ({ children }) => {
   //   how_much_achieved: 75,
   // };
 
+  //const hb = { achieved: true, how_much_achieved: 100 };
+
   // useEffect(() => {
-  //loadHabits();
-  //createHabit(hab);
-  //removeHabit(6007);
-  //updateHabit(5949, hab);
-  //console.log("habits ", habits);
-  //}, [token]);
+  //   loadHabits();
+  //   //createHabit(hab);
+  //   //removeHabit(6007);
+  //   //updateHabit(5949, hb);
+  //   //console.log("habits ", habits);
+  // }, [token]);
 
   //======================================================================================
   return (
