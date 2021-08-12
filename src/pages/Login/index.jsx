@@ -5,19 +5,22 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import logo from "../../assets/logo_Speak_Tracks.PNG";
 import img_login from "../../assets/image 4.png";
+import img_desktop from "../../assets/image 3.png";
 import api from "../../services/api";
 
 import {
   ContainerBackGround,
   Form,
   ContainerInputLogin,
-  Img,
+  ImgLogo,
   ButtonLogin,
+  ImgLogin,
+  ContainerDesktop,
+  ContainerImgDesktop,
 } from "./style";
 
 //jsx
 //====================================================================================================
-
 const PageLogin = () => {
   //validacoes
   //----------------------------------------------------------------------------------------------
@@ -44,7 +47,7 @@ const PageLogin = () => {
     reset,
   } = useForm({ resolver: yupResolver(schema) });
 
-  //funcao de requisicao
+  //funcao de requisicao da api
   //------------------------------------------------------------------------------------------------
   const history = useHistory();
 
@@ -66,35 +69,43 @@ const PageLogin = () => {
   //================================================================================================
   return (
     <ContainerBackGround>
-      <Img alt="img_logo" src={logo} />
+      <Link to="/">
+        <ImgLogo alt="img_logo" src={logo} />
+      </Link>
 
-      <Form onSubmit={handleSubmit(handleMyForm)}>
-        <h2>Sign In</h2>
+      <ContainerDesktop>
+        <ContainerImgDesktop>
+          <img alt="img_desktop" src={img_desktop} />
+        </ContainerImgDesktop>
 
-        <img alt="img_logo" src={img_login} />
+        <Form onSubmit={handleSubmit(handleMyForm)}>
+          <h2>Sign In</h2>
 
-        <ContainerInputLogin>
-          <label>Username:</label>
-          <input type="text" {...register("username")} />
-          <span style={{ color: "red" }}>{errors.username?.message}</span>
-        </ContainerInputLogin>
+          <ImgLogin alt="img_logo" src={img_login} />
 
-        <ContainerInputLogin>
-          <label>Password:</label>
-          <input type="password" {...register("password")} />
-          <span style={{ color: "red" }}> {errors.password?.message}</span>
-        </ContainerInputLogin>
+          <ContainerInputLogin>
+            <label>Username:</label>
+            <input type="text" {...register("username")} />
+            <span style={{ color: "red" }}>{errors.username?.message}</span>
+          </ContainerInputLogin>
 
-        <div>
-          <p>
-            Don't have an account? <Link to="/register">Register</Link>
-          </p>
-        </div>
+          <ContainerInputLogin>
+            <label>Password:</label>
+            <input type="password" {...register("password")} />
+            <span style={{ color: "red" }}> {errors.password?.message}</span>
+          </ContainerInputLogin>
 
-        <div>
-          <ButtonLogin type="submit">Login</ButtonLogin>
-        </div>
-      </Form>
+          <div>
+            <p>
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
+          </div>
+
+          <div>
+            <ButtonLogin type="submit">Login</ButtonLogin>
+          </div>
+        </Form>
+      </ContainerDesktop>
     </ContainerBackGround>
   );
 };

@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 import logo from "../../assets/logo_Speak_Tracks.PNG";
+import img_register_desktop from "../../assets/image 5.png";
 
 import {
   ContainerBackGround,
@@ -13,11 +14,12 @@ import {
   ContainerInputs,
   Title,
   ButtonCreateAccount,
+  ContainerDesktop,
+  ContainerImgRegister,
 } from "./style";
 
 //jsx
 //====================================================================================================
-
 const PageRegister = () => {
   //validacoes
   //----------------------------------------------------------------------------------------------
@@ -71,46 +73,54 @@ const PageRegister = () => {
   return (
     <ContainerBackGround>
       {/* add link para to PageHome */}
-      <Img alt="img_logo" src={logo} />
+      <Link to="/">
+        <Img alt="img_logo" src={logo} />
+      </Link>
 
-      <Form onSubmit={handleSubmit(handleMyForm)}>
-        <Title>Sign Up</Title>
+      <ContainerDesktop>
+        <ContainerImgRegister>
+          <img alt="img_register_desktop" src={img_register_desktop} />
+        </ContainerImgRegister>
 
-        <ContainerInputs>
-          <label>Username:</label>
-          <input type="text" {...register("username")} />
-          <span style={{ color: "red" }}>{errors.username?.message}</span>
-        </ContainerInputs>
-        <ContainerInputs>
-          <label>Email:</label>
-          <input type="text" {...register("email")} />
-          <span style={{ color: "red" }}>{errors.email?.message}</span>
-        </ContainerInputs>
-        <ContainerInputs>
-          <label>Password:</label>
-          <input type="password" {...register("password")} />
-          <span style={{ color: "red" }}>{errors.password?.message}</span>
-        </ContainerInputs>
-        <ContainerInputs>
-          <label>Confirm Password:</label>
-          <input type="password" {...register("confirmPassword")} />
-          <span style={{ color: "red" }}>
-            {errors.confirmPassword?.message}
-          </span>
-        </ContainerInputs>
+        <Form onSubmit={handleSubmit(handleMyForm)}>
+          <Title>Sign Up</Title>
 
-        <div>
-          <p>
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
-        </div>
+          <ContainerInputs>
+            <label>Username:</label>
+            <input type="text" {...register("username")} />
+            <span style={{ color: "red" }}>{errors.username?.message}</span>
+          </ContainerInputs>
+          <ContainerInputs>
+            <label>Email:</label>
+            <input type="text" {...register("email")} />
+            <span style={{ color: "red" }}>{errors.email?.message}</span>
+          </ContainerInputs>
+          <ContainerInputs>
+            <label>Password:</label>
+            <input type="password" {...register("password")} />
+            <span style={{ color: "red" }}>{errors.password?.message}</span>
+          </ContainerInputs>
+          <ContainerInputs>
+            <label>Confirm Password:</label>
+            <input type="password" {...register("confirmPassword")} />
+            <span style={{ color: "red" }}>
+              {errors.confirmPassword?.message}
+            </span>
+          </ContainerInputs>
 
-        <div>
-          <ButtonCreateAccount type="submit">
-            Create an Account
-          </ButtonCreateAccount>
-        </div>
-      </Form>
+          <div>
+            <p>
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+          </div>
+
+          <div>
+            <ButtonCreateAccount type="submit">
+              Create an Account
+            </ButtonCreateAccount>
+          </div>
+        </Form>
+      </ContainerDesktop>
     </ContainerBackGround>
   );
 };
