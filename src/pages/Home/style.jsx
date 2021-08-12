@@ -153,6 +153,6 @@ export const ContainerMainFlex = styled.div`
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin-top: 56px;
+        margin-top: 45px 0px;
     }
 `;
