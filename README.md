@@ -28,9 +28,9 @@ Responsável pela criação de uma instância da api.
 
 - **createHabit(habit)**: recebe um objeto como parâmetro e cria um novo hábito a partir deste objeto.
 
-Exemplo:
-
 ```
+//Exemplo:
+
 const habit = {
     title: "Calistenia tarde (15 minutos)",
     category: "Sáude",
@@ -47,9 +47,9 @@ _Essa função atualiza o **habits**_
 
 - **updateHabit(id, updatedItens)**: recebe o id do habito que será atualizado e um objeto com os campos que serão alterados.
 
-Exemplo:
-
 ```
+//Exemplo:
+
 const hbt = {
     frequency: "Diária",
     achieved: true,
@@ -86,7 +86,7 @@ const newGoal = {
 
 ```
 
-- **updateGoal(goalId,updatedItens)**: recebe o id da meta que será atualizada e um objeto com os itens que serão alterados.
+- **updateGoal(goal_Id,updatedItens)**: recebe o id da meta que será atualizada e um objeto com os itens que serão alterados.
 
 ```
 //Exemplo:
@@ -101,13 +101,13 @@ const newItens = {
 
 ```
 
-- **removeGoal(goalId)**: recebe o id de uma meta e remove ela a partir deste id.
+- **removeGoal(goal_Id)**: recebe o id de uma meta e remove ela a partir deste id.
 
-- **getGoal(goalId)**: pega uma meta específica a partir do id dela e armazena em **goal**.
+- **getGoal(goal_Id)**: pega uma meta específica a partir do id dela e armazena em **goal**.
 
 - **goal**: State que recebe o resultado da última chamada de \*\*getGoal(goalId).
 
-**ps.**:_O resultado está com um atraso devido a espera da resposta da api. Se usar `getGoal`, verifique se o state **goal** já está com o valor atual, caso contrário, faça uma nava chamada de **goal**_.
+**ps.**:_O valor de **goal** está com um atraso devido a espera da resposta da api. Se usar `getGoal`, verifique se o state **goal** já está com o valor atual, caso contrário, faça uma nova chamada de **goal**_.
 
 ### Sytles
 
