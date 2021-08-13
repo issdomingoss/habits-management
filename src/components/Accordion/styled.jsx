@@ -14,7 +14,7 @@ export const Container = styled.div`
   position: absolute;
   top: 30%;
   width: 60%;
-
+  background: #fff;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75); ;
