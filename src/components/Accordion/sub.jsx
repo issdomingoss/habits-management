@@ -1,12 +1,15 @@
 import React from "react";
 import { Lista } from "./styled";
+import { BiCheckCircle } from "react-icons/bi";
 const Sub = ({ activities }) => {
   return (
-    <ul>
+    <>
       {activities.map((item) => (
-        <Lista key={item.id}>{item.title}</Lista>
+        <Lista key={item.id}>
+          <BiCheckCircle className="check-icon" /> {item.title}
+        </Lista>
       ))}
-    </ul>
+    </>
   );
 };
 

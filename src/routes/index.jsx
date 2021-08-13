@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import PageHome from "../pages/Home";
 import PageLogin from "../pages/Login";
 import PageRegister from "../pages/Register";
+import PageGroups from "../pages/Groups";
 
 const Routes = () => {
   return (
@@ -19,7 +20,7 @@ const Routes = () => {
         <h1>Dashboard</h1>
       </Route>
       <Route path="/groups">
-        <h1>Groups</h1>
+        <PageGroups />
       </Route>
     </Switch>
   );

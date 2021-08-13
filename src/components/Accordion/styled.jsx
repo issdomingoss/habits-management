@@ -47,13 +47,40 @@ export const Dropdown = styled.div`
   .accord-bar-subtext {
     font-size: 22px;
     margin-left: 20px;
-    background: lightgrey;
+  }
+  .accord-goal-text {
+    font-size: 30px;
+    padding: 5px;
+
+    height: 60px;
+
+    border: 1px solid;
+    border-color: transparent;
+    border-radius: 5px;
+    background-color: var(--white);
+    box-shadow: 0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%);
+    margin: 5px;
+    margin-left: 25px;
   }
 `;
 
 export const Lista = styled.div`
   font-size: 22px;
   padding: 5px;
-  border: outset white;
-  height: 55px;
+
+  height: 60px;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 5px;
+  background-color: var(--white);
+  box-shadow: 0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%);
+  margin: 5px;
+  display: flex;
+  align-items: center;
+
+  .check-icon {
+    margin: 10px;
+    color: var(--green);
+  }
 `;

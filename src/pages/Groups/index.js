@@ -1,6 +1,6 @@
 import Accordion from "../../components/Accordion";
 
-const Groups = () => {
+const PageGroups = () => {
   return (
     <div>
       <Accordion />
@@ -8,4 +8,4 @@ const Groups = () => {
   );
 };
 
-export default Groups;
+export default PageGroups;

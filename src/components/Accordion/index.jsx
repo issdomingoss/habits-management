@@ -37,7 +37,7 @@ const Accordion = () => {
                   </Wrap>
                   {clicked === item.id ? (
                     <Dropdown>
-                      Meta
+                      <div className="accord-goal-text">Activities:</div>
                       <div className="accord-bar-subtext">
                         <Sub activities={item.activities} />
                       </div>
