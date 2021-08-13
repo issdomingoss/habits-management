@@ -24,9 +24,9 @@ const Accordion = () => {
         <Container>
           {allGroups
             .filter((item) => item.creator.id === 1)
-            .map((item) => {
+            .map((item, index) => {
               return (
-                <>
+                <div key={index}>
                   <Wrap onClick={() => toggle(item.id)} key={item.id}>
                     <div className="accord-bar-text">
                       Group Name: {item.name}
@@ -43,7 +43,7 @@ const Accordion = () => {
                       </div>
                     </Dropdown>
                   ) : null}
-                </>
+                </div>
               );
             })}
         </Container>
