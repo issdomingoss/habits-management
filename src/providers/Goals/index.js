@@ -22,6 +22,8 @@ export const GoalsProvider = ({ children }) => {
           console.log(response.data);
         })
         .catch((err) => console.log(err.response));
+    } else {
+      console.log("token não disponível");
     }
   };
 
@@ -35,18 +37,16 @@ export const GoalsProvider = ({ children }) => {
         })
         .then((response) => console.log(response.data))
         .catch((err) => console.log(err.response));
+    } else {
+      console.log("token não disponível");
     }
   };
 
   const getGoal = (goalId) => {
-    const token = getToken();
-
-    if (!!token) {
-      api
-        .get(`/goals/${goalId}/`)
-        .then((response) => setGoal(response.data))
-        .catch((err) => err.response);
-    }
+    api
+      .get(`/goals/${goalId}/`)
+      .then((response) => setGoal(response.data))
+      .catch((err) => err.response);
   };
 
   const removeGoal = (goalId) => {
@@ -59,6 +59,8 @@ export const GoalsProvider = ({ children }) => {
         })
         .then(() => console.log("removido com sucesso"))
         .catch((err) => console.log(err.response));
+    } else {
+      console.log("token não disponível");
     }
   };
 
