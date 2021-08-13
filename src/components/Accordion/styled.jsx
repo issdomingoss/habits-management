@@ -13,7 +13,7 @@ export const AccordionSection = styled.div`
 export const Container = styled.div`
   position: absolute;
   top: 30%;
-  width: 65%;
+  width: 60%;
 
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
@@ -34,11 +34,26 @@ export const Wrap = styled.div`
   .accord-bar-text {
     padding: 1.2rem;
     font-size: 2rem;
-    height: 70px;
+    /*height: 70px;*/
   }
 
   span {
     margin-right: 1.5rem;
   }
 `;
-export const Dropdown = styled.div``;
+export const Dropdown = styled.div`
+  border-right: outset white;
+
+  .accord-bar-subtext {
+    font-size: 22px;
+    margin-left: 20px;
+    background: lightgrey;
+  }
+`;
+
+export const Lista = styled.div`
+  font-size: 22px;
+  padding: 5px;
+  border: outset white;
+  height: 55px;
+`;

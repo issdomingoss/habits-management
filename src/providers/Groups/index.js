@@ -1,14 +1,22 @@
-import { createContext, useState } from "react";
-
+import { createContext, useState, useEffect } from "react";
+import api from "../../services/api";
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
-  const [groups, setGroups] = useState([]);
+  const [allGroups, setAllGroups] = useState([]);
+
+  useEffect(() => {
+    api
+      .get("/groups/")
+
+      .then((res) => setAllGroups(res.data.results))
+      .catch((e) => console.log(e));
+  }, []);
 
   const addgroup = () => {};
 
   return (
-    <GroupsContext.Provider value={{ groups, addgroup }}>
+    <GroupsContext.Provider value={{ allGroups, addgroup }}>
       {children}
     </GroupsContext.Provider>
   );
