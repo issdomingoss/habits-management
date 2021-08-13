@@ -28,9 +28,9 @@ Responsável pela criação de uma instância da api.
 
 - **createHabit(habit)**: recebe um objeto como parâmetro e cria um novo hábito a partir deste objeto.
 
-Exemplo:
-
 ```
+//Exemplo:
+
 const habit = {
     title: "Calistenia tarde (15 minutos)",
     category: "Sáude",
@@ -47,9 +47,9 @@ _Essa função atualiza o **habits**_
 
 - **updateHabit(id, updatedItens)**: recebe o id do habito que será atualizado e um objeto com os campos que serão alterados.
 
-Exemplo:
-
 ```
+//Exemplo:
+
 const hbt = {
     frequency: "Diária",
     achieved: true,
@@ -67,6 +67,48 @@ _Essa função atualiza o **habits**_
 
 - **loadHabits()**: carrega os hábitos do usuário que estão na api para a variável **habits**.
 
+#### `GoalsProvider`:
+
+- **createGoal(goal)**: recebe um objeto como parâmeto e cria uma nova meta a partir dele.
+
+```
+//Exemplo:
+
+const newGoal = {
+  "title": "nova meta",
+  "difficulty": "Díficil",
+  "how_much_achieved": 100,
+	"achieved": false,
+  "group": 509         //id do grupo
+}
+
+  createGoal(newGoal) //é criada uma nova meta direto na api
+
+```
+
+- **updateGoal(goal_Id,updatedItens)**: recebe o id da meta que será atualizada e um objeto com os itens que serão alterados.
+
+```
+//Exemplo:
+
+const newItens = {
+  "difficulty": "Díficil",
+  "how_much_achieved": 100,
+	"achieved": true,
+}
+
+  updateGoal(1995,newItens)
+
+```
+
+- **removeGoal(goal_Id)**: recebe o id de uma meta e remove ela a partir deste id.
+
+- **getGoal(goal_Id)**: pega uma meta específica a partir do id dela e armazena em **goal**.
+
+- **goal**: State que recebe o resultado da última chamada de \*\*getGoal(goalId).
+
+**ps.**:_O valor de **goal** está com um atraso devido a espera da resposta da api. Se usar `getGoal`, verifique se o state **goal** já está com o valor atual, caso contrário, faça uma nova chamada de **goal**_.
+
 ### Sytles
 
 Armazena o arquivo global.js que contém a estilização global (reset, cores utilizadas ...).
@@ -77,23 +119,23 @@ Contém o arquivo que faz o gerenciamento das rotas entre as páginas.
 
 ## Bibliotecas adicionadas
 
-### `styled-components`
+- #### `styled-components`
 
-### `axios`
+- #### `axios`
 
-### `yup`
+- #### `yup`
 
-### `react-hook-form`
+- #### `react-hook-form`
 
-### `@hookform/resolvers`
+- #### `@hookform/resolvers`
 
-### `react-router-dom`
+- #### `react-router-dom`
 
-### `react-toastify`
+- #### `react-toastify`
 
-### `react-icons`
+- #### `react-icons`
 
-### `jwt-decode`
+- #### `jwt-decode`
 
 # Documentação
 
