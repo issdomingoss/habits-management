@@ -3,6 +3,7 @@ import PageHome from "../pages/Home";
 import PageLogin from "../pages/Login";
 import PageRegister from "../pages/Register";
 import PageGroups from "../pages/Groups";
+import { Dashboard } from "../pages/Dashboard";
 
 const Routes = () => {
   return (
@@ -17,7 +18,7 @@ const Routes = () => {
         <PageRegister />
       </Route>
       <Route path="/dashboard">
-        <h1>Dashboard</h1>
+        <Dashboard />
       </Route>
       <Route path="/groups">
         <PageGroups />
