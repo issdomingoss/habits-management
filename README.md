@@ -1,24 +1,60 @@
-# estrutura do projeto
+# Estrutura do projeto
 
 ## src:
 
-### assets
+- #### assets
 
 Contém todas as imagens utilizadas no projeto.
 
-### Components
+- #### Components
 
 Contém os componentes utilizados no projeto.
 
-### Pages
+- #### Pages
 
 Contém as páginas utilizadas no projeto (home,login,dashboard...).
 
-### Services
+- #### Services
 
 Responsável pela criação de uma instância da api.
 
-### Porviders
+- #### Sytles
+
+Armazena o arquivo global.js que contém a estilização global (reset, cores utilizadas ...).
+
+- #### Routes
+
+Contém o arquivo que faz o gerenciamento das rotas entre as páginas.
+
+- #### Porviders
+
+Contém as variáveis e funções globais.
+
+## Bibliotecas adicionadas
+
+- #### `styled-components`
+
+- #### `axios`
+
+- #### `yup`
+
+- #### `react-hook-form`
+
+- #### `@hookform/resolvers`
+
+- #### `react-router-dom`
+
+- #### `react-toastify`
+
+- #### `react-icons`
+
+- #### `jwt-decode`
+
+# Documentação
+
+Acesse: [link](https://www.notion.so/Gerenciador-de-H-bitos-d31174c9b1cf434fa45b7fd8ab6ae539)
+
+## Porviders
 
 #### `HabitsProvider`:
 
@@ -146,35 +182,3 @@ const upd_Item = {
 - **Activity**: State que recebe o resultado da última chamada de **getActivity(activity_ID)**.
 
 **ps.**:_O valor de **Activity** está com um atraso devido a espera da resposta da api. Se usar `getActivity`, verifique se o state **Activity** já está com o valor atual, caso contrário, faça uma nova chamada de **Activity**_.
-
-### Sytles
-
-Armazena o arquivo global.js que contém a estilização global (reset, cores utilizadas ...).
-
-### Routes
-
-Contém o arquivo que faz o gerenciamento das rotas entre as páginas.
-
-## Bibliotecas adicionadas
-
-- #### `styled-components`
-
-- #### `axios`
-
-- #### `yup`
-
-- #### `react-hook-form`
-
-- #### `@hookform/resolvers`
-
-- #### `react-router-dom`
-
-- #### `react-toastify`
-
-- #### `react-icons`
-
-- #### `jwt-decode`
-
-# Documentação
-
-Acesse: [link](https://www.notion.so/Gerenciador-de-H-bitos-d31174c9b1cf434fa45b7fd8ab6ae539)

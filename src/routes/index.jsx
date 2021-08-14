@@ -23,6 +23,12 @@ const Routes = () => {
       <Route path="/groups">
         <PageGroups />
       </Route>
+      <Route path="/contact">
+        <h1>Contato</h1>
+      </Route>
+      <Route path="/perfil">
+        <h1>Perfil</h1>
+      </Route>
     </Switch>
   );
 };
