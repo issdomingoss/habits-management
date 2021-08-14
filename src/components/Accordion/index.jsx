@@ -9,7 +9,7 @@ import Sub from "./sub";
 
 const Accordion = () => {
   const [clicked, setClicked] = useState(false);
-  const { allGroups } = useContext(GroupsContext);
+  const { groups } = useContext(GroupsContext);
 
   const toggle = (id) => {
     if (clicked === id) {
@@ -17,12 +17,12 @@ const Accordion = () => {
     }
     setClicked(id);
   };
-  console.log(allGroups);
+  console.log(groups);
   return (
     <IconContext.Provider value={{ size: "25px" }}>
       <AccordionSection>
         <Container>
-          {allGroups
+          {groups
             .filter((item) => item.creator.id === 1)
             .map((item, index) => {
               return (

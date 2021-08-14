@@ -3,20 +3,20 @@ import api from "../../services/api";
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
-  const [allGroups, setAllGroups] = useState([]);
+  const [groups, setGroups] = useState([]);
 
   useEffect(() => {
     api
-      .get("/groups/")
+      .get("/groups/subscriptions/")
 
-      .then((res) => setAllGroups(res.data.results))
+      .then((res) => setGroups(res.data.results))
       .catch((e) => console.log(e));
   }, []);
 
   const addgroup = () => {};
 
   return (
-    <GroupsContext.Provider value={{ allGroups, addgroup }}>
+    <GroupsContext.Provider value={{ groups, addgroup }}>
       {children}
     </GroupsContext.Provider>
   );
