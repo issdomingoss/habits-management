@@ -9,7 +9,7 @@ export const GroupsProvider = ({ children }) => {
     api
       .get("/groups/subscriptions/")
 
-      .then((res) => setGroups(res.data.results))
+      .then((res) => setGroups(res.data))
       .catch((e) => console.log(e));
   }, []);
 

@@ -22,30 +22,27 @@ const Accordion = () => {
     <IconContext.Provider value={{ size: "25px" }}>
       <AccordionSection>
         <Container>
-          {groups
-            .filter((item) => item.creator.id === 1)
-            .map((item, index) => {
-              return (
-                <div key={index}>
-                  <Wrap onClick={() => toggle(item.id)} key={item.id}>
-                    <div className="accord-bar-text">
-                      Group Name: {item.name}
+          {groups.map((item, index) => {
+            return (
+              <div key={index}>
+                <Wrap onClick={() => toggle(item.id)} key={item.id}>
+                  <div className="accord-bar-text">Group Name: {item.name}</div>
+                  <span>{clicked === item.id ? <FiMinus /> : <FiPlus />}</span>
+                </Wrap>
+                {clicked === item.id ? (
+                  <Dropdown>
+                    <div className="accord-goal-text">
+                      Goals: {item.goals.title}
                     </div>
-                    <span>
-                      {clicked === item.id ? <FiMinus /> : <FiPlus />}
-                    </span>
-                  </Wrap>
-                  {clicked === item.id ? (
-                    <Dropdown>
-                      <div className="accord-goal-text">Activities:</div>
-                      <div className="accord-bar-subtext">
-                        <Sub activities={item.activities} />
-                      </div>
-                    </Dropdown>
-                  ) : null}
-                </div>
-              );
-            })}
+                    <div className="accord-goal-text">Activities:</div>
+                    <div className="accord-bar-subtext">
+                      <Sub activities={item.activities} />
+                    </div>
+                  </Dropdown>
+                ) : null}
+              </div>
+            );
+          })}
         </Container>
       </AccordionSection>
     </IconContext.Provider>
