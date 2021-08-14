@@ -4,11 +4,7 @@ import { HabitCard } from "../HabitCard";
 import { Container } from "./styles";
 
 export const ContainerHabits = () => {
-  const { habits, loadHabits } = useContext(HabitsContext);
-
-  useEffect(() => {
-    loadHabits();
-  }, [loadHabits]);
+  const { habits } = useContext(HabitsContext);
 
   return (
     <Container>

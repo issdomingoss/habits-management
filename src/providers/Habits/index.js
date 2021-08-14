@@ -69,6 +69,20 @@ export const HabitsProvider = ({ children }) => {
       .catch((err) => console.log(err.response.data.error));
   };
 
+  useEffect(() => {
+    if (!!token) {
+      api
+        .get("/habits/personal/", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setHabits([...response.data]);
+          console.log(response.data);
+        })
+        .catch((err) => console.log(err.response.data.error));
+    }
+  }, [token]);
+
   //return do provider
   //======================================================================================
   return (
