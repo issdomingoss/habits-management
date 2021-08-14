@@ -105,9 +105,47 @@ const newItens = {
 
 - **getGoal(goal_Id)**: pega uma meta específica a partir do id dela e armazena em **goal**.
 
-- **goal**: State que recebe o resultado da última chamada de \*\*getGoal(goalId).
+- **goal**: State que recebe o resultado da última chamada de **getGoal(goalId)**.
 
 **ps.**:_O valor de **goal** está com um atraso devido a espera da resposta da api. Se usar `getGoal`, verifique se o state **goal** já está com o valor atual, caso contrário, faça uma nova chamada de **goal**_.
+
+#### `ActivitiesProvider`:
+
+- **createActivity(newActivity)**: recebe um objeto como parâmetro e cria uma nova atividade a partir dele.
+
+```
+//Exemplo:
+
+const ativid = {
+    title: "Testar API",
+    realization_time: "2021-03-10T15:00:00Z",
+    group: 509,
+  };
+
+  createActivity(ativid);
+
+```
+
+- **updateActivity(activity_ID, updated_Item)**: recebe um id da atividade que será atualizada e um objeto com os itens que serão atualizados
+
+```
+//Exemplo:
+
+const upd_Item = {
+    title: "Crossfit Atualizado",
+  };
+
+  updateActivity(2218, upd_Item);
+
+```
+
+- **removeActivity(activity_ID)**: remove uma atividade especificada usando seu id.
+
+- **getActivity(activity_ID)**: pega uma atividade específica a partir do seu id e armazena em **Activity**.
+
+- **Activity**: State que recebe o resultado da última chamada de **getActivity(activity_ID)**.
+
+**ps.**:_O valor de **Activity** está com um atraso devido a espera da resposta da api. Se usar `getActivity`, verifique se o state **Activity** já está com o valor atual, caso contrário, faça uma nova chamada de **Activity**_.
 
 ### Sytles
 
