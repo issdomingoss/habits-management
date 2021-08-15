@@ -1,5 +1,5 @@
 import React from "react";
-import { Data } from "./Data";
+
 import { Wrap, AccordionSection, Container, Dropdown } from "./styled";
 import { IconContext } from "react-icons";
 import { FiPlus, FiMinus } from "react-icons/fi";
@@ -22,27 +22,33 @@ const Accordion = () => {
     <IconContext.Provider value={{ size: "25px" }}>
       <AccordionSection>
         <Container>
-          {groups.map((item, index) => {
-            return (
-              <div key={index}>
-                <Wrap onClick={() => toggle(item.id)} key={item.id}>
-                  <div className="accord-bar-text">Group Name: {item.name}</div>
-                  <span>{clicked === item.id ? <FiMinus /> : <FiPlus />}</span>
-                </Wrap>
-                {clicked === item.id ? (
-                  <Dropdown>
-                    <div className="accord-goal-text">
-                      Goals: {item.goals.title}
+          {groups
+            .filter((group) => group.category === "Language")
+            .map((item, index) => {
+              return (
+                <div key={index}>
+                  <Wrap onClick={() => toggle(item.id)} key={item.id}>
+                    <div className="accord-bar-text">
+                      Group Name: {item.name}
                     </div>
-                    <div className="accord-goal-text">Activities:</div>
-                    <div className="accord-bar-subtext">
-                      <Sub activities={item.activities} />
-                    </div>
-                  </Dropdown>
-                ) : null}
-              </div>
-            );
-          })}
+                    <span>
+                      {clicked === item.id ? <FiMinus /> : <FiPlus />}
+                    </span>
+                  </Wrap>
+                  {clicked === item.id ? (
+                    <Dropdown>
+                      <div className="accord-goal-text">
+                        Goals: {item.goals.title}
+                      </div>
+                      <div className="accord-goal-text">Activities:</div>
+                      <div className="accord-bar-subtext">
+                        <Sub activities={item.activities} />
+                      </div>
+                    </Dropdown>
+                  ) : null}
+                </div>
+              );
+            })}
         </Container>
       </AccordionSection>
     </IconContext.Provider>

@@ -6,8 +6,9 @@ export const AccordionSection = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 100vh;
+  height: 100%;
   background: #fff;
+  margin-top: 200px;
 `;
 
 export const Container = styled.div`
