@@ -26,9 +26,15 @@ export const Dashboard = () => {
         <div className="progress-container">
           <ProgressBar percent={progressHabits} />
         </div>
-        <h2>Habits</h2>
-        <ContainerHabits />
-        <h2>My Groups</h2>
+        <div className="flex">
+          <section id="habits">
+            <h2>Habits</h2>
+            <ContainerHabits />
+          </section>
+          <section id="groups">
+            <h2>My Groups</h2>
+          </section>
+        </div>
       </Container>
     </>
   );

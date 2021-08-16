@@ -16,7 +16,7 @@ export const Container = styled.div`
     transition: 0.3s;
     margin: 0 auto;
     min-height: 50px;
-    width: ${(props) => (props.isModal === false ? "80%" : "448px")};
+    width: ${(props) => (props.isModal === false ? "90%" : "448px")};
     max-width: 677px;
     border: 1px solid;
     border-color: transparent;
@@ -33,6 +33,7 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         width: 100%;
+        cursor: pointer;
 
         .title {
           font-size: 21px;
