@@ -9,6 +9,7 @@ export const ContainerHabits = () => {
   return (
     <Container>
       <HabitCard create />
+      <hr className="divider" />
       {habits.map((habit) => (
         <HabitCard key={habit.id} habit={habit} />
       ))}

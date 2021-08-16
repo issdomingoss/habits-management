@@ -56,7 +56,7 @@ export const HabitCard = ({ habit = {}, create }) => {
   };
 
   return (
-    <Container isModal={isModal} isAchived={habit.achieved}>
+    <Container isModal={isModal} isAchived={habit.achieved} create={!!create}>
       <div className="modal">
         {isModal === false ? (
           <div className="card__header">
@@ -65,7 +65,7 @@ export const HabitCard = ({ habit = {}, create }) => {
             </div>
             <div className="icons-header">
               {create ? (
-                <BiPlusCircle onClick={openModal} />
+                <BiPlusCircle className="plus-icon" onClick={openModal} />
               ) : (
                 <BiCheckCircle
                   className="check-icon"
