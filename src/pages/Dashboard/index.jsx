@@ -11,13 +11,18 @@ export const Dashboard = () => {
 
   useEffect(() => {
     const totalHabits = habits.length;
+
     const achivedHabits = [...habits].filter(
       (habit) => habit.achieved === true
     );
-    
+
     const progress = (100 / totalHabits) * achivedHabits.length;
 
-    setProgressHabits(progress.toFixed());
+    if (!!progress) {
+      setProgressHabits(progress.toFixed());
+    } else {
+      setProgressHabits(0);
+    }
   }, [habits]);
 
   return (
