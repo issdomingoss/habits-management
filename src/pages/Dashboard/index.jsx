@@ -16,7 +16,7 @@ export const Dashboard = () => {
     );
     const progress = (100 / totalHabits) * achivedHabits.length;
 
-    setProgressHabits(progress);
+    setProgressHabits(progress.toFixed());
   }, [habits]);
 
   return (

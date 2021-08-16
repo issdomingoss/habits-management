@@ -16,8 +16,8 @@ export const Container = styled.div`
     transition: 0.3s;
     margin: 0 auto;
     min-height: 50px;
-    width: ${(props) => (props.isModal === false ? "300px" : "99%")};
-    max-width: 448px;
+    width: ${(props) => (props.isModal === false ? "80%" : "448px")};
+    max-width: 677px;
     border: 1px solid;
     border-color: transparent;
     border-radius: 5px;
@@ -27,12 +27,20 @@ export const Container = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .title {
-        font-size: 21px;
-        font-weight: 700;
-        color: var(--black);
-        margin-left: ${(props) => (props.isModal === false ? "21px" : "0px")};
-        flex: ${(props) => (props.isModal === false ? "inherit" : "1")};
+      flex: 1;
+      .container-title {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .title {
+          font-size: 21px;
+          font-weight: 700;
+          color: var(--black);
+          margin-left: ${(props) => (props.isModal === false ? "21px" : "0px")};
+          flex: ${(props) => (props.isModal === false ? "inherit" : "1")};
+        }
       }
       .icons-header {
         margin-top: 5px;
@@ -43,7 +51,9 @@ export const Container = styled.div`
         }
 
         .check-icon {
-          color: var(--green);
+          color: ${(props) =>
+            props.isAchived === true ? "var(--green)" : "var(--black)"};
+          cursor: pointer;
         }
       }
     }

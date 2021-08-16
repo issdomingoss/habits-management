@@ -50,17 +50,27 @@ export const HabitCard = ({ habit = {}, create }) => {
     closeModal();
   };
 
+  const habitAchieved = (achieved, id) => {
+    const data = { achieved: !achieved };
+    updateHabit(id, data);
+  };
+
   return (
-    <Container isModal={isModal}>
+    <Container isModal={isModal} isAchived={habit.achieved}>
       <div className="modal">
         {isModal === false ? (
-          <div className="card__header" onClick={openModal}>
-            <p className="title">{habit.title || "New habit"}</p>
+          <div className="card__header">
+            <div className="container-title" onClick={openModal}>
+              <p className="title">{habit.title || "New habit"}</p>
+            </div>
             <div className="icons-header">
               {create ? (
-                <BiPlusCircle />
+                <BiPlusCircle onClick={openModal} />
               ) : (
-                <BiCheckCircle className="check-icon" />
+                <BiCheckCircle
+                  className="check-icon"
+                  onClick={() => habitAchieved(habit.achieved, habit.id)}
+                />
               )}
             </div>
           </div>
