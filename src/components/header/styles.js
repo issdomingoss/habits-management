@@ -28,6 +28,7 @@ export const HeaderContainer = styled.div`
   @media (min-width: 768px) {
     height: 79px;
   }
+  
   @media (min-width: 1440px) {
     height: 83px;
   }

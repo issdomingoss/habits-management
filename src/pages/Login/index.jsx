@@ -39,7 +39,7 @@ const PageLogin = () => {
       .min(8, "Minimum 8 characteres!")
       .matches(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-        "Password must contain at least one capital letter, one number and one special character!"
+        "Minimum one letter, number and special character!"
       )
       .required("Required field!"),
   });
@@ -93,13 +93,13 @@ const PageLogin = () => {
           <ContainerInputLogin>
             <label>Username:</label>
             <input type="text" {...register("username")} />
-            <span style={{ color: "red" }}>{errors.username?.message}</span>
+            <span>{errors.username?.message}</span>
           </ContainerInputLogin>
 
           <ContainerInputLogin>
             <label>Password:</label>
             <input type="password" {...register("password")} />
-            <span style={{ color: "red" }}> {errors.password?.message}</span>
+            <span> {errors.password?.message}</span>
           </ContainerInputLogin>
 
           <div>

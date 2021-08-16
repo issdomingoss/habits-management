@@ -88,22 +88,22 @@ const PageRegister = () => {
           <ContainerInputs>
             <label>Username:</label>
             <input type="text" {...register("username")} />
-            <span style={{ color: "red" }}>{errors.username?.message}</span>
+            <span>{errors.username?.message}</span>
           </ContainerInputs>
           <ContainerInputs>
             <label>Email:</label>
             <input type="text" {...register("email")} />
-            <span style={{ color: "red" }}>{errors.email?.message}</span>
+            <span>{errors.email?.message}</span>
           </ContainerInputs>
           <ContainerInputs>
             <label>Password:</label>
             <input type="password" {...register("password")} />
-            <span style={{ color: "red" }}>{errors.password?.message}</span>
+            <span>{errors.password?.message}</span>
           </ContainerInputs>
           <ContainerInputs>
             <label>Confirm Password:</label>
             <input type="password" {...register("confirmPassword")} />
-            <span style={{ color: "red" }}>
+            <span>
               {errors.confirmPassword?.message}
             </span>
           </ContainerInputs>
