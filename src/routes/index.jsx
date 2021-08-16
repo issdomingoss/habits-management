@@ -3,6 +3,8 @@ import PageHome from "../pages/Home";
 import PageLogin from "../pages/Login";
 import PageRegister from "../pages/Register";
 import PageGroups from "../pages/Groups";
+import PerfilPage from "../pages/Perfil";
+
 import { Dashboard } from "../pages/Dashboard";
 
 const Routes = () => {
@@ -27,7 +29,7 @@ const Routes = () => {
         <h1>Contato</h1>
       </Route>
       <Route path="/perfil">
-        <h1>Perfil</h1>
+        <PerfilPage />
       </Route>
     </Switch>
   );
