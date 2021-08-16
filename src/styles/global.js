@@ -18,6 +18,7 @@ export default createGlobalStyle`
 
 body{
     background-color: var(--white);
+    font-family: roboto, 'sans-serif';
 }
 
 a{
