@@ -1,32 +1,27 @@
-import { HeaderContainer, Image } from "./styles";
+import { HeaderContainer, Dropdown, DropdownContent, ContainerNone } from "./styles";
 import Logo from "../../assets/logo_Speak_Tracks.PNG";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const history = useHistory();
-
-  const handleLogoClick = () => {
-    history.push("/");
-  };
 
   return (
     <HeaderContainer>
       <nav>
-        <Image onClick={ handleLogoClick }>
-          <img src={ Logo } alt="logo"></img>
-        </Image>
-        <div>
-          <GiHamburgerMenu />
-            {/* <div>
+        <Link to='/dashboard'><img src={ Logo } alt="logo"></img></Link>
+        <Dropdown>
+          <ContainerNone>
+            <GiHamburgerMenu />
+          </ContainerNone>
+            <DropdownContent>
               <ul>
-                <li>Home</li>
-                <li>Group</li>
-                <li>Perfil</li>
-                <li>Contact Us</li>
+                <Link to='/'><li>Home</li></Link>
+                <Link to='/groups'><li>Group</li></Link>
+                <Link to='/perfil'><li>Perfil</li></Link>
+                <Link to='/contact'><li>Contact Us</li></Link>
               </ul>
-            </div> */}
-        </div>
+            </DropdownContent>
+        </Dropdown>
       </nav>
     </HeaderContainer>
   );
