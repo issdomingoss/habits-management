@@ -16,23 +16,36 @@ export const Container = styled.div`
     transition: 0.3s;
     margin: 0 auto;
     min-height: 50px;
-    width: ${(props) => (props.isModal === false ? "300px" : "99%")};
-    max-width: 448px;
+    width: ${(props) => (props.isModal === false ? "90%" : "448px")};
+    max-width: 677px;
     border: 1px solid;
     border-color: transparent;
     border-radius: 5px;
     background-color: var(--white);
-    box-shadow: 0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%);
+    box-shadow: ${(props) =>
+      props.create === false
+        ? "0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%)"
+        : "0 1px 3px 0 rgb(26 24 29 / 84%), 0 1px 2px 0 rgb(26 24 29 / 93%)"};
     .card__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .title {
-        font-size: 21px;
-        font-weight: 700;
-        color: var(--black);
-        margin-left: ${(props) => (props.isModal === false ? "21px" : "0px")};
-        flex: ${(props) => (props.isModal === false ? "inherit" : "1")};
+      flex: 1;
+      .container-title {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+
+        .title {
+          font-size: 21px;
+          font-weight: 700;
+          color: ${(props) =>
+            props.create === false ? "var(--black)" : "var(--red)"};
+          margin-left: ${(props) => (props.isModal === false ? "21px" : "0px")};
+          flex: ${(props) => (props.isModal === false ? "inherit" : "1")};
+        }
       }
       .icons-header {
         margin-top: 5px;
@@ -43,7 +56,13 @@ export const Container = styled.div`
         }
 
         .check-icon {
-          color: var(--green);
+          color: ${(props) =>
+            props.isAchived === true ? "var(--green)" : "var(--black)"};
+          cursor: pointer;
+        }
+
+        .plus-icon {
+          color: var(--red);
         }
       }
     }

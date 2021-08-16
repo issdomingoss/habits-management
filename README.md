@@ -1,24 +1,60 @@
-# estrutura do projeto
+# Estrutura do projeto
 
 ## src:
 
-### assets
+- #### assets
 
 Contém todas as imagens utilizadas no projeto.
 
-### Components
+- #### Components
 
 Contém os componentes utilizados no projeto.
 
-### Pages
+- #### Pages
 
 Contém as páginas utilizadas no projeto (home,login,dashboard...).
 
-### Services
+- #### Services
 
 Responsável pela criação de uma instância da api.
 
-### Porviders
+- #### Sytles
+
+Armazena o arquivo global.js que contém a estilização global (reset, cores utilizadas ...).
+
+- #### Routes
+
+Contém o arquivo que faz o gerenciamento das rotas entre as páginas.
+
+- #### Porviders
+
+Contém as variáveis e funções globais.
+
+## Bibliotecas adicionadas
+
+- #### `styled-components`
+
+- #### `axios`
+
+- #### `yup`
+
+- #### `react-hook-form`
+
+- #### `@hookform/resolvers`
+
+- #### `react-router-dom`
+
+- #### `react-toastify`
+
+- #### `react-icons`
+
+- #### `jwt-decode`
+
+# Documentação
+
+Acesse: [link](https://www.notion.so/Gerenciador-de-H-bitos-d31174c9b1cf434fa45b7fd8ab6ae539)
+
+## Porviders
 
 #### `HabitsProvider`:
 
@@ -28,9 +64,9 @@ Responsável pela criação de uma instância da api.
 
 - **createHabit(habit)**: recebe um objeto como parâmetro e cria um novo hábito a partir deste objeto.
 
-Exemplo:
-
 ```
+//Exemplo:
+
 const habit = {
     title: "Calistenia tarde (15 minutos)",
     category: "Sáude",
@@ -47,9 +83,9 @@ _Essa função atualiza o **habits**_
 
 - **updateHabit(id, updatedItens)**: recebe o id do habito que será atualizado e um objeto com os campos que serão alterados.
 
-Exemplo:
-
 ```
+//Exemplo:
+
 const hbt = {
     frequency: "Diária",
     achieved: true,
@@ -67,34 +103,82 @@ _Essa função atualiza o **habits**_
 
 - **loadHabits()**: carrega os hábitos do usuário que estão na api para a variável **habits**.
 
-### Sytles
+#### `GoalsProvider`:
 
-Armazena o arquivo global.js que contém a estilização global (reset, cores utilizadas ...).
+- **createGoal(goal)**: recebe um objeto como parâmeto e cria uma nova meta a partir dele.
 
-### Routes
+```
+//Exemplo:
 
-Contém o arquivo que faz o gerenciamento das rotas entre as páginas.
+const newGoal = {
+  "title": "nova meta",
+  "difficulty": "Díficil",
+  "how_much_achieved": 100,
+	"achieved": false,
+  "group": 509         //id do grupo
+}
 
-## Bibliotecas adicionadas
+  createGoal(newGoal) //é criada uma nova meta direto na api
 
-### `styled-components`
+```
 
-### `axios`
+- **updateGoal(goal_Id,updatedItens)**: recebe o id da meta que será atualizada e um objeto com os itens que serão alterados.
 
-### `yup`
+```
+//Exemplo:
 
-### `react-hook-form`
+const newItens = {
+  "difficulty": "Díficil",
+  "how_much_achieved": 100,
+	"achieved": true,
+}
 
-### `@hookform/resolvers`
+  updateGoal(1995,newItens)
 
-### `react-router-dom`
+```
 
-### `react-toastify`
+- **removeGoal(goal_Id)**: recebe o id de uma meta e remove ela a partir deste id.
 
-### `react-icons`
+- **getGoal(goal_Id)**: pega uma meta específica a partir do id dela e armazena em **goal**.
 
-### `jwt-decode`
+- **goal**: State que recebe o resultado da última chamada de **getGoal(goalId)**.
 
-# Documentação
+**ps.**:_O valor de **goal** está com um atraso devido a espera da resposta da api. Se usar `getGoal`, verifique se o state **goal** já está com o valor atual, caso contrário, faça uma nova chamada de **goal**_.
 
-Acesse: [link](https://www.notion.so/Gerenciador-de-H-bitos-d31174c9b1cf434fa45b7fd8ab6ae539)
+#### `ActivitiesProvider`:
+
+- **createActivity(newActivity)**: recebe um objeto como parâmetro e cria uma nova atividade a partir dele.
+
+```
+//Exemplo:
+
+const ativid = {
+    title: "Testar API",
+    realization_time: "2021-03-10T15:00:00Z",
+    group: 509,
+  };
+
+  createActivity(ativid);
+
+```
+
+- **updateActivity(activity_ID, updated_Item)**: recebe um id da atividade que será atualizada e um objeto com os itens que serão atualizados
+
+```
+//Exemplo:
+
+const upd_Item = {
+    title: "Crossfit Atualizado",
+  };
+
+  updateActivity(2218, upd_Item);
+
+```
+
+- **removeActivity(activity_ID)**: remove uma atividade especificada usando seu id.
+
+- **getActivity(activity_ID)**: pega uma atividade específica a partir do seu id e armazena em **Activity**.
+
+- **Activity**: State que recebe o resultado da última chamada de **getActivity(activity_ID)**.
+
+**ps.**:_O valor de **Activity** está com um atraso devido a espera da resposta da api. Se usar `getActivity`, verifique se o state **Activity** já está com o valor atual, caso contrário, faça uma nova chamada de **Activity**_.

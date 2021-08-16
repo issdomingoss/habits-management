@@ -2,7 +2,8 @@ import { Switch, Route } from "react-router-dom";
 import PageHome from "../pages/Home";
 import PageLogin from "../pages/Login";
 import PageRegister from "../pages/Register";
-import Dashboard from "../pages/dashboard";
+import PageGroups from "../pages/Groups";
+import { Dashboard } from "../pages/Dashboard";
 
 const Routes = () => {
   return (
@@ -18,7 +19,15 @@ const Routes = () => {
       </Route>
       <Route path="/dashboard">
         <Dashboard />
-        Dashboard
+      </Route>
+      <Route path="/groups">
+        <PageGroups />
+      </Route>
+      <Route path="/contact">
+        <h1>Contato</h1>
+      </Route>
+      <Route path="/perfil">
+        <h1>Perfil</h1>
       </Route>
     </Switch>
   );
