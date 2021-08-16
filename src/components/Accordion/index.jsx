@@ -17,7 +17,7 @@ const Accordion = () => {
     }
     setClicked(id);
   };
-  console.log(groups);
+
   return (
     <IconContext.Provider value={{ size: "25px" }}>
       <AccordionSection>

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Container, ButtonCreate } from "./styles";
-import { BiCheckCircle, BiPlusCircle, BiTrash } from "react-icons/bi";
+
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,7 +8,7 @@ import { GroupsContext } from "../../providers/Groups";
 
 export const CreateGroups = ({ group = {} }) => {
   const [isModal, setIsModal] = useState(false);
-  const { addGroup, updateGroup, removeGroup } = useContext(GroupsContext);
+  const { addGroup } = useContext(GroupsContext);
 
   const openModal = () => {
     setIsModal(true);
@@ -19,8 +19,8 @@ export const CreateGroups = ({ group = {} }) => {
   };
 
   const schema = yup.object().shape({
-    name: yup.string().required("Required name!"),
-    description: yup.string().required("Required description!"),
+    name: yup.string().required("Required a name!"),
+    description: yup.string().required("Required a description!"),
   });
 
   const {

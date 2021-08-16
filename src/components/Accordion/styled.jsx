@@ -14,7 +14,7 @@ export const AccordionSection = styled.div`
 export const Container = styled.div`
   position: absolute;
   top: 30%;
-  width: 60%;
+  width: 30%;
   background: #fff;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
@@ -34,7 +34,13 @@ export const Wrap = styled.div`
 
   .accord-bar-text {
     padding: 1.2rem;
-    font-size: 2rem;
+    font-size: 20px;
+
+    max-width: 40ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     /*height: 70px;*/
   }
 
@@ -46,14 +52,14 @@ export const Dropdown = styled.div`
   border-right: outset white;
 
   .accord-bar-subtext {
-    font-size: 22px;
+    font-size: 15px;
     margin-left: 20px;
   }
   .accord-goal-text {
-    font-size: 30px;
+    font-size: 20px;
     padding: 5px;
 
-    height: 60px;
+    height: 40px;
 
     border: 1px solid;
     border-color: transparent;
