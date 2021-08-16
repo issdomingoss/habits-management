@@ -8,14 +8,14 @@ const Header = () => {
   return (
     <HeaderContainer>
       <nav>
-        <Link to='/dashboard'><img src={ Logo } alt="logo"></img></Link>
+        <Link to='/'><img src={ Logo } alt="logo"></img></Link>
         <Dropdown>
           <ContainerNone>
             <GiHamburgerMenu />
           </ContainerNone>
             <DropdownContent>
               <ul>
-                <Link to='/'><li>Home</li></Link>
+                <Link to='/dashboard'><li>Dashboard</li></Link>
                 <Link to='/groups'><li>Group</li></Link>
                 <Link to='/perfil'><li>Perfil</li></Link>
                 <Link to='/contact'><li>Contact Us</li></Link>

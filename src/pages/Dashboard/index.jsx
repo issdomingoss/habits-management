@@ -14,6 +14,7 @@ export const Dashboard = () => {
     const achivedHabits = [...habits].filter(
       (habit) => habit.achieved === true
     );
+    
     const progress = (100 / totalHabits) * achivedHabits.length;
 
     setProgressHabits(progress.toFixed());
