@@ -72,7 +72,7 @@ export const GroupsProvider = ({ children }) => {
 
   useEffect(() => {
     api
-      .get("/groups/", { params: { category: "Language", page: page } })
+      .get("/groups/", { params: { category: "Track-Speak", page: page } })
       .then((res) => {
         setAllGroups([...allGroups, ...res.data.results]);
         setPage(page + 1);

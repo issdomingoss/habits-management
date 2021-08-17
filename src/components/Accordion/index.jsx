@@ -40,64 +40,66 @@ const Accordion = () => {
     <IconContext.Provider value={{ size: "25px" }}>
       <AccordionSection>
         <Container>
-          {myGroups.map((item, index) => {
-            return (
-              <div key={index}>
-                <Wrap>
-                  <div className="description-container">
-                    <div className="accord-bar-text">
-                      Group Name: {item.name}
+          {myGroups
+            .filter((item) => item.category === "Track-Speak")
+            .map((item, index) => {
+              return (
+                <div key={index}>
+                  <Wrap>
+                    <div className="description-container">
+                      <div className="accord-bar-text">
+                        Group Name: {item.name}
+                      </div>
+                      <div className="accord-bar-text">
+                        Group Description: {item.description}
+                      </div>
                     </div>
-                    <div className="accord-bar-text">
-                      Group Description: {item.description}
-                    </div>
-                  </div>
-                  <div>
-                    {isModal === item.id ? (
-                      <EditForm
-                        closeModal={() => closeModal(item.id)}
-                        item={item}
-                      />
-                    ) : (
-                      <AiFillEdit
-                        title="Edit Group!"
-                        className="AiFillEdit"
-                        onClick={() => openModal(item.id)}
-                      />
-                    )}
-
-                    <span>
-                      {clicked === item.id ? (
-                        <FiMinus
-                          className="FiMinus"
-                          onClick={() => toggle(item.id)}
-                          key={item.id}
+                    <div>
+                      {isModal === item.id ? (
+                        <EditForm
+                          closeModal={() => closeModal(item.id)}
+                          item={item}
                         />
                       ) : (
-                        <FiPlus
-                          title="Goals and Activities!"
-                          className="FiPlus"
-                          onClick={() => toggle(item.id)}
-                          key={item.id}
+                        <AiFillEdit
+                          title="Edit Group!"
+                          className="AiFillEdit"
+                          onClick={() => openModal(item.id)}
                         />
                       )}
-                    </span>
-                  </div>
-                </Wrap>
-                {clicked === item.id ? (
-                  <Dropdown>
-                    <div className="accord-goal-text">
-                      Goals: {item.goals.title}
+
+                      <span>
+                        {clicked === item.id ? (
+                          <FiMinus
+                            className="FiMinus"
+                            onClick={() => toggle(item.id)}
+                            key={item.id}
+                          />
+                        ) : (
+                          <FiPlus
+                            title="Goals and Activities!"
+                            className="FiPlus"
+                            onClick={() => toggle(item.id)}
+                            key={item.id}
+                          />
+                        )}
+                      </span>
                     </div>
-                    <div className="accord-goal-text">Activities:</div>
-                    <div className="accord-bar-subtext">
-                      <Sub activities={item.activities} />
-                    </div>
-                  </Dropdown>
-                ) : null}
-              </div>
-            );
-          })}
+                  </Wrap>
+                  {clicked === item.id ? (
+                    <Dropdown>
+                      <div className="accord-goal-text">
+                        Goals: {item.goals.title}
+                      </div>
+                      <div className="accord-goal-text">Activities:</div>
+                      <div className="accord-bar-subtext">
+                        <Sub activities={item.activities} />
+                      </div>
+                    </Dropdown>
+                  ) : null}
+                </div>
+              );
+            })}
         </Container>
       </AccordionSection>
     </IconContext.Provider>

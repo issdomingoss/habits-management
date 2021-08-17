@@ -35,7 +35,7 @@ export const CreateGroups = ({ group = {} }) => {
     const newGroup = {
       name: data.name,
       description: data.description,
-      category: "Language",
+      category: "Track-Speak",
     };
 
     createGroup(newGroup);
