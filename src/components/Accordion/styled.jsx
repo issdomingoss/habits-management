@@ -6,29 +6,48 @@ export const AccordionSection = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-
-  background: #fff;
   margin-top: 20px;
+
+  @media (min-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    margin-top: 20px;
+  }
 `;
 
 export const Container = styled.div`
   width: 100%;
-  background: #fff;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75); ;
+  margin-left: 1%;
+  box-shadow: 10px 7px 10px 5px rgba(0, 0, 0, 0.75);
 `;
 
 export const Wrap = styled.div`
-  background: #d73333;
+  background: var(--white);
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%auto;
-  height: 90px;
+  width: 99%;
+  height: 80px;
   text-align: center;
   border: outset white;
+  margin-left: 1%;
+
+  @media (min-width: 1200px) {
+    background: var(--white);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    border: outset white;
+  }
   .description-container {
     display: flex;
     flex-direction: column;
@@ -36,24 +55,44 @@ export const Wrap = styled.div`
     padding: 2px;
   }
   .accord-bar-text {
-    font-size: 15px;
-
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--black);
     margin: 6px;
-    max-width: 40ch;
+    max-width: 25ch;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    /*height: 70px;*/
+    @media (min-width: 700px) {
+      font-size: 15px;
+      font-weight: bold;
+      color: var(--black);
+      margin: 6px;
+      max-width: 35ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 15px;
+      margin: 6px;
+      max-width: 45ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 
   .AiFillEdit {
+    color: var(--red);
     cursor: pointer;
     margin-right: 25px;
   }
   .AiFillEdit:hover {
-    background-color: white;
-    color: var(--red);
+    background-color: black;
+    color: var(--white);
   }
   .AiFillEdit:active {
     background-color: black;
@@ -61,20 +100,22 @@ export const Wrap = styled.div`
   }
 
   .FiMinus {
+    color: var(--green);
     cursor: pointer;
   }
 
   .FiMinus:hover {
-    background-color: white;
-    color: var(--red);
+    background-color: black;
+    color: var(--white);
   }
 
   .FiPlus {
+    color: var(--green);
     cursor: pointer;
   }
   .FiPlus:hover {
-    background-color: white;
-    color: var(--red);
+    background-color: black;
+    color: var(--white);
     border-radius: 10px;
   }
 
@@ -83,25 +124,38 @@ export const Wrap = styled.div`
   }
 `;
 export const Dropdown = styled.div`
-  border-right: outset white;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2%;
+  padding-right: 1%;
+  margin: 1px;
+  width: 100%;
 
   .accord-bar-subtext {
     font-size: 15px;
+    font-weight: bold;
     margin-left: 20px;
   }
   .accord-goal-text {
+    @media (min-width: 700px) {
+      font-size: 15px;
+      font-weight: bold;
+      background-color: white;
+      margin: 1px;
+      box-shadow: 0 1px 3px 0 rgb(26 24 29 / 62%),
+        0 1px 2px 0 rgb(26 24 29 / 64%);
+    }
     font-size: 15px;
-    padding: 5px;
-
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
     height: 50px;
-
+    width: 100%;
     border: 1px solid;
     border-color: transparent;
     border-radius: 5px;
     background-color: var(--white);
     box-shadow: 0 1px 3px 0 rgb(26 24 29 / 62%), 0 1px 2px 0 rgb(26 24 29 / 24%);
-    margin: 3px;
-    margin-left: 25px;
   }
 `;
 
@@ -142,7 +196,6 @@ export const ButtonCreate = styled.button`
 `;
 
 export const ContainerModal = styled.div`
-  /*position: ${(props) => (props.isModal === true ? "fixed" : "auto")};*/
   top: 0;
   left: 0;
   right: 0;
@@ -150,22 +203,37 @@ export const ContainerModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /*margin-top: ${(props) => (props.isModal === true ? "0px" : "5px")};*/
+
   margin-top: 80px;
   background: transparent;
   .modal {
     transition: 0.3s;
     position: absolute;
-    margin-left: -420px;
+    margin-left: -80%;
     margin-top: -40px;
     min-height: 50px;
-    width: ${(props) => (props.isModal === false ? "300px" : "99%")};
+    width: 82%;
     max-width: 448px;
     border: 1px solid;
     border-color: transparent;
     border-radius: 5px;
     background-color: var(--white);
-    box-shadow: 0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%);
+    box-shadow: 0 1px 3px 0 rgb(26 24 29 / 62%), 0 1px 2px 0 rgb(26 24 29 / 64%);
+    @media (min-width: 700px) {
+      transition: 0.3s;
+      position: absolute;
+      margin-left: -62%;
+      margin-top: -40px;
+      min-height: 50px;
+      width: ${(props) => (props.isModal === false ? "300px" : "99%")};
+      max-width: 448px;
+      border: 1px solid;
+      border-color: transparent;
+      border-radius: 5px;
+      background-color: var(--white);
+      box-shadow: 0 1px 3px 0 rgb(26 24 29 / 62%),
+        0 1px 2px 0 rgb(26 24 29 / 64%);
+    }
     .card__header {
       display: flex;
       justify-content: space-between;

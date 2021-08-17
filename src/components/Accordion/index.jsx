@@ -47,11 +47,9 @@ const Accordion = () => {
                 <div key={index}>
                   <Wrap>
                     <div className="description-container">
+                      <div className="accord-bar-text">Name: {item.name}</div>
                       <div className="accord-bar-text">
-                        Group Name: {item.name}
-                      </div>
-                      <div className="accord-bar-text">
-                        Group Description: {item.description}
+                        Description: {item.description}
                       </div>
                     </div>
                     <div>
