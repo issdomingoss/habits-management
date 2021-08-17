@@ -4,29 +4,62 @@ import api from "../../services/api";
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
-  const [groups, setGroups] = useState([]);
+  const [myGroups, setMyGroups] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
   const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
   const [page, setPage] = useState(1);
 
-  const addGroup = (group) => {
+  const createGroup = (group) => {
     const newGroup = { ...group };
 
     api
       .post("/groups/", newGroup, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setGroups([...groups, res.data]))
+      .then((res) => {
+        setMyGroups([...myGroups, res.data]);
+        setAllGroups([...myGroups, res.data]);
+      })
       .catch((err) => console.log(err.res));
   };
 
-  const subscribeGroup = (groupId) => {
+  const subscribeGroup = (group) => {
     api
-      .post(`/groups/${groupId}/subscribe`, {
+      .post(`/groups/${group.id}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setGroups([...groups, res.data]))
-      .catch((err) => console.log(err.res));
+      .then((res) => setMyGroups([...myGroups, group]))
+      .catch((err) => console.log(err));
+  };
+
+  const updateGroup = (group, groupModify) => {
+    const updatedAllGroups = allGroups.map((item) => {
+      if (item.id === group.id) {
+        item = { ...item, ...groupModify };
+        console.log(item);
+      }
+      return item;
+    });
+
+    const updatedGroup = myGroups.map((item) => {
+      if (item.id === group.id) {
+        item = { ...item, ...groupModify };
+        console.log(item);
+      }
+      return item;
+    });
+    console.log(updatedGroup);
+
+    api
+      .patch(`/groups/${group.id}/`, groupModify, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        setMyGroups(updatedGroup);
+        setAllGroups(updatedAllGroups);
+        console.log(myGroups);
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -34,20 +67,37 @@ export const GroupsProvider = ({ children }) => {
       .get("/groups/subscriptions/", {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setGroups(res.data))
+      .then((res) => setMyGroups(res.data))
       .catch((e) => console.log(e));
 
+    console.log("allGroups2");
+  }, []);
+
+  useEffect(() => {
     api
-      .get(`/groups/?page=${page}`, {
-        headers: { Authorization: `Bearer ${token}` },
+      .get("/groups/", { params: { category: "Language", page: page } })
+      .then((res) => {
+        setAllGroups([...allGroups, ...res.data.results]);
+        setPage(page + 1);
       })
-      .then((res) => setAllGroups(res.data.results))
-      .catch((e) => console.log(e));
-  }, [page, token]);
 
+      .catch((e) => console.log(e));
+
+    console.log("allGroups");
+  }, [page]);
+
+  /*console.log(token);*/
   return (
     <GroupsContext.Provider
-      value={{ groups, addGroup, subscribeGroup, allGroups, setPage, page }}
+      value={{
+        myGroups,
+        createGroup,
+        subscribeGroup,
+        allGroups,
+        setPage,
+        page,
+        updateGroup,
+      }}
     >
       {children}
     </GroupsContext.Provider>

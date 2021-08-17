@@ -8,7 +8,7 @@ import { GroupsContext } from "../../providers/Groups";
 
 export const CreateGroups = ({ group = {} }) => {
   const [isModal, setIsModal] = useState(false);
-  const { addGroup } = useContext(GroupsContext);
+  const { createGroup } = useContext(GroupsContext);
 
   const openModal = () => {
     setIsModal(true);
@@ -38,7 +38,7 @@ export const CreateGroups = ({ group = {} }) => {
       category: "Language",
     };
 
-    addGroup(newGroup);
+    createGroup(newGroup);
 
     closeModal();
   };
