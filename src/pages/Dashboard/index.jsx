@@ -4,6 +4,7 @@ import Header from "../../components/header";
 import ProgressBar from "../../components/ProgressBar";
 import { HabitsContext } from "../../providers/Habits";
 import { Container } from "./styles";
+import Accordion from "../../components/Accordion/index";
 
 export const Dashboard = () => {
   const { habits } = useContext(HabitsContext);
@@ -39,6 +40,7 @@ export const Dashboard = () => {
           </section>
           <section id="groups">
             <h2>My Groups</h2>
+            <Accordion />
           </section>
         </div>
       </Container>
