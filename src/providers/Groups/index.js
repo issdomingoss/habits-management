@@ -48,7 +48,6 @@ export const GroupsProvider = ({ children }) => {
       }
       return item;
     });
-    console.log(updatedGroup);
 
     api
       .patch(`/groups/${group.id}/`, groupModify, {
@@ -69,8 +68,6 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((res) => setMyGroups(res.data))
       .catch((e) => console.log(e));
-
-    console.log("allGroups2");
   }, []);
 
   useEffect(() => {
@@ -82,8 +79,6 @@ export const GroupsProvider = ({ children }) => {
       })
 
       .catch((e) => console.log(e));
-
-    console.log("allGroups");
   }, [page]);
 
   /*console.log(token);*/

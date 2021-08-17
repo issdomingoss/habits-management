@@ -6,15 +6,13 @@ export const AccordionSection = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 100%;
+
   background: #fff;
-  margin-top: 200px;
+  margin-top: 20px;
 `;
 
 export const Container = styled.div`
-  position: absolute;
-  top: 30%;
-  width: 30%;
+  width: 100%;
   background: #fff;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);

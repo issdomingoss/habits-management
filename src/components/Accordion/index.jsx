@@ -11,7 +11,7 @@ import { EditForm } from "./updateGroupForm";
 const Accordion = () => {
   const [clicked, setClicked] = useState(false);
   const [att, setAtt] = useState(0);
-  const { myGroups, updateGroup } = useContext(GroupsContext);
+  const { myGroups } = useContext(GroupsContext);
   const [isModal, setIsModal] = useState(false);
 
   const openModal = (id) => {

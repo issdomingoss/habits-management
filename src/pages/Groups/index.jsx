@@ -1,13 +1,16 @@
-import Accordion from "../../components/Accordion";
+import Header from "../../components/header";
 import { CreateGroups } from "../../components/CreateGroups";
 import ListAllGroups from "../../components/ListAllGroups";
+import { Container } from "./styles";
 
 const PageGroups = () => {
   return (
     <div>
-      <CreateGroups />
-      <Accordion />
-      <ListAllGroups />
+      <Header />
+      <Container>
+        <CreateGroups />
+        <ListAllGroups />
+      </Container>
     </div>
   );
 };
