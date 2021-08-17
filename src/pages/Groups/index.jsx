@@ -1,10 +1,12 @@
-import Header from "../../components/header";
+import Accordion from "../../components/Accordion";
+import { CreateGroups } from "../../components/CreateGroups";
 import ListAllGroups from "../../components/ListAllGroups";
 
 const PageGroups = () => {
   return (
     <div>
-      <Header />
+      <CreateGroups />
+      <Accordion />
       <ListAllGroups />
     </div>
   );
