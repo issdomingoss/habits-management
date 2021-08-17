@@ -105,9 +105,7 @@ _Essa função atualiza o **habits**_
 
 #### `GroupsProvider`
 
-- ###### allGroups:
-
-  um State que recebe um array com todos os grupos disponíveis para a aplicação.
+- **allGroups**: um State que recebe um array com todos os grupos disponíveis para a aplicação.
 
 - **myGroups**: um State que recebe um array com todos os grupos que o usuário seja membro.
 
