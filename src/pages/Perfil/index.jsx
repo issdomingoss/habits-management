@@ -58,9 +58,15 @@ const PerfilPage = () => {
     updateUser(newData);
     setIsModal(false);
   };
+
   const ismodalTrue = () => {
     setIsModal(true);
   };
+
+  const ismodalFalse = () => {
+    setIsModal(false);
+  };
+
   return (
     <>
       <ContainerPerfil isModal={isModal}>
@@ -76,7 +82,7 @@ const PerfilPage = () => {
               <FaUserAlt className="userImg" />
             </div>
             <div>
-              <h1>{user.username}</h1>
+              <h2>User: {user.username}</h2>
               <div>{user.email}</div>
             </div>
           </CardPerfil>
@@ -88,6 +94,7 @@ const PerfilPage = () => {
               <label>E-mail:</label>
               <input placeholder="email" {...register("email")} />
               <button type="submit">Update</button>
+              <button onClick={ismodalFalse}>Cancel</button>
             </form>
           </ContainerForm>
         )}
