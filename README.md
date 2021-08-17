@@ -189,7 +189,7 @@ const groupModify = {
 
 ```
 
-**Nesta função a requisição da api utiliza id do grupo, e o objeto contendo as alterações necessárias. Os states _myGroups_ e o _allGroups_ são alterados localmente, por isso, é IMPORTANTE que todos os dados do grupo que será "atualizado" sejam passados dentro do objeto "group"**.
+**Nesta função a requisição da api utiliza id do grupo, e o objeto contendo as alterações necessárias (_ groupModify_). Os states _myGroups_ e o _allGroups_ são alterados localmente**.
 
 #### `GoalsProvider`:
 
