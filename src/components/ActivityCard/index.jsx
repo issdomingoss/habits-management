@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiTrash, BiPlusCircle } from "react-icons/bi";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Container } from "./styles";
+import { ActivitiesContext } from "../../providers/Activities";
 
-export const ActivityCard = ({ activity = {}, adm, create }) => {
+export const ActivityCard = ({ activity = {}, adm, create, group = 0 }) => {
   const [isModal, setIsModal] = useState(false);
   const [passedTheDeadline, setPassedTheDeadline] = useState(false);
+
+  const { createActivity, updateActivity, removeActivity } =
+    useContext(ActivitiesContext);
 
   useEffect(() => {
     if (!!create === false) {
@@ -21,6 +25,7 @@ export const ActivityCard = ({ activity = {}, adm, create }) => {
 
       setPassedTheDeadline(passLimitDate);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activity]);
 
   const openModal = () => {
@@ -53,9 +58,10 @@ export const ActivityCard = ({ activity = {}, adm, create }) => {
       .join("/");
 
     if (!!create) {
-      console.log("Criou", data);
+      const newData = { ...data, group: group };
+      createActivity(newData);
     } else {
-      console.log("Editou", data);
+      updateActivity(activity.id, data);
     }
     closeModal();
   };
@@ -117,7 +123,10 @@ export const ActivityCard = ({ activity = {}, adm, create }) => {
               </div>
             </form>
             <div className="container-trash">
-              <button className="delete-button">
+              <button
+                className="delete-button"
+                onClick={() => removeActivity(activity.id)}
+              >
                 <BiTrash className="trash-icon" />
                 <span> Delete activity</span>
               </button>
