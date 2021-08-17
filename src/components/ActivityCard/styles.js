@@ -22,7 +22,10 @@ export const Container = styled.div`
     border-color: transparent;
     border-radius: 5px;
     background-color: var(--white);
-    box-shadow: 0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%);
+    box-shadow: ${(props) =>
+      props.passedTheDeadline === true
+        ? "0 1px 3px 0 rgb(51 117 22 / 80%), 0 1px 2px 0 rgb(51 117 22 / 80%)"
+        : "0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%)"};
     .card__header {
       display: flex;
       justify-content: space-between;
@@ -38,7 +41,8 @@ export const Container = styled.div`
         .title {
           font-size: 21px;
           font-weight: 700;
-          color: var(--black);
+          color: ${(props) =>
+            props.passedTheDeadline === true ? "var(--green)" : "var(--black)"};
           margin-left: ${(props) => (props.isModal === false ? "21px" : "0px")};
           flex: ${(props) => (props.isModal === false ? "inherit" : "1")};
         }
@@ -49,6 +53,12 @@ export const Container = styled.div`
           margin-right: 15px;
           font-size: 40px;
           cursor: pointer;
+        }
+        .date-limit {
+          color: ${(props) =>
+            props.passedTheDeadline === true ? "var(--green)" : "var(--black)"};
+          font-size: 13px;
+          margin-right: 10px;
         }
       }
     }
