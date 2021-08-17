@@ -18,7 +18,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((res) => {
         setMyGroups([...myGroups, res.data]);
-        setAllGroups([...myGroups, res.data]);
+        setAllGroups([...allGroups, res.data]);
       })
       .catch((err) => console.log(err.res));
   };

@@ -11,6 +11,11 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: center;
 
+  img {
+    width: 70px;
+    height: 50px;
+  }
+
   nav {
     width: 90%;
     display: flex;
@@ -28,23 +33,71 @@ export const HeaderContainer = styled.div`
   @media (min-width: 768px) {
     height: 79px;
   }
+  
   @media (min-width: 1440px) {
     height: 83px;
   }
 `;
 
-export const Image = styled.div`
-  width: 73px;
-  cursor: pointer;
+export const DropdownContent = styled.div`
+  display: none;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  background-color: var(--red);
 
-  img {
-    width: 100%;
+  ul{
+    text-decoration: none;
+    list-style: none;
+
+    li{
+      border: 1px solid black;
+      width: 150px;
+      padding: 10px;
+      color: var(--white);
+
+      &:hover{
+        background-color: var(--white);
+        color: var(--red);
+        transition: 0.5s;
+      }
+
+      @media (min-width: 1024px){
+        border: none;
+        font-size: 22px;
+      }
+    }
   }
 
-  @media (min-width: 768px) {
-    width: 110px;
+  &:hover{
+    display: block;
   }
-  @media (min-width: 1440px) {
-    width: 110px;
+
+  @media (min-width:1024px){
+    display: block;
+    
+    ul{
+      display: flex;
+    }
+  }
+`;
+
+export const Dropdown = styled.div`
+  position: relative;
+  display: inline-block;
+
+  @media (min-width:1024px){
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover ${DropdownContent} {
+    display: block;
+  }
+`;
+
+export const ContainerNone = styled.div`
+  @media (min-width:1024px){
+    display: none;
   }
 `;

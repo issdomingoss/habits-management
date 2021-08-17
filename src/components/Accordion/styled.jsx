@@ -38,7 +38,7 @@ export const Wrap = styled.div`
     padding: 2px;
   }
   .accord-bar-text {
-    font-size: 20px;
+    font-size: 15px;
 
     margin: 6px;
     max-width: 40ch;
@@ -92,7 +92,7 @@ export const Dropdown = styled.div`
     margin-left: 20px;
   }
   .accord-goal-text {
-    font-size: 20px;
+    font-size: 15px;
     padding: 5px;
 
     height: 50px;

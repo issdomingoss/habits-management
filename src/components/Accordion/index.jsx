@@ -6,7 +6,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { useState, useContext } from "react";
 import { GroupsContext } from "../../providers/Groups";
 import Sub from "./sub";
-import { EdditForm } from "./updateGroupForm";
+import { EditForm } from "./updateGroupForm";
 
 const Accordion = () => {
   const [clicked, setClicked] = useState(false);
@@ -54,7 +54,7 @@ const Accordion = () => {
                   </div>
                   <div>
                     {isModal === item.id ? (
-                      <EdditForm
+                      <EditForm
                         closeModal={() => closeModal(item.id)}
                         item={item}
                       />

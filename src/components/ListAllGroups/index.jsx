@@ -10,7 +10,7 @@ const ListAllGroups = () => {
 
   return (
     <>
-      <h3>Todos os Grupos</h3>
+      <h3>All Groups</h3>
       {allGroups.map((item) => (
         <Lista key={item.id}>
           <AiOutlineUsergroupAdd

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { GroupsContext } from "../../providers/Groups";
 import { ContainerModal } from "./styled";
-export const EdditForm = ({ group = {}, closeModal, item }) => {
+export const EditForm = ({ group = {}, closeModal, item }) => {
   const { updateGroup, myGroups } = useContext(GroupsContext);
   const [att, setAtt] = useState(0);
 
@@ -44,7 +44,7 @@ export const EdditForm = ({ group = {}, closeModal, item }) => {
           <div className="form-container">
             <form onSubmit={handleSubmit(onSubmitFunction)}>
               <div className="form__header">
-                <h4>Eddit Group </h4>
+                <h4>Edit Group </h4>
                 <div className="container-buttons">
                   <button className="cancel-button" onClick={closeModal}>
                     Cancel

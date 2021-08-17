@@ -13,6 +13,7 @@ export const ContainerBackGround = styled.div`
 export const Form = styled.form`
     padding: 30px;
     background-color: var(--white);
+    margin-bottom: 40px;
 
     display: flex;
     flex-direction: column;
@@ -30,18 +31,24 @@ export const ContainerInputLogin = styled.div`
     flex-direction: column;
     text-align: left;
 
-    margin: 10px 0px;
+    margin: 6px 0px;
     
     input{
-            border: 1px solid var(--black);
-            border-radius: 5px;
-            padding: 7px;
-            width: 208px;
-        }
+        border: 1px solid var(--black);
+        border-radius: 5px;
+        padding: 7px;
+        width: 208px;
+    }
 
     input:focus{
-            background-color: #fff;
-        }
+        background-color: #fff;
+    }
+
+    span{
+        text-align: center;
+        width: 208px;
+        color:var(--red);
+    }
 `;
 
 export const ImgLogo = styled.img`
@@ -70,8 +77,7 @@ export const ImgLogin = styled.img`
     border-radius: 20px;
 `;
 
-//desktop
-
+//deskto
 export const ContainerDesktop = styled.div`
     display: flex;
     
