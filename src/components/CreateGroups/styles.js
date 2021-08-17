@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ButtonCreate = styled.button`
   background-color: var(--red);
   border: none;
-  padding: 10px 50px;
+  padding: 10px;
   border-radius: 20px;
   color: var(--white);
   margin-top: 5px;
@@ -13,31 +13,45 @@ export const ButtonCreate = styled.button`
     transition: 0.5s;
     cursor: pointer;
   }
+  @media (min-width: 700px) {
+    width: 180px;
+    height: 45px;
+    font-size: 15px;
+  }
 `;
 
 export const Container = styled.div`
-  /*position: ${(props) => (props.isModal === true ? "fixed" : "auto")};*/
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   display: flex;
+
   justify-content: center;
   align-items: center;
-  /*margin-top: ${(props) => (props.isModal === true ? "0px" : "5px")};*/
+
   margin-top: 80px;
   background: transparent;
+
   .modal {
     transition: 0.3s;
-    margin: 0 auto;
+    margin-left: 5%;
     min-height: 50px;
-    width: ${(props) => (props.isModal === false ? "300px" : "99%")};
+    width: 80%;
     max-width: 448px;
     border: 1px solid;
     border-color: transparent;
     border-radius: 5px;
     background-color: var(--white);
-    box-shadow: 0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%);
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.75);
+    @media (min-width: 700px) {
+      transition: 0.3s;
+      margin-left: -11%;
+      min-height: 50px;
+      width: 500px;
+      max-width: 448px;
+      border: 1px solid;
+      border-color: transparent;
+      border-radius: 5px;
+      background-color: var(--white);
+      box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.75);
+    }
     .card__header {
       display: flex;
       justify-content: space-between;
@@ -71,7 +85,7 @@ export const Container = styled.div`
         justify-content: space-between;
         align-items: center;
         h4 {
-          width: 150px;
+          width: 180px;
           font-size: 20px;
           font-weight: 700;
           color: var(--black);
