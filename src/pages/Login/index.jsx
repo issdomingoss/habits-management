@@ -26,7 +26,7 @@ import {
 const PageLogin = () => {
   const { getToken } = useContext(HabitsContext);
 
-  //validacoes
+  //validations
   //----------------------------------------------------------------------------------------------
   const schema = yup.object().shape({
     username: yup
