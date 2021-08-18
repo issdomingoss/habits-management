@@ -9,25 +9,23 @@ import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 
 import Header from "../../components/header";
-import { Redirect } from "react-router-dom";
 
 const PerfilPage = ({ AuthN }) => {
-
   const [user, setUser] = useState("");
-  // const [token] = useState(JSON.parse(localStorage.getItem("token")) || '');
+  const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
   const [isModal, setIsModal] = useState(false);
-  const [info, setInfo] = useState(
+  const [info] = useState(
     jwt_decode(JSON.parse(localStorage.getItem("token")))
   );
 
   const updateUser = (newData) => {
     api
       .patch(`/users/${info.user_id}/`, newData, {
-        headers: { Authorization: `Bearer ${AuthN}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setUser(response.data))
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
       });
   };
 
@@ -37,7 +35,6 @@ const PerfilPage = ({ AuthN }) => {
       .then((response) => setUser(response.data))
       .catch((err) => console.log(err));
   }, []);
-
 
   const schema = yup.object().shape({
     username: yup.string().required("Required name!"),
@@ -71,7 +68,6 @@ const PerfilPage = ({ AuthN }) => {
   const ismodalFalse = () => {
     setIsModal(false);
   };
- 
 
   return (
     <>
@@ -95,11 +91,12 @@ const PerfilPage = ({ AuthN }) => {
         ) : (
           <ContainerForm>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
-              <label>User:</label>
+              <label>Username:</label>
               <input placeholder="nome" {...register("username")} />
               <label>E-mail:</label>
               <input placeholder="email" {...register("email")} />
-              <button type="submit">Update</button>
+
+              <button type="submit">Save</button>
               <button onClick={ismodalFalse}>Cancel</button>
             </form>
           </ContainerForm>
