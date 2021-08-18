@@ -28,7 +28,17 @@ export const GroupsProvider = ({ children }) => {
       .post(`/groups/${group.id}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setMyGroups([...myGroups, group]))
+      .then((res) => {
+        setMyGroups([...myGroups, group]);
+
+        const updateAllGroups = allGroups.map((groups) => {
+          if (groups.id === group.id) {
+            groups.users_on_group = [...groups.users_on_group, res.data.user];
+          }
+          return groups;
+        });
+        setAllGroups(updateAllGroups);
+      })
       .catch((err) => console.log(err));
   };
 
