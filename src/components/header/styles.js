@@ -60,6 +60,7 @@ export const DropdownContent = styled.div`
         background-color: var(--white);
         color: var(--red);
         transition: 0.5s;
+        cursor: pointer;
       }
 
       @media (min-width: 1024px){

@@ -1,35 +1,53 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import PageHome from "../pages/Home";
 import PageLogin from "../pages/Login";
 import PageRegister from "../pages/Register";
 import PageGroups from "../pages/Groups";
 import PerfilPage from "../pages/Perfil";
-
 import { Dashboard } from "../pages/Dashboard";
 
+import { useEffect, useContext } from 'react';
+import { AuthTokenContext } from "../providers/Auth";
+
 const Routes = () => {
+
+  const { authN, setAuthN } = useContext(AuthTokenContext);
+
+  useEffect(() => {
+    //pega o token do local storage
+    const token = JSON.parse(localStorage.getItem('token'));
+
+    console.log(token, 'ROUTERS')
+    //verifica se possui um token
+    //se possuir um token mude state para true
+    if(token) {
+      return setAuthN(true);
+    }
+  }, [authN]);
+
   return (
+
     <Switch>
       <Route exact path="/">
-        <PageHome />
+        <PageHome AuthN={ authN } />
       </Route>
       <Route path="/login">
-        <PageLogin />
+        <PageLogin AuthN={ authN } setAuthN={ setAuthN }/>
       </Route>
       <Route path="/register">
-        <PageRegister />
+        <PageRegister AuthN={ authN }/>
       </Route>
       <Route path="/dashboard">
-        <Dashboard />
+        <Dashboard AuthN={ authN }/>
       </Route>
       <Route path="/groups">
-        <PageGroups />
+        <PageGroups AuthN={ authN }/>
       </Route>
       <Route path="/contact">
         <h1>Contato</h1>
       </Route>
       <Route path="/perfil">
-        <PerfilPage />
+        {authN ? <PerfilPage /> : <Redirect to='/login'/>}
       </Route>
     </Switch>
   );
