@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 import api from "../../services/api";
 import logo from "../../assets/logo_Speak_Tracks.PNG";
 import img_register_desktop from "../../assets/image 5.png";
@@ -20,7 +19,7 @@ import {
 
 //jsx
 //====================================================================================================
-const PageRegister = () => {
+const PageRegister = ({ AuthN }) => {
   //validacoes
   //----------------------------------------------------------------------------------------------
   const schema = yup.object().shape({
@@ -66,6 +65,11 @@ const PageRegister = () => {
       .catch((e) => console.log(e.response));
 
     history.push("/login");
+  };
+
+  //if AuthN true redirect to dashboard
+  if(AuthN){
+    return <Redirect to='/dashboard'/>
   };
 
   //return do jsx

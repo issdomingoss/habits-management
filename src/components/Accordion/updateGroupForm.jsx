@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { GroupsContext } from "../../providers/Groups";
-import { ContainerModal } from "./styled";
+import { ContainerModal } from "./styles";
 export const EditForm = ({ group = {}, closeModal, item }) => {
   const { updateGroup, myGroups } = useContext(GroupsContext);
   const [att, setAtt] = useState(0);
@@ -26,7 +26,6 @@ export const EditForm = ({ group = {}, closeModal, item }) => {
   });
 
   const onSubmitFunction = (data) => {
-    console.log(data);
     const updatedGroup = {
       name: data.name,
       description: data.description,
