@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Container } from "./styles";
 import { ActivitiesContext } from "../../providers/Activities";
 
-export const ActivityCard = ({ activity = {}, adm, create, group = 0 }) => {
+export const ActivityCard = ({ activity = {}, adm, create, group }) => {
   const [isModal, setIsModal] = useState(false);
   const [passedTheDeadline, setPassedTheDeadline] = useState(false);
 
@@ -62,7 +62,7 @@ export const ActivityCard = ({ activity = {}, adm, create, group = 0 }) => {
     data.realization_time = `${data.realization_time}T15:00:00Z`;
 
     if (!!create) {
-      const newData = { ...data, group: group };
+      const newData = { ...data, group: group.id };
       console.log(newData);
       createActivity(newData);
     } else {
@@ -136,7 +136,7 @@ export const ActivityCard = ({ activity = {}, adm, create, group = 0 }) => {
             <div className="container-trash">
               <button
                 className="delete-button"
-                onClick={() => removeActivity(activity.id)}
+                onClick={() => removeActivity(activity.id, group)}
               >
                 <BiTrash className="trash-icon" />
                 <span> Delete activity</span>

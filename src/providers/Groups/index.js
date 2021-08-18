@@ -86,11 +86,10 @@ export const GroupsProvider = ({ children }) => {
     <GroupsContext.Provider
       value={{
         myGroups,
+        setMyGroups,
         createGroup,
         subscribeGroup,
         allGroups,
-        setPage,
-        page,
         updateGroup,
       }}
     >

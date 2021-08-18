@@ -11,7 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Container } from "./styles";
 import { GoalsContext } from "../../providers/Goals";
 
-export const GoalCard = ({ goal = {}, adm, create, group = 0 }) => {
+export const GoalCard = ({ goal = {}, adm, create, group }) => {
   const [isModal, setIsModal] = useState(false);
 
   const { createGoal, updateGoal, removeGoal } = useContext(GoalsContext);
@@ -125,7 +125,7 @@ export const GoalCard = ({ goal = {}, adm, create, group = 0 }) => {
             <div className="container-trash">
               <button
                 className="delete-button"
-                onClick={() => removeGoal(goal.id)}
+                onClick={() => removeGoal(goal.id, group)}
               >
                 <BiTrash className="trash-icon" />
                 <span> Delete goal</span>
