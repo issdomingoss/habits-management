@@ -9,6 +9,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   background-color: ${(props) =>
     props.isModal === true ? "#d73333cf" : "transparent"};
   margin-top: ${(props) => (props.isModal === true ? "0px" : "5px")};

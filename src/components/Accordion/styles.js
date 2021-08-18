@@ -147,15 +147,23 @@ export const Dropdown = styled.div`
     }
     font-size: 15px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding-left: 5px;
-    height: 50px;
+    padding: 5px;
     width: 100%;
     border: 1px solid;
     border-color: transparent;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: var(--white);
     box-shadow: 0 1px 3px 0 rgb(26 24 29 / 62%), 0 1px 2px 0 rgb(26 24 29 / 24%);
+
+    p {
+      font-size: 20px;
+      text-align: left;
+      text-indent: 10px;
+      margin: 10px 0;
+      font-weight: 700;
+    }
   }
 `;
 

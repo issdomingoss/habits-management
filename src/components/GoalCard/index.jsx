@@ -45,7 +45,12 @@ export const GoalCard = ({ goal = {}, adm, create, group = 0 }) => {
 
   const onSubmitFunction = (data) => {
     if (!!create) {
-      const newData = { ...data, group: group };
+      const newData = {
+        ...data,
+        group: group,
+        achieved: false,
+        how_much_achieved: 100,
+      };
       createGoal(newData);
     } else {
       updateGoal(goal.id, data);
