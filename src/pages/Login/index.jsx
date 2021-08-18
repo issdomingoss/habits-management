@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useHistory, Redirect } from "react-router";
 import logo from "../../assets/logo_Speak_Tracks.PNG";
 import img_login from "../../assets/image 4.png";
 import img_desktop from "../../assets/image 3.png";
@@ -23,10 +23,10 @@ import {
 
 //jsx
 //====================================================================================================
-const PageLogin = () => {
+const PageLogin = ({ AuthN, setAuthN }) => {
   const { getToken } = useContext(HabitsContext);
 
-  //validacoes
+  //validations
   //----------------------------------------------------------------------------------------------
   const schema = yup.object().shape({
     username: yup
@@ -65,11 +65,18 @@ const PageLogin = () => {
         reset();
 
         localStorage.setItem("token", JSON.stringify(response.data.access));
+
         getToken(response.data.access);
+        setAuthN(true);
 
         history.push("/dashboard");
       })
       .catch((e) => console.log(e));
+  };
+
+  //if AuthN true redirect to dashboard
+  if(AuthN){
+    return <Redirect to='/dashboard'/>
   };
 
   //return do jsx

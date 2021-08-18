@@ -6,10 +6,9 @@ import { NavHome, ContainerHome, ContainerTitle,
 import img_Home from '../../assets/image 1.png';
 import logo from '../../assets/logo_Speak_Tracks_branco.PNG';
 
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 
-const PageHome = () => {
+const PageHome = ({ AuthN }) => {
 
     const history = useHistory();
 
@@ -20,6 +19,12 @@ const PageHome = () => {
     const sendToPageRegister = () => {
         history.push('/register');
     }
+
+    //if AuthN true redirect to dashboard
+//   if(AuthN){
+//     return <Redirect to='/dashboard'/>
+//   };
+
 
     return(
         <ContainerHome>
