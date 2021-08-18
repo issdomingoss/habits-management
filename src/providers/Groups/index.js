@@ -75,7 +75,9 @@ export const GroupsProvider = ({ children }) => {
       .get("/groups/", { params: { category: "Track-Speak", page: page } })
       .then((res) => {
         setAllGroups([...allGroups, ...res.data.results]);
-        setPage(page + 1);
+        if (!!res.data.next) {
+          setPage(page + 1);
+        }
       })
 
       .catch((e) => console.log(e));
