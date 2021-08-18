@@ -49,7 +49,6 @@ export const GoalsProvider = ({ children }) => {
               item.goals = item.goals.map((goal) => {
                 if (goal.id === goalId) {
                   goal = { ...goal, ...response.data };
-                  console.log("Mudou", goal);
                 }
                 return goal;
               });

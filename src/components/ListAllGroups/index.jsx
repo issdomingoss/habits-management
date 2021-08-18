@@ -7,7 +7,6 @@ import Logo from "../../assets/logo_Speak_Tracks.PNG";
 const ListAllGroups = () => {
   const { allGroups, subscribeGroup } = useContext(GroupsContext);
 
-  console.log(allGroups);
   return (
     <>
       <Title>All English Study Groups</Title>

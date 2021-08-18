@@ -36,7 +36,6 @@ export const GroupsProvider = ({ children }) => {
     const updatedAllGroups = allGroups.map((item) => {
       if (item.id === group.id) {
         item = { ...item, ...groupModify };
-        console.log(item);
       }
       return item;
     });
@@ -44,7 +43,6 @@ export const GroupsProvider = ({ children }) => {
     const updatedGroup = myGroups.map((item) => {
       if (item.id === group.id) {
         item = { ...item, ...groupModify };
-        console.log(item);
       }
       return item;
     });
@@ -56,7 +54,6 @@ export const GroupsProvider = ({ children }) => {
       .then((res) => {
         setMyGroups(updatedGroup);
         setAllGroups(updatedAllGroups);
-        console.log(myGroups);
       })
       .catch((err) => console.log(err));
   };
@@ -83,7 +80,6 @@ export const GroupsProvider = ({ children }) => {
       .catch((e) => console.log(e));
   }, [page]);
 
-  /*console.log(token);*/
   return (
     <GroupsContext.Provider
       value={{

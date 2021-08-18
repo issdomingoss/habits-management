@@ -49,7 +49,6 @@ export const ActivitiesProvider = ({ children }) => {
               item.activities = item.activities.map((activity) => {
                 if (activity.id === activity_ID) {
                   activity = { ...activity, ...response.data };
-                  console.log("Mudou", activity);
                 }
                 return activity;
               });

@@ -63,7 +63,7 @@ export const ActivityCard = ({ activity = {}, adm, create, group }) => {
 
     if (!!create) {
       const newData = { ...data, group: group.id };
-      console.log(newData);
+
       createActivity(newData);
     } else {
       updateActivity(activity.id, data);

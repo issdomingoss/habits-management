@@ -44,7 +44,6 @@ const Accordion = () => {
           {myGroups
             .filter((item) => item.category === "Track-Speak")
             .map((item, index) => {
-              console.log(item);
               return (
                 <div key={index}>
                   <Wrap>
