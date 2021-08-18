@@ -15,7 +15,8 @@ export const ActivityCard = ({ activity = {}, adm, create, group = 0 }) => {
 
   useEffect(() => {
     if (!!create === false) {
-      const deadline = activity.realization_time.split("/").reverse();
+      const newDate = transformDate(activity.realization_time);
+      const deadline = newDate.split("/");
 
       const limitDate = new Date(deadline[0], deadline[1] - 1, deadline[2]);
 
@@ -51,14 +52,18 @@ export const ActivityCard = ({ activity = {}, adm, create, group = 0 }) => {
     resolver: yupResolver(schema),
   });
 
+  const transformDate = (date) => {
+    let newDate = date.split("T");
+    newDate = newDate[0].split("-").join("/");
+    return newDate;
+  };
+
   const onSubmitFunction = (data) => {
-    data.realization_time = data.realization_time
-      .split("-")
-      .reverse()
-      .join("/");
+    data.realization_time = `${data.realization_time}T15:00:00Z`;
 
     if (!!create) {
       const newData = { ...data, group: group };
+      console.log(newData);
       createActivity(newData);
     } else {
       updateActivity(activity.id, data);
@@ -82,7 +87,13 @@ export const ActivityCard = ({ activity = {}, adm, create, group = 0 }) => {
             </div>
             <div className="icons-header">
               {!!create === false ? (
-                <p className="date-limit"> {activity.realization_time}</p>
+                <p className="date-limit">
+                  {" "}
+                  {transformDate(activity.realization_time)
+                    .split("/")
+                    .reverse()
+                    .join("/")}
+                </p>
               ) : (
                 <BiPlusCircle onClick={openModal} />
               )}

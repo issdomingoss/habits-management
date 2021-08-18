@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import { Wrap, AccordionSection, Container, Dropdown } from "./styled";
+import { Wrap, AccordionSection, Container, Dropdown } from "./styles";
 import { IconContext } from "react-icons";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { AiFillEdit } from "react-icons/ai";
 import { useState, useContext } from "react";
 import { GroupsContext } from "../../providers/Groups";
-import Sub from "./sub";
 import { EditForm } from "./updateGroupForm";
+import { ActivityCard } from "../ActivityCard";
+import { GoalCard } from "../GoalCard";
 
 const Accordion = () => {
   const [clicked, setClicked] = useState(false);
@@ -43,6 +44,7 @@ const Accordion = () => {
           {myGroups
             .filter((item) => item.category === "Track-Speak")
             .map((item, index) => {
+              console.log(item);
               return (
                 <div key={index}>
                   <Wrap>
@@ -87,11 +89,23 @@ const Accordion = () => {
                   {clicked === item.id ? (
                     <Dropdown>
                       <div className="accord-goal-text">
-                        Goals: {item.goals.title}
+                        <p>Goals:</p>
+
+                        <GoalCard create adm={true} group={item.id} />
+                        {item.goals.map((goal) => (
+                          <GoalCard key={goal.id} goal={goal} adm={true} />
+                        ))}
                       </div>
-                      <div className="accord-goal-text">Activities:</div>
-                      <div className="accord-bar-subtext">
-                        <Sub activities={item.activities} />
+                      <div className="accord-goal-text">
+                        <p>Activities:</p>
+                        <ActivityCard create adm={true} group={item.id} />
+                        {item.activities.map((activity) => (
+                          <ActivityCard
+                            key={activity.id}
+                            activity={activity}
+                            adm={true}
+                          />
+                        ))}
                       </div>
                     </Dropdown>
                   ) : null}
