@@ -1,10 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import api from "../../services/api";
+import { GroupsContext } from "../Groups";
 
 export const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
   const [goal, setGoal] = useState([]);
+  const { myGroups, setMyGroups } = useContext(GroupsContext);
 
   const getToken = () => {
     return JSON.parse(localStorage.getItem("token")) || "";
@@ -19,7 +21,13 @@ export const GoalsProvider = ({ children }) => {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          console.log(response.data);
+          const updateGroups = myGroups.map((item) => {
+            if (item.id === goal.group) {
+              item.goals = [...item.goals, response.data];
+            }
+            return item;
+          });
+          setMyGroups(updateGroups);
         })
         .catch((err) => console.log(err.response));
     } else {
@@ -35,7 +43,20 @@ export const GoalsProvider = ({ children }) => {
         .patch(`/goals/${goalId}/`, updatedItens, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((response) => console.log(response.data))
+        .then((response) => {
+          const updateGroups = myGroups.map((item) => {
+            if (item.id === response.data.group) {
+              item.goals = item.goals.map((goal) => {
+                if (goal.id === goalId) {
+                  goal = { ...goal, ...response.data };
+                }
+                return goal;
+              });
+            }
+            return item;
+          });
+          setMyGroups(updateGroups);
+        })
         .catch((err) => console.log(err.response));
     } else {
       console.log("token não disponível");
@@ -49,7 +70,7 @@ export const GoalsProvider = ({ children }) => {
       .catch((err) => err.response);
   };
 
-  const removeGoal = (goalId) => {
+  const removeGoal = (goalId, group) => {
     const token = getToken();
 
     if (!!token) {
@@ -57,7 +78,15 @@ export const GoalsProvider = ({ children }) => {
         .delete(`/goals/${goalId}/`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then(() => console.log("removido com sucesso"))
+        .then(() => {
+          const updateGroups = myGroups.map((item) => {
+            if (item.id === group.id) {
+              item.goals = item.goals.filter((goal) => goal.id !== goalId);
+            }
+            return item;
+          });
+          setMyGroups(updateGroups);
+        })
         .catch((err) => console.log(err.response));
     } else {
       console.log("token não disponível");

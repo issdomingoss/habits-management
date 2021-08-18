@@ -36,7 +36,6 @@ export const GroupsProvider = ({ children }) => {
     const updatedAllGroups = allGroups.map((item) => {
       if (item.id === group.id) {
         item = { ...item, ...groupModify };
-        console.log(item);
       }
       return item;
     });
@@ -44,7 +43,6 @@ export const GroupsProvider = ({ children }) => {
     const updatedGroup = myGroups.map((item) => {
       if (item.id === group.id) {
         item = { ...item, ...groupModify };
-        console.log(item);
       }
       return item;
     });
@@ -56,7 +54,6 @@ export const GroupsProvider = ({ children }) => {
       .then((res) => {
         setMyGroups(updatedGroup);
         setAllGroups(updatedAllGroups);
-        console.log(myGroups);
       })
       .catch((err) => console.log(err));
   };
@@ -75,22 +72,22 @@ export const GroupsProvider = ({ children }) => {
       .get("/groups/", { params: { category: "Track-Speak", page: page } })
       .then((res) => {
         setAllGroups([...allGroups, ...res.data.results]);
-        setPage(page + 1);
+        if (!!res.data.next) {
+          setPage(page + 1);
+        }
       })
 
       .catch((e) => console.log(e));
   }, [page]);
 
-  /*console.log(token);*/
   return (
     <GroupsContext.Provider
       value={{
         myGroups,
+        setMyGroups,
         createGroup,
         subscribeGroup,
         allGroups,
-        setPage,
-        page,
         updateGroup,
       }}
     >
