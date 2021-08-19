@@ -36,8 +36,9 @@ export const Lista = styled.div`
   margin: 15px;
   display: flex;
   align-items: center;
+
   .logo {
-    width: 200px;
+    width: 150px;
     margin-top: 20px;
   }
 
@@ -60,8 +61,12 @@ export const Lista = styled.div`
     font-size: 18px;
     text-align: center;
   }
-  .followers {
+  .followers,
+  .following {
     text-align: center;
+  }
+  .following {
+    color: var(--green);
   }
 
   .check-icon {
