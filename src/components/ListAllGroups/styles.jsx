@@ -68,8 +68,9 @@ export const Lista = styled.div`
   .following {
     color: var(--green);
     font-size: 15px;
-    text-shadow: -1px -5px 13px var(--red);
     margin-top: 40px;
+    /* text-shadow: -1px -5px 13px var(--red); */
+    background: linear-gradient(to right, #050a20, #d733339c);
   }
 
   .check-icon {

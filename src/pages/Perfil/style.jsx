@@ -129,6 +129,9 @@ export const ContainerForm = styled.div`
         justify-content: space-evenly;
         width: 90%;
       }
+      @media (min-width: 1440px) {
+        width: 70%;
+      }
     }
 
     button {

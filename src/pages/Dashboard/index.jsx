@@ -8,9 +8,6 @@ import Accordion from "../../components/Accordion/index";
 import { Redirect } from "react-router-dom";
 
 export const Dashboard = ({ AuthN }) => {
-
-  
-
   const { habits } = useContext(HabitsContext);
   const [progressHabits, setProgressHabits] = useState(0);
 
@@ -31,9 +28,9 @@ export const Dashboard = ({ AuthN }) => {
   }, [habits]);
 
   //if AuthN false redirect to pageLogin
-  if(!AuthN) {
-    return <Redirect to='/login' />
-  };
+  if (!AuthN) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>

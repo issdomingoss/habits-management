@@ -33,9 +33,12 @@ const ListAllGroups = () => {
               </p>
 
               {item.users_on_group.map(
-                (user) =>
+                (user, index) =>
                   user.id === userOnToken.user_id && (
-                    <p className="following"> Following</p>
+                    <p key={index} className="following">
+                      {" "}
+                      Following
+                    </p>
                   )
               )}
             </div>
