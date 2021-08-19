@@ -91,13 +91,28 @@ const PerfilPage = ({ AuthN }) => {
         ) : (
           <ContainerForm>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
-              <label>Username:</label>
-              <input placeholder="nome" {...register("username")} />
-              <label>E-mail:</label>
-              <input placeholder="email" {...register("email")} />
-
-              <button type="submit">Save</button>
-              <button onClick={ismodalFalse}>Cancel</button>
+              <div className="InputContainer">
+                <label>User:</label>
+                <input
+                  placeholder="nome"
+                  {...register("username")}
+                  value={user.username}
+                />
+              </div>
+              <div className="InputContainer">
+                <label>E-mail:</label>
+                <input
+                  placeholder="email"
+                  {...register("email")}
+                  value={user.email}
+                />
+              </div>
+              <div className="buttonContainer">
+                <button type="submit" className="saveButton">
+                  Save
+                </button>
+                <button onClick={ismodalFalse}>Cancel</button>
+              </div>
             </form>
           </ContainerForm>
         )}
