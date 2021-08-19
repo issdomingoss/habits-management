@@ -7,6 +7,7 @@ import { FaUserAlt } from "react-icons/fa";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 import Header from "../../components/header";
 
@@ -24,8 +25,16 @@ const PerfilPage = ({ AuthN }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setUser(response.data))
-      .catch((err) => {
-        console.log(err.response);
+      .catch(() => {
+        toast.error("Email or username already exists!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 
@@ -33,7 +42,17 @@ const PerfilPage = ({ AuthN }) => {
     api
       .get(`/users/${info.user_id}/`)
       .then((response) => setUser(response.data))
-      .catch((err) => console.log(err));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   }, []);
 
   const schema = yup.object().shape({

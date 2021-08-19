@@ -5,6 +5,7 @@ import { Link, useHistory, Redirect } from "react-router-dom";
 import api from "../../services/api";
 import logo from "../../assets/logo_Speak_Tracks.PNG";
 import img_register_desktop from "../../assets/image 5.png";
+import { toast } from "react-toastify";
 
 import {
   ContainerBackGround,
@@ -60,17 +61,35 @@ const PageRegister = ({ AuthN }) => {
     api
       .post("/users/", sendToAPI)
       .then((response) => {
+        toast.success("Register successful!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         reset();
+        history.push("/login");
       })
-      .catch((e) => console.log(e.response));
-
-    history.push("/login");
+      .catch(() => {
+        toast.error("Email or username already exists!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   //if AuthN true redirect to dashboard
-  if(AuthN){
-    return <Redirect to='/dashboard'/>
-  };
+  if (AuthN) {
+    return <Redirect to="/dashboard" />;
+  }
 
   //return do jsx
   //================================================================================================
@@ -107,9 +126,7 @@ const PageRegister = ({ AuthN }) => {
           <ContainerInputs>
             <label>Confirm Password:</label>
             <input type="password" {...register("confirmPassword")} />
-            <span>
-              {errors.confirmPassword?.message}
-            </span>
+            <span>{errors.confirmPassword?.message}</span>
           </ContainerInputs>
 
           <div>
