@@ -79,7 +79,19 @@ export const ActivityCard = ({ activity = {}, adm, create, group }) => {
     >
       <div className="modal">
         {isModal === false ? (
-          <div className="card__header">
+          <div
+            className="card__header"
+            title={
+              !!create === false
+                ? `Date of the conclusion: ${transformDate(
+                    activity.realization_time
+                  )
+                    .split("/")
+                    .reverse()
+                    .join("/")}`
+                : "Create activity"
+            }
+          >
             <div className="container-title" onClick={openModal}>
               <p className="title">
                 {!!create === false ? activity.title : "New activity"}
