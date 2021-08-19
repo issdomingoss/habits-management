@@ -23,7 +23,7 @@ export const Lista = styled.div`
   width: 250px;
   height: 350px;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   background-color: #050a20;
   border: 1px solid;
@@ -55,6 +55,15 @@ export const Lista = styled.div`
     margin-top: 20px;
     color: var(--white);
   }
+
+  .group_Name {
+    font-size: 18px;
+    text-align: center;
+  }
+  .followers {
+    text-align: center;
+  }
+
   .check-icon {
     margin: 10px;
     border: solid 1.5px;

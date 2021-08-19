@@ -63,7 +63,6 @@ const PageLogin = ({ AuthN, setAuthN }) => {
       .post("/sessions/", sendToAPI)
       .then((response) => {
         reset();
-        console.log(response);
         localStorage.setItem("token", JSON.stringify(response.data.access));
 
         getToken(response.data.access);
