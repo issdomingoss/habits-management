@@ -100,7 +100,6 @@ export const ActivityCard = ({ activity = {}, adm, create, group }) => {
             <div className="icons-header">
               {!!create === false ? (
                 <p className="date-limit">
-                  {" "}
                   {transformDate(activity.realization_time)
                     .split("/")
                     .reverse()
