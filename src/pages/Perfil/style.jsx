@@ -123,11 +123,17 @@ export const ContainerForm = styled.div`
     .buttonContainer {
       display: flex;
       flex-direction: column;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 90%;
+      }
     }
 
     button {
       margin-top: 15px;
-      width: 100px;
+      width: 70px;
       padding: 10px;
       border: 2px solid #d73333;
       border-radius: 5px;
