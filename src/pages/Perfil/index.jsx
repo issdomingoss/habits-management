@@ -96,7 +96,7 @@ const PerfilPage = ({ AuthN }) => {
                 <input
                   placeholder="nome"
                   {...register("username")}
-                  value={user.username}
+                  defaultValue={user.username}
                 />
               </div>
               <div className="InputContainer">
@@ -104,7 +104,7 @@ const PerfilPage = ({ AuthN }) => {
                 <input
                   placeholder="email"
                   {...register("email")}
-                  value={user.email}
+                  defaultValue={user.email}
                 />
               </div>
               <div className="buttonContainer">
