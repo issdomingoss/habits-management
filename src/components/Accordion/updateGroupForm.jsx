@@ -61,6 +61,7 @@ export const EditForm = ({ group = {}, closeModal, item }) => {
                     placeholder={errors.name?.message}
                     type="text"
                     defaultValue={group.name || ""}
+                    maxLength="18"
                     {...register("name")}
                   />
                 </div>
