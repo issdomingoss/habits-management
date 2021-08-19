@@ -62,7 +62,10 @@ export const GoalCard = ({ goal = {}, adm, create, group }) => {
     <Container isModal={isModal} isAdm={adm}>
       <div className="modal">
         {isModal === false ? (
-          <div className="card__header">
+          <div
+            className="card__header"
+            title={!!create === false && `Difficulty: ${goal.difficulty}`}
+          >
             <div className="container-title" onClick={openModal}>
               <p className="title">
                 {!!create === false ? goal.title : "New goal"}
