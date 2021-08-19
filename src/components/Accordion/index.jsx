@@ -12,7 +12,7 @@ import { GoalCard } from "../GoalCard";
 const Accordion = () => {
   const [clicked, setClicked] = useState(false);
   const [att, setAtt] = useState(0);
-  const { myGroups } = useContext(GroupsContext);
+  const { allGroups, subscribeGroup, myGroups } = useContext(GroupsContext);
   const [isModal, setIsModal] = useState(false);
 
   const openModal = (id) => {
@@ -28,7 +28,7 @@ const Accordion = () => {
 
   useEffect(() => {
     setAtt(att + 1);
-  }, [myGroups]);
+  }, [allGroups, subscribeGroup, myGroups]);
 
   const toggle = (id) => {
     if (clicked === id) {
@@ -36,7 +36,7 @@ const Accordion = () => {
     }
     setClicked(id);
   };
-  //onClick={() => updateGroup(item, { name: "ingles" })}
+
   return (
     <IconContext.Provider value={{ size: "25px" }}>
       <AccordionSection>
@@ -44,7 +44,6 @@ const Accordion = () => {
           {myGroups
             .filter((item) => item.category === "Track-Speak")
             .map((item, index) => {
-              console.log(item);
               return (
                 <div key={index}>
                   <Wrap>
