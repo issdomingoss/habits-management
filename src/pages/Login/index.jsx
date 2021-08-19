@@ -63,7 +63,7 @@ const PageLogin = ({ AuthN, setAuthN }) => {
       .post("/sessions/", sendToAPI)
       .then((response) => {
         reset();
-
+        console.log(response);
         localStorage.setItem("token", JSON.stringify(response.data.access));
 
         getToken(response.data.access);
@@ -75,9 +75,9 @@ const PageLogin = ({ AuthN, setAuthN }) => {
   };
 
   //if AuthN true redirect to dashboard
-  if(AuthN){
-    return <Redirect to='/dashboard'/>
-  };
+  if (AuthN) {
+    return <Redirect to="/dashboard" />;
+  }
 
   //return do jsx
   //================================================================================================

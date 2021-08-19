@@ -24,6 +24,7 @@ const ListAllGroups = () => {
               <p>Description: {item.description}</p>
               <p>Followers: {item.users_on_group.length}</p>
             </div>
+
             <AiOutlineUsergroupAdd
               title="Subscribe!"
               className="check-icon"
