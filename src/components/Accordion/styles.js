@@ -27,7 +27,7 @@ export const Container = styled.div`
 
 export const Wrap = styled.div`
   background: var(--white);
-  color: #fff;
+  color: var(--black);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +39,6 @@ export const Wrap = styled.div`
 
   @media (min-width: 1200px) {
     background: var(--white);
-    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
