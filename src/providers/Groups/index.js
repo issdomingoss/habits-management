@@ -1,13 +1,17 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import api from "../../services/api";
+import { AuthTokenContext } from "../Auth";
 
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
   const [myGroups, setMyGroups] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
-  const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("token")) || ""
+  );
   const [page, setPage] = useState(1);
+  const { authN } = useContext(AuthTokenContext);
 
   const createGroup = (group) => {
     const newGroup = { ...group };
@@ -69,13 +73,16 @@ export const GroupsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    api
-      .get("/groups/subscriptions/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => setMyGroups(res.data))
-      .catch((e) => console.log(e));
-  }, []);
+    if (!!authN) {
+      setToken(JSON.parse(localStorage.getItem("token")));
+      api
+        .get("/groups/subscriptions/", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => setMyGroups(res.data))
+        .catch((e) => console.log(e));
+    }
+  }, [authN, token]);
 
   useEffect(() => {
     api
