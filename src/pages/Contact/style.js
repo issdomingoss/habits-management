@@ -15,7 +15,7 @@ export const ContainerCard = styled.div`
     background-color: var(--red);
     display: flex;
     align-items: center;
-    margin: 20px 10px;
+    margin: 10px 10px;
     max-width: 700px;
     min-width: 300px;
     justify-content: space-between;
