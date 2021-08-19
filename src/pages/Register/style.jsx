@@ -36,7 +36,8 @@ export const ContainerInputs = styled.div`
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin: 10px 0px;
+
+    margin: 6px 0px;
 
     input{
         background-color:var(--white);
@@ -48,6 +49,12 @@ export const ContainerInputs = styled.div`
 
     input:focus{
         background-color:white;
+    }
+
+    span{
+        text-align: center;
+        width: 208px;
+        color:var(--red);
     }
 `;
 
@@ -92,6 +99,5 @@ export const ContainerImgRegister = styled.div`
             height: 100%;
             width: 100%;
         }
-
     }
 `;

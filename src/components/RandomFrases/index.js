@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const RandomFrases = () => {
-  const [frases, setFrases] = useState([
+  const frases = [
     {
       id: 1,
       frase: " Dreaming big and dreaming small gives the same work.",
@@ -240,7 +240,7 @@ const RandomFrases = () => {
       transcript:
         " Você nunca pode desistir. Ganhadores nunca desistem e desistentes nunca ganham.",
     },
-  ]);
+  ];
 
   const [transcriptPortuguese, setTranscriptPortuguese] = useState("");
   const [fraseEnglish, setFraseEnglish] = useState("");
@@ -254,7 +254,6 @@ const RandomFrases = () => {
     setFraseEnglish(texto.map((item) => item.frase));
   };
 
-  console.log(transcriptPortuguese);
   return (
     <>
       <h3>

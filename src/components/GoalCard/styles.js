@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: ${(props) => (props.isModal === true ? "fixed" : "auto")};
-  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,10 +23,7 @@ export const Container = styled.div`
     border-color: transparent;
     border-radius: 5px;
     background-color: var(--white);
-    box-shadow: ${(props) =>
-      props.create === false
-        ? "0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%)"
-        : "0 1px 3px 0 rgb(26 24 29 / 84%), 0 1px 2px 0 rgb(26 24 29 / 93%)"};
+    box-shadow: 0 1px 3px 0 rgb(26 24 29 / 12%), 0 1px 2px 0 rgb(26 24 29 / 24%);
     .card__header {
       display: flex;
       justify-content: space-between;
@@ -37,13 +34,13 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         width: 100%;
-        cursor: pointer;
+        cursor: ${(props) => (props.isAdm === true ? "pointer" : "auto")};
 
         .title {
           font-size: 21px;
           font-weight: 700;
           color: ${(props) =>
-            props.create === false ? "var(--black)" : "var(--red)"};
+            props.passedTheDeadline === true ? "var(--green)" : "var(--black)"};
           margin-left: ${(props) => (props.isModal === false ? "21px" : "0px")};
           flex: ${(props) => (props.isModal === false ? "inherit" : "1")};
         }
@@ -55,15 +52,8 @@ export const Container = styled.div`
           font-size: 40px;
           cursor: pointer;
         }
-
         .check-icon {
-          color: ${(props) =>
-            props.isAchived === true ? "var(--green)" : "var(--black)"};
-          cursor: pointer;
-        }
-
-        .plus-icon {
-          color: var(--red);
+          color: var(--green);
         }
       }
     }
@@ -114,8 +104,10 @@ export const Container = styled.div`
         padding-bottom: 20px;
 
         .text-input {
+          margin: 7px 0;
           p {
-            font-size: 18px;
+            font-size: 16px;
+            margin-bottom: 7px;
             font-weight: 700;
             color: var(--black);
           }
@@ -133,8 +125,12 @@ export const Container = styled.div`
               color: var(--red);
             }
           }
+          .error {
+            color: var(--red);
+            font-size: 15px;
+            font-weight: 500;
+          }
         }
-
         .select-input {
           margin-top: 10px;
           p {

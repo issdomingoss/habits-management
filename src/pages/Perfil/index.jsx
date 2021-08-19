@@ -10,11 +10,11 @@ import jwt_decode from "jwt-decode";
 
 import Header from "../../components/header";
 
-const PerfilPage = () => {
+const PerfilPage = ({ AuthN }) => {
   const [user, setUser] = useState("");
-  const [token] = useState(JSON.parse(localStorage.getItem("token")));
+  const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
   const [isModal, setIsModal] = useState(false);
-  const [info, setInfo] = useState(
+  const [info] = useState(
     jwt_decode(JSON.parse(localStorage.getItem("token")))
   );
 
@@ -24,7 +24,9 @@ const PerfilPage = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setUser(response.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err.response);
+      });
   };
 
   useEffect(() => {

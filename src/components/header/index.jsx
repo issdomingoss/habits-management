@@ -1,24 +1,44 @@
-import { HeaderContainer, Image } from "./styles";
+import { HeaderContainer, Dropdown, DropdownContent, ContainerNone } from "./styles";
 import Logo from "../../assets/logo_Speak_Tracks.PNG";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
+
+import { useContext } from "react";
+
+import { AuthTokenContext } from "../../providers/Auth";
 
 const Header = () => {
+
+  const { setAuthN } = useContext(AuthTokenContext);
+
   const history = useHistory();
 
-  const handleLogoClick = () => {
-    history.push("/");
-  };
+  const handleLogout = () => {
+    //descobrir um jeito de alterar o state AuthN (esta no criado no routes) para false
+    localStorage.clear();
+    history.push('/');
+    setAuthN(false);
+  }
 
   return (
     <HeaderContainer>
       <nav>
-        <Image onClick={handleLogoClick}>
-          <img src={Logo} alt="logo"></img>
-        </Image>
-        <div>
-          <GiHamburgerMenu />
-        </div>
+        <Link to='/'><img src={ Logo } alt="logo"></img></Link>
+        <Dropdown>
+          <ContainerNone>
+            <GiHamburgerMenu />
+          </ContainerNone>
+            <DropdownContent>
+              <ul>
+                <Link to='/dashboard'><li>Dashboard</li></Link>
+                <Link to='/groups'><li>Group</li></Link>
+                <Link to='/perfil'><li>Perfil</li></Link>
+                <Link to='/contact'><li>Contact Us</li></Link>
+                <li onClick={handleLogout}>Logout</li>
+              </ul>
+            </DropdownContent>
+        </Dropdown>
       </nav>
     </HeaderContainer>
   );

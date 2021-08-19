@@ -103,6 +103,94 @@ _Essa função atualiza o **habits**_
 
 - **loadHabits()**: carrega os hábitos do usuário que estão na api para a variável **habits**.
 
+#### `GroupsProvider`
+
+- **allGroups**: um State que recebe um array com todos os grupos disponíveis para a aplicação.
+
+- **myGroups**: um State que recebe um array com todos os grupos que o usuário seja membro.
+
+- **createGroup(group)**: Recebe um objeto com os dados do novo grupo que será enviado para a api em uma requisição de criação de grupo. Se aprovada a requisição de criação, os states **allGroups** e **myGroups** são atualizados.
+
+```
+//Exemplo:
+
+const group = {
+	name: "Grupo novo 6",
+	description: "Descrição bolada2",
+	category: "Saúde"
+};
+
+  createGroup(group)
+```
+
+- **subscribeGroup(group)**: Recebe um objeto que contém um "grupo" que o usuário deseja se inscrever. Quando chamada, é feita uma requisição para a _api_ e se ela for aprovada o state **myGroup** será atualizado com o novo "grupo" inscrito.
+
+```
+//Exemplo:
+
+const group = {
+    id: 3834,
+    name: "Grupo novo 6",
+    description: "Descrição bolada2",
+    category: "Saúde",
+    creator: {
+      id: 1778,
+      username: "testador",
+      email: "testador@mail.com"
+    },
+    users_on_group: [
+      {
+        id: 1778,
+        username: "testador",
+        email: "testador@mail.com"
+      }
+    ],
+    goals: [],
+    activities: []
+  };
+
+  subscribeGroup(group)
+
+```
+
+**Nesta função a requisição da api utiliza id do grupo e o state _myGroups_ é alterado localmente, por isso, é IMPORTANTE que todos os dados do grupo sejam passados dentro do objeto "group"**.
+
+- **updateGroup(group, groupModify)**: recebe dois objetos, um contendo todas as informações do grupo que será atualizado (_group_) e o outro com as informações que serão alteradas (_groupModify_).
+
+```
+//Exemplo:
+
+const group = {
+    id: 3834,
+    name: "Grupo novo 6",
+    description: "Descrição bolada2",
+    category: "Saúde",
+    creator: {
+      id: 1778,
+      username: "testador",
+      email: "testador@mail.com"
+    },
+    users_on_group: [
+      {
+        id: 1778,
+        username: "testador",
+        email: "testador@mail.com"
+      }
+    ],
+    goals: [],
+    activities: []
+  };
+
+const groupModify = {
+	name: "Grupo atualizado"
+}
+
+  updateGroup(group,groupModify);
+
+```
+
+**Nesta função a requisição da api utiliza id do grupo, e o objeto contendo as alterações necessárias (_groupModify_). Os states _myGroups_ e o _allGroups_ são alterados localmente**.
+
 #### `GoalsProvider`:
 
 - **createGoal(goal)**: recebe um objeto como parâmeto e cria uma nova meta a partir dele.
@@ -137,7 +225,7 @@ const newItens = {
 
 ```
 
-- **removeGoal(goal_Id)**: recebe o id de uma meta e remove ela a partir deste id.
+- **removeGoal(goal_Id,group)**: recebe o id de uma meta e um objeto (grupo ao qual ela pertence). Remove a meta deste grupo.
 
 - **getGoal(goal_Id)**: pega uma meta específica a partir do id dela e armazena em **goal**.
 
@@ -175,7 +263,7 @@ const upd_Item = {
 
 ```
 
-- **removeActivity(activity_ID)**: remove uma atividade especificada usando seu id.
+- **removeActivity(activity_ID,group)**: recebe o id da atividade e um objeto (grupo ao qual a atividade pertence). Remove a atividade deste grupo.
 
 - **getActivity(activity_ID)**: pega uma atividade específica a partir do seu id e armazena em **Activity**.
 

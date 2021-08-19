@@ -1,21 +1,34 @@
 import { useContext, useState } from "react";
-import { Container } from "./styles";
-import { BiCheckCircle, BiPlusCircle, BiTrash } from "react-icons/bi";
+import {
+  BiTrash,
+  BiPlusCircle,
+  BiCheckbox,
+  BiCheckboxChecked,
+} from "react-icons/bi";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { HabitsContext } from "../../providers/Habits";
+import { Container } from "./styles";
+import { GoalsContext } from "../../providers/Goals";
 
-export const HabitCard = ({ habit = {}, create }) => {
+export const GoalCard = ({ goal = {}, adm, create, group }) => {
   const [isModal, setIsModal] = useState(false);
-  const { createHabit, updateHabit, removeHabit } = useContext(HabitsContext);
+
+  const { createGoal, updateGoal, removeGoal } = useContext(GoalsContext);
 
   const openModal = () => {
-    setIsModal(true);
+    if (adm === true) {
+      setIsModal(true);
+    }
   };
 
   const closeModal = () => {
     setIsModal(false);
+  };
+
+  const goalAchieved = (achieved) => {
+    const data = { achieved: !achieved };
+    updateGoal(goal.id, data);
   };
 
   const schema = yup.object().shape({
@@ -31,53 +44,49 @@ export const HabitCard = ({ habit = {}, create }) => {
   });
 
   const onSubmitFunction = (data) => {
-    if (create) {
-      const newHabit = {
-        title: data.title,
-        category: "Language",
-        difficulty: data.difficulty,
-        frequency: data.frequency,
+    if (!!create) {
+      const newData = {
+        ...data,
+        group: group,
         achieved: false,
-        how_much_achieved: 0,
+        how_much_achieved: 100,
       };
-
-      createHabit(newHabit);
+      createGoal(newData);
     } else {
-      const { id } = habit;
-      updateHabit(id, data);
+      updateGoal(goal.id, data);
     }
-
     closeModal();
   };
 
-  const habitAchieved = (achieved, id) => {
-    const data = { achieved: !achieved };
-    updateHabit(id, data);
-  };
-
   return (
-    <Container isModal={isModal} isAchived={habit.achieved} create={!!create}>
+    <Container isModal={isModal} isAdm={adm}>
       <div className="modal">
         {isModal === false ? (
           <div
             className="card__header"
             title={
               !!create === false
-                ? `Difficulty: ${habit.difficulty}, Frequency: ${habit.frequency} `
+                ? `Difficulty: ${goal.difficulty}`
                 : "Create habit"
             }
           >
             <div className="container-title" onClick={openModal}>
-              <p className="title">{habit.title || "New habit"}</p>
+              <p className="title">
+                {!!create === false ? goal.title : "New goal"}
+              </p>
             </div>
             <div className="icons-header">
-              {create ? (
-                <BiPlusCircle className="plus-icon" onClick={openModal} />
+              {!!create === false ? (
+                goal.achieved === true ? (
+                  <BiCheckboxChecked
+                    className="check-icon"
+                    onClick={() => goalAchieved(goal.achieved)}
+                  />
+                ) : (
+                  <BiCheckbox onClick={() => goalAchieved(goal.achieved)} />
+                )
               ) : (
-                <BiCheckCircle
-                  className="check-icon"
-                  onClick={() => habitAchieved(habit.achieved, habit.id)}
-                />
+                <BiPlusCircle onClick={openModal} />
               )}
             </div>
           </div>
@@ -85,14 +94,14 @@ export const HabitCard = ({ habit = {}, create }) => {
           <div className="form-container">
             <form onSubmit={handleSubmit(onSubmitFunction)}>
               <div className="form__header">
-                <h4>{create ? "Create" : "Edit"} habit</h4>
+                <h4> {!!create === false ? "Edit" : "Create"} goal</h4>
                 <div className="container-buttons">
                   <button className="cancel-button" onClick={closeModal}>
                     Cancel
                   </button>
 
                   <button type="submit" className="save-button">
-                    {create ? "create" : "Save"}
+                    {!!create === false ? "Save" : "Create"}
                   </button>
                 </div>
               </div>
@@ -102,14 +111,14 @@ export const HabitCard = ({ habit = {}, create }) => {
                   <input
                     placeholder={errors.title?.message}
                     type="text"
-                    defaultValue={habit.title || ""}
+                    defaultValue={goal.title || ""}
                     {...register("title")}
                   />
                 </div>
                 <div className="select-input">
                   <p>Difficulty</p>
                   <select
-                    defaultValue={habit.difficulty || "Easy"}
+                    defaultValue={goal.difficulty || "Easy"}
                     {...register("difficulty")}
                   >
                     <option value="Easy">Easy</option>
@@ -118,30 +127,17 @@ export const HabitCard = ({ habit = {}, create }) => {
                     <option value="Very Hard">Very Hard</option>
                   </select>
                 </div>
-                <div className="select-input">
-                  <p>Frequency</p>
-                  <select
-                    defaultValue={habit.frequency || "Daily"}
-                    {...register("frequency")}
-                  >
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                  </select>
-                </div>
               </div>
             </form>
-            {create !== true && (
-              <div className="container-trash">
-                <button
-                  className="delete-button"
-                  onClick={() => removeHabit(habit.id)}
-                >
-                  <BiTrash className="trash-icon" />
-                  <span> Delete habit</span>
-                </button>
-              </div>
-            )}
+            <div className="container-trash">
+              <button
+                className="delete-button"
+                onClick={() => removeGoal(goal.id, group)}
+              >
+                <BiTrash className="trash-icon" />
+                <span> Delete goal</span>
+              </button>
+            </div>
           </div>
         )}
       </div>
