@@ -1,11 +1,11 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext } from "react";
 import api from "../../services/api";
 import { GroupsContext } from "../Groups";
+import { toast } from "react-toastify";
 
 export const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
-  const [goal, setGoal] = useState([]);
   const { myGroups, setMyGroups } = useContext(GroupsContext);
 
   const getToken = () => {
@@ -29,9 +29,17 @@ export const GoalsProvider = ({ children }) => {
           });
           setMyGroups(updateGroups);
         })
-        .catch((err) => console.log(err.response));
-    } else {
-      console.log("token não disponível");
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
     }
   };
 
@@ -57,17 +65,18 @@ export const GoalsProvider = ({ children }) => {
           });
           setMyGroups(updateGroups);
         })
-        .catch((err) => console.log(err.response));
-    } else {
-      console.log("token não disponível");
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
     }
-  };
-
-  const getGoal = (goalId) => {
-    api
-      .get(`/goals/${goalId}/`)
-      .then((response) => setGoal(response.data))
-      .catch((err) => err.response);
   };
 
   const removeGoal = (goalId, group) => {
@@ -87,16 +96,22 @@ export const GoalsProvider = ({ children }) => {
           });
           setMyGroups(updateGroups);
         })
-        .catch((err) => console.log(err.response));
-    } else {
-      console.log("token não disponível");
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
     }
   };
 
   return (
-    <GoalsContext.Provider
-      value={{ createGoal, updateGoal, removeGoal, getGoal, goal }}
-    >
+    <GoalsContext.Provider value={{ createGoal, updateGoal, removeGoal }}>
       {children}
     </GoalsContext.Provider>
   );

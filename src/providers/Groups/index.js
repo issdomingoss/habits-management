@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import api from "../../services/api";
 import { AuthTokenContext } from "../Auth";
+import { toast } from "react-toastify";
 
 export const GroupsContext = createContext();
 
@@ -24,7 +25,17 @@ export const GroupsProvider = ({ children }) => {
         setMyGroups([...myGroups, res.data]);
         setAllGroups([...allGroups, res.data]);
       })
-      .catch((err) => console.log(err.res));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   const subscribeGroup = (group) => {
@@ -43,7 +54,17 @@ export const GroupsProvider = ({ children }) => {
         });
         setAllGroups(updateAllGroups);
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   const updateGroup = (group, groupModify) => {
@@ -69,7 +90,17 @@ export const GroupsProvider = ({ children }) => {
         setMyGroups(updatedGroup);
         setAllGroups(updatedAllGroups);
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   useEffect(() => {
@@ -80,7 +111,17 @@ export const GroupsProvider = ({ children }) => {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setMyGroups(res.data))
-        .catch((e) => console.log(e));
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
     }
   }, [authN, token]);
 
@@ -94,7 +135,17 @@ export const GroupsProvider = ({ children }) => {
         }
       })
 
-      .catch((e) => console.log(e));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   }, [page]);
 
   return (

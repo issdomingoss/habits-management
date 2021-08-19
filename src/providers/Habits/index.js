@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 export const HabitsContext = createContext();
 
@@ -27,7 +28,17 @@ export const HabitsProvider = ({ children }) => {
       .then((response) => {
         setHabits([...habits, response.data]);
       })
-      .catch((err) => console.log(err.response));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   const updateHabit = (id, updatedItens) => {
@@ -42,8 +53,18 @@ export const HabitsProvider = ({ children }) => {
       .patch(`/habits/${id}/`, updatedItens, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => setHabits(updatedHabits))
-      .catch((err) => console.log(err.response));
+      .then(() => setHabits(updatedHabits))
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   const removeHabit = (id) => {
@@ -54,18 +75,17 @@ export const HabitsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => setHabits(newHabitsList))
-      .catch((err) => console.log(err.response.data.detail));
-  };
-
-  const loadHabits = () => {
-    api
-      .get("/habits/personal/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setHabits([...response.data]);
-      })
-      .catch((err) => console.log(err.response.data.error));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   useEffect(() => {
@@ -77,7 +97,17 @@ export const HabitsProvider = ({ children }) => {
         .then((response) => {
           setHabits([...response.data]);
         })
-        .catch((err) => console.log(err.response.data.error));
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
     }
   }, [token]);
 
@@ -90,7 +120,6 @@ export const HabitsProvider = ({ children }) => {
         createHabit,
         updateHabit,
         removeHabit,
-        loadHabits,
         getToken,
       }}
     >

@@ -81,7 +81,17 @@ const PageLogin = ({ AuthN, setAuthN }) => {
 
         history.push("/dashboard");
       })
-      .catch((e) => console.log(e));
+      .catch(() => {
+        toast.error("Username or password invalid!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   //if AuthN true redirect to dashboard

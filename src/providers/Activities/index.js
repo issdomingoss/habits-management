@@ -1,11 +1,11 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext } from "react";
 import api from "../../services/api";
 import { GroupsContext } from "../Groups";
+import { toast } from "react-toastify";
 
 export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
-  const [Activity, setActivity] = useState([]);
   const { myGroups, setMyGroups } = useContext(GroupsContext);
 
   const getToken = () => {
@@ -29,9 +29,17 @@ export const ActivitiesProvider = ({ children }) => {
           });
           setMyGroups(updateGroups);
         })
-        .catch((err) => console.log(err.response));
-    } else {
-      console.log("token não disponível");
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
     }
   };
 
@@ -57,9 +65,17 @@ export const ActivitiesProvider = ({ children }) => {
           });
           setMyGroups(updateGroups);
         })
-        .catch((err) => console.log(err.response));
-    } else {
-      console.log("token não disponível");
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
     }
   };
 
@@ -82,17 +98,18 @@ export const ActivitiesProvider = ({ children }) => {
           });
           setMyGroups(updateGroups);
         })
-        .catch((err) => console.log(err.response));
-    } else {
-      console.log("token não disponível");
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
     }
-  };
-
-  const getActivity = (activity_ID) => {
-    api
-      .get(`/activities/${activity_ID}/`)
-      .then((response) => setActivity(response.data))
-      .catch((err) => console.log(err.response));
   };
 
   return (
@@ -101,8 +118,6 @@ export const ActivitiesProvider = ({ children }) => {
         createActivity,
         updateActivity,
         removeActivity,
-        getActivity,
-        Activity,
       }}
     >
       {children}
