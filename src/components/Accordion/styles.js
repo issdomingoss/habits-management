@@ -27,7 +27,7 @@ export const Container = styled.div`
 
 export const Wrap = styled.div`
   background: var(--white);
-  color: #fff;
+  color: var(--black);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +39,6 @@ export const Wrap = styled.div`
 
   @media (min-width: 1200px) {
     background: var(--white);
-    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,24 +136,18 @@ export const Dropdown = styled.div`
     margin-left: 20px;
   }
   .accord-goal-text {
-    @media (min-width: 700px) {
-      font-size: 15px;
-      font-weight: bold;
-      background-color: white;
-      margin: 1px;
-      box-shadow: 0 1px 3px 0 rgb(26 24 29 / 62%),
-        0 1px 2px 0 rgb(26 24 29 / 64%);
-    }
     font-size: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 5px;
+    margin: 10px 0;
     width: 100%;
     border: 1px solid;
     border-color: transparent;
     border-radius: 10px;
-    background-color: var(--white);
+    background-color: var(--red);
+    padding: 10px 0 28px;
     box-shadow: 0 1px 3px 0 rgb(26 24 29 / 62%), 0 1px 2px 0 rgb(26 24 29 / 24%);
 
     p {
@@ -163,6 +156,7 @@ export const Dropdown = styled.div`
       text-indent: 10px;
       margin: 10px 0;
       font-weight: 700;
+      color: var(--white);
     }
   }
 `;

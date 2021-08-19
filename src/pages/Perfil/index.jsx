@@ -1,7 +1,7 @@
 import { ContainerPerfil, CardPerfil, ContainerForm } from "./style";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { AiFillEdit } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import api from "../../services/api";
@@ -37,7 +37,10 @@ const PerfilPage = ({ AuthN }) => {
   }, []);
 
   const schema = yup.object().shape({
-    username: yup.string().required("Required name!"),
+    username: yup
+      .string()
+      .required("Required name!")
+      .matches(/^[a-zA-Z]+$/, "It must only contain letters!"),
     email: yup
       .string()
       .required("Required email!")
@@ -91,13 +94,28 @@ const PerfilPage = ({ AuthN }) => {
         ) : (
           <ContainerForm>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
-              <label>Username:</label>
-              <input placeholder="nome" {...register("username")} />
-              <label>E-mail:</label>
-              <input placeholder="email" {...register("email")} />
-
-              <button type="submit">Save</button>
-              <button onClick={ismodalFalse}>Cancel</button>
+              <div className="InputContainer">
+                <label>User:</label>
+                <input
+                  placeholder="nome"
+                  {...register("username")}
+                  defaultValue={user.username}
+                />
+              </div>
+              <div className="InputContainer">
+                <label>E-mail:</label>
+                <input
+                  placeholder="email"
+                  {...register("email")}
+                  defaultValue={user.email}
+                />
+              </div>
+              <div className="buttonContainer">
+                <button type="submit" className="saveButton">
+                  Save
+                </button>
+                <button onClick={ismodalFalse}>Cancel</button>
+              </div>
             </form>
           </ContainerForm>
         )}

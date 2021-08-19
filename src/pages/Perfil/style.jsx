@@ -19,10 +19,23 @@ export const CardPerfil = styled.div`
     display: flex;
     justify-content: flex-end;
     margin-right: 15px;
-    .editIcon {
-      width: 30px;
-      height: 30px;
+
+    button {
+      border: none;
       cursor: pointer;
+    }
+
+    .editIcon {
+      width: 35px;
+      height: 35px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      background: #d73333;
+      box-shadow: 0px 4px 3px 0px rgb(0 0 0 / 25%);
+    }
+    .editIcon:hover {
+      filter: brightness(1.5);
     }
   }
   .userImgContainer {
@@ -60,7 +73,7 @@ export const CardPerfil = styled.div`
 export const ContainerForm = styled.div`
   height: 40vh;
   margin: 10vh auto;
-  width: 60%;
+  width: 50%;
   border: 1px solid lightgray;
   box-shadow: 0px 4px 3px 0px rgb(0 0 0 / 25%);
   display: flex;
@@ -70,6 +83,10 @@ export const ContainerForm = styled.div`
 
   @media (min-width: 768px) {
     width: 30%;
+  }
+
+  @media (max-width: 320px) {
+    width: 80%;
   }
 
   form {
@@ -85,8 +102,27 @@ export const ContainerForm = styled.div`
       border-radius: 5px;
 
       @media (min-width: 768px) {
-        width: 60%;
+        width: 100%;
       }
+    }
+    .InputContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      label {
+        text-align: left;
+        width: 80%;
+
+        @media (min-width: 768px) {
+          width: 100%;
+        }
+      }
+    }
+
+    .buttonContainer {
+      display: flex;
+      flex-direction: column;
     }
 
     button {
@@ -104,6 +140,17 @@ export const ContainerForm = styled.div`
       background: #d73333;
       color: white;
       transition: all ease 500ms;
+    }
+    .saveButton {
+      border: 2px solid #000000;
+      background: #ffffff;
+      color: #009100;
+    }
+    .saveButton:hover {
+      filter: brightness(1);
+      border: 2px solid #000000;
+      background: #009100;
+      color: #ffffff;
     }
   }
 `;
