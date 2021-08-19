@@ -20,9 +20,11 @@ const ListAllGroups = () => {
           <Lista key={item.id}>
             <img className="logo" src={Logo} alt="logo" />
             <div className="group-information">
-              <p>Name: {item.name}</p>
+              <p className="group_Name">{item.name}</p>
               <p>Description: {item.description}</p>
-              <p>Followers: {item.users_on_group.length}</p>
+              <p className="followers">
+                Followers: {item.users_on_group.length}
+              </p>
             </div>
 
             <AiOutlineUsergroupAdd
