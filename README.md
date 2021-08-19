@@ -189,7 +189,7 @@ const groupModify = {
 
 ```
 
-**Nesta função a requisição da api utiliza id do grupo, e o objeto contendo as alterações necessárias (_ groupModify_). Os states _myGroups_ e o _allGroups_ são alterados localmente**.
+**Nesta função a requisição da api utiliza id do grupo, e o objeto contendo as alterações necessárias (_groupModify_). Os states _myGroups_ e o _allGroups_ são alterados localmente**.
 
 #### `GoalsProvider`:
 
@@ -225,7 +225,7 @@ const newItens = {
 
 ```
 
-- **removeGoal(goal_Id)**: recebe o id de uma meta e remove ela a partir deste id.
+- **removeGoal(goal_Id,group)**: recebe o id de uma meta e um objeto (grupo ao qual ela pertence). Remove a meta deste grupo.
 
 - **getGoal(goal_Id)**: pega uma meta específica a partir do id dela e armazena em **goal**.
 
@@ -263,7 +263,7 @@ const upd_Item = {
 
 ```
 
-- **removeActivity(activity_ID)**: remove uma atividade especificada usando seu id.
+- **removeActivity(activity_ID,group)**: recebe o id da atividade e um objeto (grupo ao qual a atividade pertence). Remove a atividade deste grupo.
 
 - **getActivity(activity_ID)**: pega uma atividade específica a partir do seu id e armazena em **Activity**.
 

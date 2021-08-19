@@ -8,12 +8,17 @@ import { GroupsContext } from "../../providers/Groups";
 import { EditForm } from "./updateGroupForm";
 import { ActivityCard } from "../ActivityCard";
 import { GoalCard } from "../GoalCard";
+import jwt_decode from "jwt-decode";
 
 const Accordion = () => {
   const [clicked, setClicked] = useState(false);
   const [att, setAtt] = useState(0);
   const { myGroups } = useContext(GroupsContext);
   const [isModal, setIsModal] = useState(false);
+
+  const [userOnToken] = useState(
+    jwt_decode(JSON.parse(localStorage.getItem("token")))
+  );
 
   const openModal = (id) => {
     if (isModal === id) {
@@ -36,7 +41,7 @@ const Accordion = () => {
     }
     setClicked(id);
   };
-  //onClick={() => updateGroup(item, { name: "ingles" })}
+
   return (
     <IconContext.Provider value={{ size: "25px" }}>
       <AccordionSection>
@@ -60,11 +65,13 @@ const Accordion = () => {
                           item={item}
                         />
                       ) : (
-                        <AiFillEdit
-                          title="Edit Group!"
-                          className="AiFillEdit"
-                          onClick={() => openModal(item.id)}
-                        />
+                        userOnToken.user_id === item.creator.id && (
+                          <AiFillEdit
+                            title="Edit Group!"
+                            className="AiFillEdit"
+                            onClick={() => openModal(item.id)}
+                          />
+                        )
                       )}
 
                       <span>

@@ -1,33 +1,40 @@
 import { ContainerPerfil, CardPerfil, ContainerForm } from "./style";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { AiFillEdit } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 import Header from "../../components/header";
-import { Redirect } from "react-router-dom";
 
 const PerfilPage = ({ AuthN }) => {
-
   const [user, setUser] = useState("");
-  // const [token] = useState(JSON.parse(localStorage.getItem("token")) || '');
+  const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
   const [isModal, setIsModal] = useState(false);
-  const [info, setInfo] = useState(
+  const [info] = useState(
     jwt_decode(JSON.parse(localStorage.getItem("token")))
   );
 
   const updateUser = (newData) => {
     api
       .patch(`/users/${info.user_id}/`, newData, {
-        headers: { Authorization: `Bearer ${AuthN}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setUser(response.data))
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        toast.error("Email or username already exists!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 
@@ -35,12 +42,24 @@ const PerfilPage = ({ AuthN }) => {
     api
       .get(`/users/${info.user_id}/`)
       .then((response) => setUser(response.data))
-      .catch((err) => console.log(err));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   }, []);
 
-
   const schema = yup.object().shape({
-    username: yup.string().required("Required name!"),
+    username: yup
+      .string()
+      .required("Required name!")
+      .matches(/^[a-zA-Z]+$/, "It must only contain letters!"),
     email: yup
       .string()
       .required("Required email!")
@@ -71,7 +90,6 @@ const PerfilPage = ({ AuthN }) => {
   const ismodalFalse = () => {
     setIsModal(false);
   };
- 
 
   return (
     <>
@@ -95,12 +113,28 @@ const PerfilPage = ({ AuthN }) => {
         ) : (
           <ContainerForm>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
-              <label>User:</label>
-              <input placeholder="nome" {...register("username")} />
-              <label>E-mail:</label>
-              <input placeholder="email" {...register("email")} />
-              <button type="submit">Update</button>
-              <button onClick={ismodalFalse}>Cancel</button>
+              <div className="InputContainer">
+                <label>User:</label>
+                <input
+                  placeholder="nome"
+                  {...register("username")}
+                  defaultValue={user.username}
+                />
+              </div>
+              <div className="InputContainer">
+                <label>E-mail:</label>
+                <input
+                  placeholder="email"
+                  {...register("email")}
+                  defaultValue={user.email}
+                />
+              </div>
+              <div className="buttonContainer">
+                <button type="submit" className="saveButton">
+                  Save
+                </button>
+                <button onClick={ismodalFalse}>Cancel</button>
+              </div>
             </form>
           </ContainerForm>
         )}

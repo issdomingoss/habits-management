@@ -49,43 +49,45 @@ export const CreateGroups = ({ group = {} }) => {
         {isModal === false ? (
           <ButtonCreate onClick={openModal}>Criar Grupo</ButtonCreate>
         ) : (
-          <div className="modal">
-            <div className="form-container">
-              <form onSubmit={handleSubmit(onSubmitFunction)}>
-                <div className="form__header">
-                  <h4>Create Group</h4>
-                  <div className="container-buttons">
-                    <button className="cancel-button" onClick={closeModal}>
-                      Cancel
-                    </button>
+          <div className="modal-container">
+            <div className="modal">
+              <div className="form-container">
+                <form onSubmit={handleSubmit(onSubmitFunction)}>
+                  <div className="form__header">
+                    <h4>Create Group</h4>
+                    <div className="container-buttons">
+                      <button className="cancel-button" onClick={closeModal}>
+                        Cancel
+                      </button>
 
-                    <button type="submit" className="save-button">
-                      Create
-                    </button>
+                      <button type="submit" className="save-button">
+                        Create
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div className="container-inputs">
-                  <div className="text-input">
-                    <p>Name</p>
-                    <input
-                      placeholder={errors.name?.message}
-                      type="text"
-                      defaultValue={group.name || ""}
-                      {...register("name")}
-                    />
-                  </div>
+                  <div className="container-inputs">
+                    <div className="text-input">
+                      <p>Name</p>
+                      <input
+                        placeholder={errors.name?.message}
+                        type="text"
+                        defaultValue={group.name || ""}
+                        {...register("name")}
+                      />
+                    </div>
 
-                  <div className="text-input">
-                    <p>Description</p>
-                    <input
-                      placeholder={errors.description?.message}
-                      type="text"
-                      defaultValue={group.description || ""}
-                      {...register("description")}
-                    />
+                    <div className="text-input">
+                      <p>Description</p>
+                      <input
+                        placeholder={errors.description?.message}
+                        type="text"
+                        defaultValue={group.description || ""}
+                        {...register("description")}
+                      />
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         )}

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: ${(props) => (props.isModal === true ? "fixed" : "auto")};
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;

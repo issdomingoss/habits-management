@@ -1,13 +1,18 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import api from "../../services/api";
+import { AuthTokenContext } from "../Auth";
+import { toast } from "react-toastify";
 
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
   const [myGroups, setMyGroups] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
-  const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("token")) || ""
+  );
   const [page, setPage] = useState(1);
+  const { authN } = useContext(AuthTokenContext);
 
   const createGroup = (group) => {
     const newGroup = { ...group };
@@ -20,7 +25,17 @@ export const GroupsProvider = ({ children }) => {
         setMyGroups([...myGroups, res.data]);
         setAllGroups([...allGroups, res.data]);
       })
-      .catch((err) => console.log(err.res));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   const subscribeGroup = (group) => {
@@ -28,8 +43,28 @@ export const GroupsProvider = ({ children }) => {
       .post(`/groups/${group.id}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setMyGroups([...myGroups, group]))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setMyGroups([...myGroups, group]);
+
+        const updateAllGroups = allGroups.map((groups) => {
+          if (groups.id === group.id) {
+            groups.users_on_group = [...groups.users_on_group, res.data.user];
+          }
+          return groups;
+        });
+        setAllGroups(updateAllGroups);
+      })
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   const updateGroup = (group, groupModify) => {
@@ -55,17 +90,40 @@ export const GroupsProvider = ({ children }) => {
         setMyGroups(updatedGroup);
         setAllGroups(updatedAllGroups);
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   useEffect(() => {
-    api
-      .get("/groups/subscriptions/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => setMyGroups(res.data))
-      .catch((e) => console.log(e));
-  }, []);
+    if (authN) {
+      setToken(JSON.parse(localStorage.getItem("token")));
+      api
+        .get("/groups/subscriptions/", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => setMyGroups(res.data))
+        .catch(() => {
+          toast.error("Something went wrong!!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    }
+  }, [authN, token]);
 
   useEffect(() => {
     api
@@ -77,7 +135,17 @@ export const GroupsProvider = ({ children }) => {
         }
       })
 
-      .catch((e) => console.log(e));
+      .catch(() => {
+        toast.error("Something went wrong!!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   }, [page]);
 
   return (

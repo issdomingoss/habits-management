@@ -9,6 +9,8 @@ import img_desktop from "../../assets/image 3.png";
 import api from "../../services/api";
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
+import { toast } from "react-toastify";
+import { getRandomPhrase } from "../../Data/RandomPhrases";
 
 import {
   ContainerBackGround,
@@ -63,21 +65,40 @@ const PageLogin = ({ AuthN, setAuthN }) => {
       .post("/sessions/", sendToAPI)
       .then((response) => {
         reset();
-
         localStorage.setItem("token", JSON.stringify(response.data.access));
 
         getToken(response.data.access);
         setAuthN(true);
 
+        toast.success(`Welcome! ${getRandomPhrase()}`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         history.push("/dashboard");
       })
-      .catch((e) => console.log(e));
+      .catch(() => {
+        toast.error("Username or password invalid!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   //if AuthN true redirect to dashboard
-  if(AuthN){
-    return <Redirect to='/dashboard'/>
-  };
+  if (AuthN) {
+    return <Redirect to="/dashboard" />;
+  }
 
   //return do jsx
   //================================================================================================
