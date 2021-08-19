@@ -73,7 +73,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (!!authN) {
+    if (authN) {
       setToken(JSON.parse(localStorage.getItem("token")));
       api
         .get("/groups/subscriptions/", {
