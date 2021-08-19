@@ -32,7 +32,7 @@ const Contact = () => {
                     <GrLinkedin />
                 </ContainerCard>
             </LinkTo>
-            <LinkTo target='_blank' href='linkedin.com/in/miqueias-carvalho-dos-santos'>
+            <LinkTo target='_blank' href='https://www.linkedin.com/in/miqueias-carvalho-dos-santos/'>
                 <ContainerCard>
                     <h2>Miqueias Carvalho</h2>
                     <GrLinkedin />
