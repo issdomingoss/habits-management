@@ -5,6 +5,7 @@ import PageRegister from "../pages/Register";
 import PageGroups from "../pages/Groups";
 import PerfilPage from "../pages/Perfil";
 import { Dashboard } from "../pages/Dashboard";
+import Contact from "../pages/Contact";
 
 import { useEffect, useContext } from 'react';
 import { AuthTokenContext } from "../providers/Auth";
@@ -26,7 +27,6 @@ const Routes = () => {
   }, [authN]);
 
   return (
-
     <Switch>
       <Route exact path="/">
         <PageHome AuthN={ authN } />
@@ -44,7 +44,7 @@ const Routes = () => {
         <PageGroups AuthN={ authN }/>
       </Route>
       <Route path="/contact">
-        <h1>Contato</h1>
+        <Contact />
       </Route>
       <Route path="/perfil">
         {authN ? <PerfilPage /> : <Redirect to='/login'/>}

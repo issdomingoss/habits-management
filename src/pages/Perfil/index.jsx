@@ -14,7 +14,7 @@ import { Redirect } from "react-router-dom";
 const PerfilPage = ({ AuthN }) => {
 
   const [user, setUser] = useState("");
-  // const [token] = useState(JSON.parse(localStorage.getItem("token")) || '');
+  const [token] = useState(JSON.parse(localStorage.getItem("token")) || '');
   const [isModal, setIsModal] = useState(false);
   const [info, setInfo] = useState(
     jwt_decode(JSON.parse(localStorage.getItem("token")))
@@ -23,7 +23,7 @@ const PerfilPage = ({ AuthN }) => {
   const updateUser = (newData) => {
     api
       .patch(`/users/${info.user_id}/`, newData, {
-        headers: { Authorization: `Bearer ${AuthN}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setUser(response.data))
       .catch((err) => {
