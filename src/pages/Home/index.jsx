@@ -10,7 +10,10 @@ import {
   ButtonSignIn,
   ButtonSignUp,
   ContainerMainFlex,
+  Footer
 } from "./style";
+
+import ButtonContact from "../../components/ButtonContact";
 
 import img_Home from "../../assets/image 1.png";
 import logo from "../../assets/logo_Speak_Tracks_branco.PNG";
@@ -67,6 +70,12 @@ const PageHome = ({ AuthN }) => {
           </ContainerButtonGetStarted>
         </div>
       </ContainerMainFlex>
+
+      <Footer>
+        <footer>
+          <p>All rights reserved for the creators of this page are here: <Link to='/contact'>Contact Us</Link></p>
+        </footer>
+      </Footer>
     </ContainerHome>
   );
 };

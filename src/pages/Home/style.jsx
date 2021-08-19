@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const ContainerHome = styled.div`
     text-align: center;
+    @media (min-width: 1024px){
+        height: 100vh;
+    }
 `;
 
 export const NavHome = styled.nav`
@@ -111,7 +114,7 @@ export const ContainerSubTitle = styled.div`
 
     @media (min-width: 768px){
 
-        width:400px;
+        width: 400px;
 
         p{
             font-size: 1.4rem;
@@ -121,7 +124,7 @@ export const ContainerSubTitle = styled.div`
 
 export const ContainerButtonGetStarted = styled.div`
     
-    margin:30px;
+    margin: 30px;
     
     button{
         background-color: var(--red);
@@ -154,5 +157,29 @@ export const ContainerMainFlex = styled.div`
         justify-content: space-around;
         align-items: center;
         margin-top: 45px 0px;
+    }
+`;
+
+export const Footer = styled.div`
+    margin-top: 100px;
+    margin-bottom: 10px;
+
+    footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p{
+            font-size: 11px;
+        }
+    }
+
+    @media (min-width:768px){
+        
+        footer{
+            p{
+                font-size: 14px;
+            }
+        }
     }
 `;
