@@ -13,8 +13,6 @@ import {
   Footer
 } from "./style";
 
-import ButtonContact from "../../components/ButtonContact";
-
 import img_Home from "../../assets/image 1.png";
 import logo from "../../assets/logo_Speak_Tracks_branco.PNG";
 

@@ -175,7 +175,7 @@ export const Footer = styled.div`
     }
 
     @media (min-width:768px){
-        
+
         footer{
             p{
                 font-size: 14px;
