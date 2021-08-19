@@ -62,8 +62,9 @@ export const HabitCard = ({ habit = {}, create }) => {
           <div
             className="card__header"
             title={
-              !!create === false &&
-              `Difficulty: ${habit.difficulty}, Frequency: ${habit.frequency} `
+              !!create === false
+                ? `Difficulty: ${habit.difficulty}, Frequency: ${habit.frequency} `
+                : "Create habit"
             }
           >
             <div className="container-title" onClick={openModal}>
