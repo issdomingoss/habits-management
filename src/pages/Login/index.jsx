@@ -10,6 +10,7 @@ import api from "../../services/api";
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
 import { toast } from "react-toastify";
+import { getRandomPhrase } from "../../Data/RandomPhrases";
 
 import {
   ContainerBackGround,
@@ -69,7 +70,7 @@ const PageLogin = ({ AuthN, setAuthN }) => {
         getToken(response.data.access);
         setAuthN(true);
 
-        toast.success("Login successful!", {
+        toast.success(`Welcome! ${getRandomPhrase()}`, {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
