@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
 import { HabitCard } from "../HabitCard";
 import { Container } from "./styles";

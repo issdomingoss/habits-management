@@ -1,7 +1,7 @@
 const Contact = () => {
     return(
         <div>
-            AQUI FICA NOSSOS CONTATOS
+            
         </div>
     );
 };

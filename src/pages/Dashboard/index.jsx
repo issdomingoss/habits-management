@@ -39,9 +39,12 @@ export const Dashboard = ({ AuthN }) => {
     <>
       <Header />
       <Container>
-        <div className="progress-container">
-          <ProgressBar percent={progressHabits} />
-        </div>
+        <section id="progress">
+          <p>My progress</p>
+          <div className="progress-container">
+            <ProgressBar percent={progressHabits} />
+          </div>
+        </section>
         <div className="flex">
           <section id="habits">
             <h2>Habits</h2>

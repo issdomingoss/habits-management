@@ -1,68 +1,74 @@
-import { NavHome, ContainerHome, ContainerTitle, 
-        ContainerSubTitle, ContainerButtonGetStarted,
-        ContainerLogo, ImgLogo, ContainerImgHome, 
-        ButtonSignIn, ButtonSignUp, ContainerMainFlex } from './style';
+import {
+  NavHome,
+  ContainerHome,
+  ContainerTitle,
+  ContainerSubTitle,
+  ContainerButtonGetStarted,
+  ContainerLogo,
+  ImgLogo,
+  ContainerImgHome,
+  ButtonSignIn,
+  ButtonSignUp,
+  ContainerMainFlex,
+} from "./style";
 
-import img_Home from '../../assets/image 1.png';
-import logo from '../../assets/logo_Speak_Tracks_branco.PNG';
+import img_Home from "../../assets/image 1.png";
+import logo from "../../assets/logo_Speak_Tracks_branco.PNG";
 
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, useHistory } from "react-router-dom";
 
 const PageHome = ({ AuthN }) => {
+  const history = useHistory();
 
-    const history = useHistory();
+  const sendToPageLogin = () => {
+    history.push("/login");
+  };
 
-    const sendToPageLogin = () => {
-        history.push('/login');
-    }
+  const sendToPageRegister = () => {
+    history.push("/register");
+  };
 
-    const sendToPageRegister = () => {
-        history.push('/register');
-    }
+  return (
+    <ContainerHome>
+      <NavHome>
+        <ContainerLogo>
+          <Link to="/">
+            <ImgLogo alt="img-logo" src={logo} />
+          </Link>
+        </ContainerLogo>
 
-    //if AuthN true redirect to dashboard
-//   if(AuthN){
-//     return <Redirect to='/dashboard'/>
-//   };
+        <div>
+          <ButtonSignIn onClick={sendToPageLogin}>Sign In</ButtonSignIn>
+          <ButtonSignUp onClick={sendToPageRegister}>Sign Up</ButtonSignUp>
+        </div>
+      </NavHome>
 
+      <ContainerMainFlex>
+        <div>
+          <ContainerImgHome>
+            <img alt="img_home" src={img_Home} />
+          </ContainerImgHome>
+        </div>
 
-    return(
-        <ContainerHome>
-            <NavHome>
-                <ContainerLogo>
-                    <Link to='/'><ImgLogo alt='img-logo' src={logo}/></Link>
-                </ContainerLogo>
+        <div>
+          <ContainerTitle>
+            <h2>Evolve constatly and meet people!</h2>
+          </ContainerTitle>
 
-                <div>
-                    <ButtonSignIn onClick={ sendToPageLogin }>Sign In</ButtonSignIn>
-                    <ButtonSignUp onClick={ sendToPageRegister }>Sign Up</ButtonSignUp>
-                </div>
+          <ContainerSubTitle>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Consequatur excepturi illo at quia dignissimos.
+            </p>
+          </ContainerSubTitle>
 
-            </NavHome>
-
-            <ContainerMainFlex>
-                <div>
-                    <ContainerImgHome>
-                        <img alt='img_home' src={ img_Home } />
-                    </ContainerImgHome>
-                </div>
-                
-                <div>
-                    <ContainerTitle>
-                        <h2>Evolve constatly and meet people!</h2>
-                    </ContainerTitle>
-
-                    <ContainerSubTitle>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur excepturi illo at quia dignissimos.</p>
-                    </ContainerSubTitle>
-                    
-                    <ContainerButtonGetStarted>
-                        <button onClick={ sendToPageRegister }>get started!</button>
-                    </ContainerButtonGetStarted>
-                </div>
-            </ContainerMainFlex>
-        </ContainerHome>
-    )
-}
+          <ContainerButtonGetStarted>
+            <button onClick={sendToPageRegister}>get started!</button>
+          </ContainerButtonGetStarted>
+        </div>
+      </ContainerMainFlex>
+    </ContainerHome>
+  );
+};
 
 export default PageHome;

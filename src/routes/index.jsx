@@ -7,21 +7,16 @@ import PerfilPage from "../pages/Perfil";
 import { Dashboard } from "../pages/Dashboard";
 import Contact from "../pages/Contact";
 
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext } from "react";
 import { AuthTokenContext } from "../providers/Auth";
 
 const Routes = () => {
-
   const { authN, setAuthN } = useContext(AuthTokenContext);
 
   useEffect(() => {
-    //pega o token do local storage
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = JSON.parse(localStorage.getItem("token"));
 
-    console.log(token, 'ROUTERS')
-    //verifica se possui um token
-    //se possuir um token mude state para true
-    if(token) {
+    if (token) {
       return setAuthN(true);
     }
   }, [authN]);
@@ -29,25 +24,25 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <PageHome AuthN={ authN } />
+        <PageHome AuthN={authN} />
       </Route>
       <Route path="/login">
-        <PageLogin AuthN={ authN } setAuthN={ setAuthN }/>
+        <PageLogin AuthN={authN} setAuthN={setAuthN} />
       </Route>
       <Route path="/register">
-        <PageRegister AuthN={ authN }/>
+        <PageRegister AuthN={authN} />
       </Route>
       <Route path="/dashboard">
-        <Dashboard AuthN={ authN }/>
+        <Dashboard AuthN={authN} />
       </Route>
       <Route path="/groups">
-        <PageGroups AuthN={ authN }/>
+        <PageGroups AuthN={authN} />
       </Route>
       <Route path="/contact">
         <Contact />
       </Route>
       <Route path="/perfil">
-        {authN ? <PerfilPage /> : <Redirect to='/login'/>}
+        {authN ? <PerfilPage /> : <Redirect to="/login" />}
       </Route>
     </Switch>
   );

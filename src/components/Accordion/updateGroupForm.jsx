@@ -26,7 +26,6 @@ export const EditForm = ({ group = {}, closeModal, item }) => {
   });
 
   const onSubmitFunction = (data) => {
-    console.log(data);
     const updatedGroup = {
       name: data.name,
       description: data.description,

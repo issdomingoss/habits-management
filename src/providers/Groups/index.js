@@ -28,7 +28,17 @@ export const GroupsProvider = ({ children }) => {
       .post(`/groups/${group.id}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setMyGroups([...myGroups, group]))
+      .then((res) => {
+        setMyGroups([...myGroups, group]);
+
+        const updateAllGroups = allGroups.map((groups) => {
+          if (groups.id === group.id) {
+            groups.users_on_group = [...groups.users_on_group, res.data.user];
+          }
+          return groups;
+        });
+        setAllGroups(updateAllGroups);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -36,7 +46,6 @@ export const GroupsProvider = ({ children }) => {
     const updatedAllGroups = allGroups.map((item) => {
       if (item.id === group.id) {
         item = { ...item, ...groupModify };
-        console.log(item);
       }
       return item;
     });
@@ -44,7 +53,6 @@ export const GroupsProvider = ({ children }) => {
     const updatedGroup = myGroups.map((item) => {
       if (item.id === group.id) {
         item = { ...item, ...groupModify };
-        console.log(item);
       }
       return item;
     });
@@ -56,7 +64,6 @@ export const GroupsProvider = ({ children }) => {
       .then((res) => {
         setMyGroups(updatedGroup);
         setAllGroups(updatedAllGroups);
-        console.log(myGroups);
       })
       .catch((err) => console.log(err));
   };
@@ -75,22 +82,22 @@ export const GroupsProvider = ({ children }) => {
       .get("/groups/", { params: { category: "Track-Speak", page: page } })
       .then((res) => {
         setAllGroups([...allGroups, ...res.data.results]);
-        setPage(page + 1);
+        if (!!res.data.next) {
+          setPage(page + 1);
+        }
       })
 
       .catch((e) => console.log(e));
   }, [page]);
 
-  /*console.log(token);*/
   return (
     <GroupsContext.Provider
       value={{
         myGroups,
+        setMyGroups,
         createGroup,
         subscribeGroup,
         allGroups,
-        setPage,
-        page,
         updateGroup,
       }}
     >
