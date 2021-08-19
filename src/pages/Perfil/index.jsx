@@ -10,11 +10,11 @@ import jwt_decode from "jwt-decode";
 
 import Header from "../../components/header";
 
-const PerfilPage = () => {
+const PerfilPage = ({ AuthN }) => {
   const [user, setUser] = useState("");
-  const [token] = useState(JSON.parse(localStorage.getItem("token")));
+  const [token] = useState(JSON.parse(localStorage.getItem("token")) || "");
   const [isModal, setIsModal] = useState(false);
-  const [info, setInfo] = useState(
+  const [info] = useState(
     jwt_decode(JSON.parse(localStorage.getItem("token")))
   );
 
@@ -24,7 +24,9 @@ const PerfilPage = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setUser(response.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err.response);
+      });
   };
 
   useEffect(() => {
@@ -89,11 +91,12 @@ const PerfilPage = () => {
         ) : (
           <ContainerForm>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
-              <label>User:</label>
+              <label>Username:</label>
               <input placeholder="nome" {...register("username")} />
               <label>E-mail:</label>
               <input placeholder="email" {...register("email")} />
-              <button type="submit">Update</button>
+
+              <button type="submit">Save</button>
               <button onClick={ismodalFalse}>Cancel</button>
             </form>
           </ContainerForm>

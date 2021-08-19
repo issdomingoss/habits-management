@@ -92,17 +92,23 @@ const Accordion = () => {
 
                         <GoalCard create adm={true} group={item.id} />
                         {item.goals.map((goal) => (
-                          <GoalCard key={goal.id} goal={goal} adm={true} />
+                          <GoalCard
+                            key={goal.id}
+                            goal={goal}
+                            adm={true}
+                            group={item}
+                          />
                         ))}
                       </div>
                       <div className="accord-goal-text">
                         <p>Activities:</p>
-                        <ActivityCard create adm={true} group={item.id} />
+                        <ActivityCard create adm={true} group={item} />
                         {item.activities.map((activity) => (
                           <ActivityCard
                             key={activity.id}
                             activity={activity}
                             adm={true}
+                            group={item}
                           />
                         ))}
                       </div>

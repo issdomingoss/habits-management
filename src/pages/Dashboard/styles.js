@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  .progress-container {
-    min-width: 313px;
-    width: 80%;
-    max-width: 930px;
-    margin: 18px auto 24px;
+  #progress {
+    p {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .progress-container {
+      min-width: 313px;
+      width: 80%;
+      max-width: 930px;
+      margin: 18px auto 24px;
+    }
   }
   .flex {
     section {
