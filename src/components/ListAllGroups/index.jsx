@@ -1,13 +1,13 @@
 import React from "react";
-import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/Groups";
 import { Lista, Container, Title } from "./styles";
 import Logo from "../../assets/logo_Speak_Tracks.PNG";
 import jwt_decode from "jwt-decode";
+import { SubscribeIcon } from "./SubscribeIcon";
 
 const ListAllGroups = () => {
-  const { allGroups, subscribeGroup, myGroups } = useContext(GroupsContext);
+  const { allGroups, myGroups } = useContext(GroupsContext);
   const [att, setAtt] = useState(0);
   const [userOnToken] = useState(
     jwt_decode(JSON.parse(localStorage.getItem("token")))
@@ -15,7 +15,7 @@ const ListAllGroups = () => {
 
   useEffect(() => {
     setAtt(att + 1);
-  }, [allGroups, subscribeGroup, myGroups]);
+  }, [allGroups, myGroups]);
 
   return (
     <>
@@ -40,11 +40,7 @@ const ListAllGroups = () => {
               )}
             </div>
 
-            <AiOutlineUsergroupAdd
-              title="Subscribe!"
-              className="check-icon"
-              onClick={() => subscribeGroup(item)}
-            />
+            <SubscribeIcon userID={userOnToken.user_id} item={item} />
           </Lista>
         ))}
       </Container>

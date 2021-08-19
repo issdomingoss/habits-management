@@ -67,6 +67,9 @@ export const Lista = styled.div`
   }
   .following {
     color: var(--green);
+    font-size: 15px;
+    text-shadow: -1px -5px 13px var(--red);
+    margin-top: 40px;
   }
 
   .check-icon {
