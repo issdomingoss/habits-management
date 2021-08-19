@@ -1,11 +1,16 @@
 import React from "react";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/Groups";
 import { Lista, Container, Title } from "./styles";
 import Logo from "../../assets/logo_Speak_Tracks.PNG";
 const ListAllGroups = () => {
-  const { allGroups, subscribeGroup } = useContext(GroupsContext);
+  const { allGroups, subscribeGroup, myGroups } = useContext(GroupsContext);
+  const [att, setAtt] = useState(0);
+
+  useEffect(() => {
+    setAtt(att + 1);
+  }, [allGroups, subscribeGroup, myGroups]);
 
   return (
     <>
@@ -19,6 +24,7 @@ const ListAllGroups = () => {
               <p>Description: {item.description}</p>
               <p>Followers: {item.users_on_group.length}</p>
             </div>
+
             <AiOutlineUsergroupAdd
               title="Subscribe!"
               className="check-icon"
