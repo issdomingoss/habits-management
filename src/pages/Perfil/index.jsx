@@ -1,7 +1,7 @@
 import { ContainerPerfil, CardPerfil, ContainerForm } from "./style";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { AiFillEdit } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import api from "../../services/api";
@@ -37,7 +37,10 @@ const PerfilPage = ({ AuthN }) => {
   }, []);
 
   const schema = yup.object().shape({
-    username: yup.string().required("Required name!"),
+    username: yup
+      .string()
+      .required("Required name!")
+      .matches(/^[a-zA-Z]+$/, "It must only contain letters!"),
     email: yup
       .string()
       .required("Required email!")
