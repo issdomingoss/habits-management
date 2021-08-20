@@ -60,7 +60,7 @@ export const EditForm = ({ group = {}, closeModal, item }) => {
                   <input
                     placeholder={errors.name?.message}
                     type="text"
-                    defaultValue={group.name || ""}
+                    defaultValue={item.name || ""}
                     maxLength="18"
                     {...register("name")}
                   />
@@ -71,7 +71,7 @@ export const EditForm = ({ group = {}, closeModal, item }) => {
                   <input
                     placeholder={errors.description?.message}
                     type="text"
-                    defaultValue={group.description || ""}
+                    defaultValue={item.description || ""}
                     {...register("description")}
                   />
                 </div>
