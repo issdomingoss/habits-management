@@ -6,6 +6,7 @@ export const ContainerPerfil = styled.div`
 
 export const CardPerfil = styled.div`
   height: 40vh;
+  min-height: 300px;
   margin: 10vh auto;
   width: 70%;
   border: 1px solid lightgray;
@@ -72,6 +73,7 @@ export const CardPerfil = styled.div`
 
 export const ContainerForm = styled.div`
   height: 40vh;
+  min-height: 300px;
   margin: 10vh auto;
   width: 50%;
   border: 1px solid lightgray;
