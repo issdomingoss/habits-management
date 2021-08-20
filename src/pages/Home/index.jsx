@@ -10,7 +10,7 @@ import {
   ButtonSignIn,
   ButtonSignUp,
   ContainerMainFlex,
-  Footer
+  Footer,
 } from "./style";
 
 import img_Home from "../../assets/image 1.png";
@@ -58,8 +58,8 @@ const PageHome = ({ AuthN }) => {
 
           <ContainerSubTitle>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Consequatur excepturi illo at quia dignissimos.
+              Study habits management platform for people who want to explore
+              the world.
             </p>
           </ContainerSubTitle>
 
@@ -71,7 +71,10 @@ const PageHome = ({ AuthN }) => {
 
       <Footer>
         <footer>
-          <p>All rights reserved for the creators of this page are here: <Link to='/contact'>Contact Us</Link></p>
+          <p>
+            All rights reserved for the creators of this page are here:{" "}
+            <Link to="/contact">Contact Us</Link>
+          </p>
         </footer>
       </Footer>
     </ContainerHome>
