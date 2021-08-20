@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Container, ButtonCreate } from "./styles";
 
 import * as yup from "yup";
@@ -8,7 +8,12 @@ import { GroupsContext } from "../../providers/Groups";
 
 export const CreateGroups = ({ group = {} }) => {
   const [isModal, setIsModal] = useState(false);
-  const { createGroup } = useContext(GroupsContext);
+  const { createGroup, myGroups } = useContext(GroupsContext);
+  const [att, setAtt] = useState(0);
+
+  useEffect(() => {
+    setAtt(att + 1);
+  }, [myGroups]);
 
   const openModal = () => {
     setIsModal(true);
