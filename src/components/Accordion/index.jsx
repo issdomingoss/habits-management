@@ -65,7 +65,8 @@ const Accordion = () => {
                           item={item}
                         />
                       ) : (
-                        userOnToken.user_id === item.creator.id && (
+                        userOnToken.user_id ===
+                          (item.creator.id || item.creator) && (
                           <AiFillEdit
                             title="Edit Group!"
                             className="AiFillEdit"
