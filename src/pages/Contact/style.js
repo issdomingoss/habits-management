@@ -18,6 +18,7 @@ export const ContainerCard = styled.div`
     margin: 10px 10px;
     max-width: 700px;
     min-width: 300px;
+    
     justify-content: space-between;
 
     svg{
