@@ -1,4 +1,7 @@
 - #### Projeto Gestão de hábitos
+
+- Vercel: https://habits-management-two.vercel.app/
+
 - Um projeto onde apliquei conceitos de ReactJS.
 - Mobile-First.
 - Criamos uma APIfake usando J-SON server.
